@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Bar El Gorrión</title>
+    <link rel="icon" type="image/png" href="../assets/favicon_rock.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Specific adjustments for the menu page */
+        body {
+            background-image: none;
+            background-color: var(--primary-bg);
+        }
+
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(162, 126, 56, 0.1) 0%, transparent 70%);
+        }
+
+        .category-group {
+            margin-bottom: 6rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (Same as Home) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">El Gorrión</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#inicio">Inicio</a></li>
+                <li><a href="#">Nuestra Carta</a></li>
+                <li><a href="../index.html#donde">Dónde estamos</a></li>
+                <li><a href="../social/index.html">Redes</a></li>
+                <li><a href="../horario/index.html">Horario</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Nuestra Carta</h1>
+        <p style="color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px;">Sabores Auténticos</p>
+    </div>
+
+    <section class="section menu-section" style="padding-top: 2rem;">
+        <div class="container">
+
+            <!-- COMIDA -->
+            <div class="category-group">
+                <h2>Comida</h2>
+                <div class="menu-grid">
+                    <!-- Raciones -->
+                    <div class="menu-item">
+                        <h3>Raciones</h3>
+                        <ul class="item-list">
+                            <li><span>Patatas Bravas</span> <span class="price">8,00 €</span></li>
+                            <li><span>Patatas Ali-Oli</span> <span class="price">8,00 €</span></li>
+                            <li><span>Sepia</span> <span class="price">14,00 €</span></li>
+                            <li><span>Cazón Adobado</span> <span class="price">14,00 €</span></li>
+                            <li><span>Oreja a la Plancha</span> <span class="price">11,00 €</span></li>
+                            <li><span>Pincho Moruno</span> <span class="price">6,00 €</span></li>
+                            <li><span>Alitas de Pollo (6 unids.)</span> <span class="price">10,00 €</span></li>
+                            <li><span>Tortilla Española</span> <span class="price">13,00 €</span></li>
+                            <li><span>Tortilla con complemento</span> <span class="price">14,00 €</span></li>
+                            <li><span>Chipirones</span> <span class="price">14,00 €</span></li>
+                            <li><span>Revuelto morcilla</span> <span class="price">13,00 €</span></li>
+                            <li><span>Huevos rotos</span> <span class="price">12,00 €</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Bocadillos y Hamburguesas -->
+                    <div class="menu-item">
+                        <h3>Bocadillos y Hamburguesas</h3>
+                        <ul class="item-list">
+                            <li><span>Magreta</span> <span class="price">5,00 €</span></li>
+                            <li><span>Lomo</span> <span class="price">5,00 €</span></li>
+                            <li><span>Bacon</span> <span class="price">5,00 €</span></li>
+                            <li><span>Panceta</span> <span class="price">5,00 €</span></li>
+                            <li><span>Sandwich Mixto</span> <span class="price">3,50 €</span></li>
+                            <li><span>Sandwich Vegetal</span> <span class="price">4,00 €</span></li>
+                            <li><span>Sandwich de la casa</span> <span class="price">6,50 €</span></li>
+                            <li><span>Hamburguesa Clásica</span> <span class="price">8,00 €</span></li>
+                            <li style="font-size: 0.8rem; color: var(--gold-solid); margin-top: 1rem;">*Suplementos: 0,50€</li>
+                        </ul>
+                    </div>
+
+                    <!-- Ensaladas -->
+                    <div class="menu-item">
+                        <h3>Ensaladas</h3>
+                        <ul class="item-list">
+                            <li><span>Mixta</span> <span class="price">9,00 €</span></li>
+                            <li><span>Queso de cabra</span> <span class="price">13,00 €</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEBIDAS -->
+            <div class="category-group">
+                <h2>Bodega y Bebidas</h2>
+                <div class="menu-grid">
+                    <!-- Cervezas -->
+                    <div class="menu-item">
+                        <h3>Cervezas</h3>
+                        <ul class="item-list">
+                            <li><span>Botellín</span> <span class="price">1,60 €</span></li>
+                            <li><span>Caña</span> <span class="price">2,00 €</span></li>
+                            <li><span>Tercio</span> <span class="price">2,50 €</span></li>
+                            <li><span>Jarra P.</span> <span class="price">2,00 €</span></li>
+                            <li><span>Jarra G.</span> <span class="price">4,00 €</span></li>
+                            <li><span>Alhambra</span> <span class="price">3,00 €</span></li>
+                            <li><span>Doble</span> <span class="price">2,50 €</span></li>
+                            <li><span>Mixta</span> <span class="price">2,50 €</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Otras Bebidas -->
+                    <div class="menu-item">
+                        <h3>Otras Bebidas</h3>
+                        <ul class="item-list">
+                            <li><span>Refrescos</span> <span class="price">2,50 €</span></li>
+                            <li><span>Zumos</span> <span class="price">1,80 €</span></li>
+                            <li><span>Batidos</span> <span class="price">1,80 €</span></li>
+                            <li><span>Tinto de Verano</span> <span class="price">2,50 €</span></li>
+                            <li><span>Mosto</span> <span class="price">2,00 €</span></li>
+                            <li><span>Agua P.</span> <span class="price">1,00 €</span></li>
+                            <li><span>Agua G.</span> <span class="price">2,00 €</span></li>
+                            <li><span>Licor sin alcohol</span> <span class="price">2,00 €</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Vinos -->
+                    <div class="menu-item">
+                        <h3>Vinos</h3>
+                        <ul class="item-list">
+                            <li style="border-bottom: none; font-weight: 700;">Blancos</li>
+                            <li><span>Verdejo</span> <span class="price">2,50 €</span></li>
+                            <li><span>Alma</span> <span class="price">2,50 €</span></li>
+                            <li><span>Dulce María</span> <span class="price">2,50 €</span></li>
+                            <li style="border-bottom: none; font-weight: 700; margin-top: 1rem;">Tintos</li>
+                            <li><span>Ramón Bilbao</span> <span class="price">3,00 €</span></li>
+                            <li><span>Azpilicueta</span> <span class="price">2,50 €</span></li>
+                            <li><span>Coto de Imaz</span> <span class="price">2,50 €</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Cafés e Infusiones -->
+                    <div class="menu-item">
+                        <h3>Cafés e Infusiones</h3>
+                        <ul class="item-list">
+                            <li><span>Café con leche</span> <span class="price">1,60 €</span></li>
+                            <li><span>Café bombón</span> <span class="price">2,00 €</span></li>
+                            <li><span>Café cortado</span> <span class="price">1,60 €</span></li>
+                            <li><span>Café americano</span> <span class="price">1,80 €</span></li>
+                            <li><span>Descafeinados</span> <span class="price">1,60 €</span></li>
+                            <li><span>Cola cao</span> <span class="price">2,00 €</span></li>
+                            <li style="border-bottom: none; font-weight: 700; margin-top: 1rem;">Té e Infusiones</li>
+                            <li><span>Té</span> <span class="price">1,50 €</span></li>
+                            <li><span>Té con leche</span> <span class="price">2,00 €</span></li>
+                            <li><span>Manzanilla</span> <span class="price">1,50 €</span></li>
+                            <li><span>Tila</span> <span class="price">1,50 €</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Copas y Licores -->
+                    <div class="menu-item">
+                        <h3>Alcohol</h3>
+                        <ul class="item-list">
+                            <li><span>Cubata</span> <span class="price">5,00 €</span></li>
+                            <li><span>Martin Miller</span> <span class="price">7,00 €</span></li>
+                            <li><span>Chupito</span> <span class="price">1,30 €</span></li>
+                            <li><span>Martini Blanco</span> <span class="price">2,50 €</span></li>
+                            <li><span>Malibu</span> <span class="price">5,00 €</span></li>
+                            <li><span>Vaquerito</span> <span class="price">1,50 €</span></li>
+                            <li><span>Baileys</span> <span class="price">3,00 €</span></li>
+                            <li><span>Licor (Tubo)</span> <span class="price">2,50 €</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand" style="margin-bottom: 2rem;">
+                <div class="brand-divider-footer"><img src="../assets/favicon_rock.png" alt="El Gorrión Hand"></div>
+                <h3>El Gorrión</h3>
+            </div>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
+                del Campo · Cuenca</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
+                    class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
+                    class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2026. Reservados todos los derechos.</p>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

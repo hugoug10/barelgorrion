@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario | Bar El Gorrión</title>
+    <link rel="icon" type="image/png" href="../assets/favicon_rock.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Specific adjustments for the horario page */
+        body {
+            background-image: none;
+            background-color: var(--primary-bg);
+        }
+
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(162, 126, 56, 0.1) 0%, transparent 70%);
+        }
+
+        .schedule-section {
+            padding-top: 2rem;
+            padding-bottom: 6rem;
+        }
+
+        /* Reuse styles from main page but adapted for a dedicated section if needed */
+        .schedule-container {
+            margin-top: 0;
+            /* Already in a section with padding */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">El Gorrión</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#inicio">Inicio</a></li>
+                <li><a href="../menu/index.html">Nuestra Carta</a></li>
+                <li><a href="../index.html#donde">Dónde Estamos</a></li>
+                <li><a href="../social/index.html">Redes</a></li>
+                <li><a href="#" class="active">Horario</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Horario de Invierno</h1>
+        <p style="color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px;">Te Esperamos</p>
+    </div>
+
+    <section class="section schedule-section">
+        <div class="container">
+            <div class="schedule-container">
+                <div class="schedule-grid">
+                    <div class="schedule-item"><span class="day">Lunes</span><span class="hours">9:00 A 17:30</span>
+                    </div>
+                    <div class="schedule-item"><span class="day">Martes</span><span class="hours">Cerrado por
+                            Descanso</span></div>
+                    <div class="schedule-item"><span class="day">Miércoles</span><span class="hours">Cerrado por
+                            Descanso</span></div>
+                    <div class="schedule-item"><span class="day">Jueves</span><span class="hours">09:00 A 17:30</span>
+                    </div>
+                    <div class="schedule-item"><span class="day">Viernes</span><span class="hours">09:00 A Cierre</span>
+                    </div>
+                    <div class="schedule-item"><span class="day">Sábado</span><span class="hours">09:00 A Cierre</span>
+                    </div>
+                    <div class="schedule-item"><span class="day">Domingo</span><span class="hours">09:00 A 20:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand" style="margin-bottom: 2rem;">
+                <div class="brand-divider-footer"><img src="../assets/favicon_rock.png" alt="El Gorrión Hand"></div>
+                <h3>El Gorrión</h3>
+            </div>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
+                del Campo · Cuenca</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
+                    class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
+                    class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2026. Reservados todos los derechos.</p>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

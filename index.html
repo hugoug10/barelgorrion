@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar El Gorrión | Torrubia del Campo</title>
+    <link rel="icon" type="image/png" href="assets/favicon_rock.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">El Gorrión</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="menu/index.html">Nuestra Carta</a></li>
+                <li><a href="#donde">Dónde Estamos</a></li>
+                <li><a href="social/index.html">Redes</a></li>
+                <li><a href="horario/index.html">Horario</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
+        <div class="overlay"></div> <!-- Overlay is now part of CSS background but kept for darkening if needed -->
+        <div class="hero-content">
+            <h1>Bar El Gorrión</h1>
+            <p>Gastronomía Tradicional · Ambiente Selecto · <span class="highlight">Desde 2025</span></p>
+            <a href="menu/index.html" class="btn">Descubrir Menú</a>
+        </div>
+    </header>
+
+    <!-- Intro Section -->
+    <section class="section intro">
+        <div class="container">
+            <h2>Excelencia en Cada Bocado</h2>
+            <p>En el corazón de Torrubia del Campo, fusionamos la cocina tradicional castellana con un servicio
+                impecable. Un espacio donde el tiempo se detiene y los sabores cobran vida.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Strip (Infinite Marquee) -->
+    <section class="section gallery-strip"
+        style="padding: 0; background: #0d1016; overflow: hidden; white-space: nowrap; position: relative;">
+        <!-- Gradient overlays for smooth fade edges -->
+        <div class="gallery-overlay-left"></div>
+        <div class="gallery-overlay-right"></div>
+
+        <div class="gallery-track">
+            <!-- Original Set -->
+            <div class="gallery-item"><img src="assets/gallery_sepia.png" alt="Sepia a la plancha"></div>
+            <div class="gallery-item"><img src="assets/gallery_sandwich.png" alt="Sandwich Club"></div>
+            <div class="gallery-item"><img src="assets/gallery_scallops.png" alt="Zamburiñas"></div>
+            <div class="gallery-item"><img src="assets/gallery_salmon.png" alt="Tosta de Salmón"></div>
+            <div class="gallery-item"><img src="assets/gallery_pancakes.png" alt="Tortitas con Nata"></div>
+
+            <!-- Duplicate Set for Infinite Scroll -->
+            <div class="gallery-item"><img src="assets/gallery_sepia.png" alt="Sepia a la plancha"></div>
+            <div class="gallery-item"><img src="assets/gallery_sandwich.png" alt="Sandwich Club"></div>
+            <div class="gallery-item"><img src="assets/gallery_scallops.png" alt="Zamburiñas"></div>
+            <div class="gallery-item"><img src="assets/gallery_salmon.png" alt="Tosta de Salmón"></div>
+            <div class="gallery-item"><img src="assets/gallery_pancakes.png" alt="Tortitas con Nata"></div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Replaces Menu) -->
+    <section class="section experience-section" style="background-color: var(--secondary-bg);">
+        <div class="container">
+            <h2>La Experiencia Gorrión</h2>
+            <div class="menu-grid">
+                <div class="menu-item" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🍷</div>
+                    <h3>Bodega de Autor</h3>
+                    <p style="color: var(--text-muted);">Una cuidada selección de vinos D.O. mancha y riojas que maridan
+                        a la perfección con nuestra gastronomía.</p>
+                </div>
+                <div class="menu-item" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🌿</div>
+                    <h3>Producto Km 0</h3>
+                    <p style="color: var(--text-muted);">Priorizamos la materia prima local y de temporada. Del mercado
+                        de Torrubia a tu mesa.</p>
+                </div>
+                <div class="menu-item" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+                    <h3>Ambiente Íntimo</h3>
+                    <p style="color: var(--text-muted);">El lugar perfecto para eventos privados. Música suave, luz
+                        cálida y la mejor compañía.</p>
+                </div>
+                <!-- 4th Item for Symmetry -->
+                <div class="menu-item" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                    <h3>Trato Familiar</h3>
+                    <p style="color: var(--text-muted);">Nos importa tu bienestar. Un servicio cercano y profesional que
+                        te hace sentir como en casa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="donde" class="section location">
+        <div class="container">
+            <h2>¿Dónde Estamos?</h2>
+            <p class="location-address">Torrubia del Campo, Cuenca</p>
+            <div class="map-container" style="border: 1px solid var(--gold-solid); padding: 5px; margin-top: 2rem;">
+                <iframe
+                    src="https://maps.google.com/maps?q=Plaza%20de%20la%20Iglesia%201%2C%20Torrubia%20del%20Campo%2C%20Cuenca&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                    width="100%" height="400" style="border:0; filter: grayscale(20%) contrast(1.1);" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand" style="margin-bottom: 2rem;">
+                <div class="brand-divider-footer"><img src="assets/favicon_rock.png" alt="El Gorrión Hand"></div>
+                <h3>El Gorrión</h3>
+            </div>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
+                del Campo · Cuenca</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
+                    class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
+                    class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2026. Reservados todos los derechos.</p>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
