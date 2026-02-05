@@ -108,6 +108,42 @@
         </div>
     </footer>
 
+    <!-- Review Modal -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-content">
+            <h3>¡Gracias por tu opinión!</h3>
+            <p>¿Te importaría dejarnos una reseña en Google? Nos ayudaría muchísimo a crecer.</p>
+            <div class="modal-buttons">
+                <button class="btn-modal secondary" onclick="submitFormOnly()">Ahora no</button>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bar+El+Gorrion+Torrubia+del+Campo"
+                    target="_blank" class="btn-modal primary" onclick="submitFormAndReview()">¡Dejar Reseña!</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('.suggestions-form');
+        const modal = document.getElementById('reviewModal');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Stop initial sending
+            modal.classList.add('active'); // Show popup
+        });
+
+        function submitFormOnly() {
+            modal.classList.remove('active');
+            form.submit(); // Send real form
+        }
+
+        function submitFormAndReview() {
+            // The <a> tag opens Google Maps in new tab. 
+            // We wait a tiny bit and then send the form.
+            setTimeout(() => {
+                form.submit();
+            }, 1000);
+        }
+    </script>
+
     <script src="../script.js"></script>
 </body>
 
