@@ -127,22 +127,28 @@ h2::after {
 
 .nav-links {
     list-style: none;
+    list-style: none;
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem;
+    /* Reduced from 3rem to prevent overflow */
+    white-space: nowrap;
+    /* Prevent wrapping of list items */
 }
 
 .nav-links a {
-    font-size: 0.9rem;
-    /* Slightly larger */
+    font-size: 0.85rem;
+    /* Reduced slightly from 0.9rem to fit better */
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    /* Slightly reduced for a tighter, cleaner look */
+    letter-spacing: 1px;
+    /* Reduced from 1.5px */
     color: var(--gold-solid);
     /* Gold as requested adjustment */
     font-weight: 500;
     /* slightly bolder */
     position: relative;
     text-decoration: none;
+    white-space: nowrap;
+    /* Prevent wrapping within links */
 }
 
 .nav-links a::after {
@@ -162,6 +168,15 @@ h2::after {
 
 .nav-links a:hover {
     color: var(--gold-solid);
+}
+
+.mobile-only-header {
+    display: none;
+}
+
+.logo {
+    white-space: nowrap;
+    /* Ensure logo stays on one line */
 }
 
 /* Hamburger Menu */
@@ -434,7 +449,9 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+
+    /* Increased from 768px to handle more menu items */
     h1 {
         font-size: 3rem;
     }
@@ -688,4 +705,57 @@ footer {
 .gallery-overlay-right {
     right: 0;
     background: linear-gradient(to left, var(--primary-bg), transparent);
+}
+
+/* Suggestions Form Styling */
+.suggestions-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(26, 32, 44, 0.4);
+    padding: 3rem;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--gold-solid);
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold-solid);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    cursor: pointer;
+    font-weight: 700;
 }
