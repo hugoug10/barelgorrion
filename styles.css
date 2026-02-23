@@ -847,3 +847,28 @@ footer {
 .btn-modal.secondary:hover {
     background: rgba(197, 160, 89, 0.1);
 }
+
+/* Ajustes menú en móvil para que quede más ajustado */
+@media (max-width: 768px) {
+    .menu-item {
+        padding: 1.5rem;
+    }
+    
+    .menu-item h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.3rem;
+    }
+    
+    .item-list li {
+        margin-bottom: 0.8rem;
+    }
+    
+    .item-list li span:first-child {
+        font-size: 0.95rem;
+    }
+    
+    .price {
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+}
