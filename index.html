@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <link rel="stylesheet" href="styles.css?v=3.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -48,11 +48,24 @@
     </header>
 
     <!-- Intro Section -->
-    <section class="section intro">
+    <section class="section intro reveal">
         <div class="container">
             <h2>Excelencia en Cada Bocado</h2>
             <p>En el corazón de Torrubia del Campo, fusionamos la cocina tradicional castellana con un servicio
                 impecable. Un espacio donde el tiempo se detiene y los sabores cobran vida.</p>
+        </div>
+    </section>
+
+    <!-- Nuestra Historia Section -->
+    <section id="historia" class="section reveal" style="background-color: var(--secondary-bg); text-align: center;">
+        <div class="container">
+            <h2>Nuestra Historia</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+                Con la ilusión de mantener vivas las raíces de Torrubia del Campo, nace <strong>Bar El Gorrión</strong>.
+                Un proyecto que busca ofrecer a nuestros vecinos y visitantes un rincón de encuentro donde la calidad,
+                los buenos momentos y la gastronomía de siempre se dan la mano. Cada detalle está pensado para hacerte
+                sentir especial.
+            </p>
         </div>
     </section>
 
@@ -81,7 +94,7 @@
     </section>
 
     <!-- Experience Section (Replaces Menu) -->
-    <section class="section experience-section" style="background-color: var(--secondary-bg);">
+    <section class="section experience-section reveal" style="background-color: var(--primary-bg);">
         <div class="container">
             <h2>La Experiencia Gorrión</h2>
             <div class="menu-grid">
@@ -115,7 +128,7 @@
     </section>
 
     <!-- Location Section -->
-    <section id="donde" class="section location">
+    <section id="donde" class="section location reveal">
         <div class="container">
             <h2>¿Dónde Estamos?</h2>
             <p class="location-address">Torrubia del Campo, Cuenca</p>
@@ -151,17 +164,60 @@
                 </div>
             </div>
 
-            <div class="social-links">
+            <div class="social-links" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
                 <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
                     class="social-icon"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
                     class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
             </div>
+
             <p>&copy; 2026. Reservados todos los derechos.</p>
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
+            <div class="legal-links"
+                style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="legal/aviso-legal.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold-solid)'"
+                    onmouseout="this.style.color='var(--text-muted)'">Aviso Legal</a>
+                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
+                <a href="legal/privacidad.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold-solid)'"
+                    onmouseout="this.style.color='var(--text-muted)'">Política de Privacidad</a>
+                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
+                <a href="legal/cookies.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold-solid)'"
+                    onmouseout="this.style.color='var(--text-muted)'">Política de Cookies</a>
+            </div>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem; letter-spacing: 1px;">Diseñado por Hugo Urbanos
             </p>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/34606963797?text=Hola,%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Bar%20El%20Gorri%C3%B3n."
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia de usuario. <a
+                    href="legal/cookies.html">Más información</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-sm" style="padding: 0.5rem 1rem;">Aceptar</button>
+                <button id="reject-cookies" class="btn btn-sm"
+                    style="padding: 0.5rem 1rem; background: transparent; border-color: var(--text-muted); color: var(--text-muted);">Rechazar</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -42,6 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                // Alseo add .active to .reveal elements
+                if (entry.target.classList.contains('reveal')) {
+                    entry.target.classList.add('active');
+                }
                 observer.unobserve(entry.target);
             }
         });
@@ -83,4 +87,57 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.remove("toggle");
         });
     });
+
+    // --- Premium Features JS ---
+
+    // Additional elements to reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+
+    // Lightbox Functionality
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (lightbox && lightboxImg) {
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.style.cursor = 'pointer'; // add pointer cursor
+            img.addEventListener('click', (e) => {
+                lightbox.classList.add('show');
+                lightboxImg.src = e.target.src;
+            });
+        });
+
+        const closeLightbox = () => lightbox.classList.remove('show');
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox();
+        });
+    }
+
+    // Cookie Banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookies = document.getElementById('accept-cookies');
+    const rejectCookies = document.getElementById('reject-cookies');
+
+    if (cookieBanner) {
+        if (!localStorage.getItem('cookies-accepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000);
+        }
+
+        const hideBanner = (value) => {
+            localStorage.setItem('cookies-accepted', value);
+            cookieBanner.classList.remove('show');
+        };
+
+        if (acceptCookies) acceptCookies.addEventListener('click', () => hideBanner('true'));
+        if (rejectCookies) rejectCookies.addEventListener('click', () => hideBanner('false'));
+    }
 });
