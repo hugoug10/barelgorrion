@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
             preloader.classList.add('hidden');
             // Optionally remove from DOM after transition ends
             setTimeout(() => preloader.remove(), 800);
-        }, 2300);
+        }, 1300);
     }
 });
 
