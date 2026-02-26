@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redes Sociales | Bar El Gorrión</title>
+    <title>Dónde Estamos | Bar El Gorrión</title>
     <link rel="icon" type="image/png" href="../assets/favicon_rock.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../styles.css?v=3.2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Specific adjustments for the social page */
+        /* Specific adjustments for the location page */
         body {
             background-image: none;
             background-color: var(--primary-bg);
@@ -25,6 +25,12 @@
             padding-bottom: 4rem;
             text-align: center;
             background: radial-gradient(circle at center, rgba(162, 126, 56, 0.1) 0%, transparent 70%);
+        }
+
+        .location-section {
+            padding-top: 2rem;
+            padding-bottom: 6rem;
+            text-align: center;
         }
     </style>
 </head>
@@ -47,8 +53,8 @@
                 </li>
                 <li><a href="../index.html#inicio">INICIO</a></li>
                 <li><a href="../menu/index.html">NUESTRA CARTA</a></li>
-                <li><a href="../donde/index.html">DÓNDE ESTAMOS</a></li>
-                <li><a href="#" class="active">REDES</a></li>
+                <li><a href="#" class="active">DÓNDE ESTAMOS</a></li>
+                <li><a href="../social/index.html">REDES</a></li>
                 <li><a href="../horario/index.html">HORARIO</a></li>
                 <li><a href="../sugerencias/index.html">SUGERENCIAS</a></li>
             </ul>
@@ -56,32 +62,20 @@
     </nav>
 
     <div class="page-header">
-        <h1>Conecta con Nosotros</h1>
-        <p style="color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px;">Síguenos en redes</p>
+        <h1>Dónde Estamos</h1>
+        <p style="color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px;">Ven a visitarnos</p>
     </div>
 
-    <section class="section social-section">
+    <section class="section location-section">
         <div class="container">
-            <div class="social-grid">
-                <!-- Instagram Card -->
-                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
-                    class="social-card instagram-card">
-                    <div class="card-icon"><i class="fa-brands fa-instagram"></i></div>
-                    <h3>Instagram</h3>
-                    <p class="handle">@bar_el_gorrion_</p>
-                    <p class="description">Descubre nuestros platos, el ambiente y las novedades más exclusivas.</p>
-                    <span class="btn-card">Seguir</span>
-                </a>
-
-                <!-- TikTok Card -->
-                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
-                    class="social-card tiktok-card">
-                    <div class="card-icon"><i class="fa-brands fa-tiktok"></i></div>
-                    <h3>TikTok</h3>
-                    <p class="handle">@bar.el.gorrion</p>
-                    <p class="description">Vídeos divertidos, el día a día y el lado más cercano de nuestro equipo.</p>
-                    <span class="btn-card">Ver Vídeos</span>
-                </a>
+            <p class="location-address">Torrubia del Campo, Cuenca</p>
+            <div class="map-container"
+                style="border: 1px solid var(--gold-solid); padding: 5px; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <iframe
+                    src="https://maps.google.com/maps?q=Plaza%20de%20la%20Iglesia%201%2C%20Torrubia%20del%20Campo%2C%20Cuenca&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                    width="100%" height="450" style="border:0; filter: grayscale(20%) contrast(1.1);" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
@@ -108,17 +102,55 @@
                 </div>
             </div>
 
-            <div class="social-links">
+            <div class="social-links" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
                 <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
                     class="social-icon"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
                     class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
             </div>
+
             <p>&copy; 2026. Reservados todos los derechos.</p>
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
+            <div class="legal-links"
+                style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../legal/aviso-legal.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold-solid)'"
+                    onmouseout="this.style.color='var(--text-muted)'">Aviso Legal</a>
+                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
+                <a href="../legal/privacidad.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold-solid)'"
+                    onmouseout="this.style.color='var(--text-muted)'">Política de Privacidad</a>
+                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
+                <a href="../legal/cookies.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--gold-solid)'"
+                    onmouseout="this.style.color='var(--text-muted)'">Política de Cookies</a>
+            </div>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem; letter-spacing: 1px;">Diseñado por Hugo Urbanos
             </p>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/34606963797?text=Hola,%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Bar%20El%20Gorri%C3%B3n."
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-text">Reserva aquí tu mesa</span>
+    </a>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia de usuario. <a
+                    href="../legal/cookies.html">Más información</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-sm" style="padding: 0.5rem 1rem;">Aceptar</button>
+                <button id="reject-cookies" class="btn btn-sm"
+                    style="padding: 0.5rem 1rem; background: transparent; border-color: var(--text-muted); color: var(--text-muted);">Rechazar</button>
+            </div>
+        </div>
+    </div>
 
     <script src="../script.js"></script>
 </body>
