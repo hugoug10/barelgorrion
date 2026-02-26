@@ -944,27 +944,52 @@ footer {
 /* WhatsApp Floating Button */
 .whatsapp-float {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     background-color: #25d366;
     color: #fff;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    border-radius: 30px;
+    padding: 0 15px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    gap: 8px;
+    font-size: 28px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-text {
+    font-size: 15px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+@media (min-width: 768px) {
+    .whatsapp-float {
+        bottom: 30px;
+        right: 30px;
+        padding: 0 20px;
+        height: 60px;
+        gap: 10px;
+        font-size: 35px;
+    }
+
+    .whatsapp-text {
+        font-size: 16px;
+    }
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
+    transform: translateY(-5px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
     color: #fff;
+    background-color: #20b858;
 }
 
 /* Lightbox Modal */
