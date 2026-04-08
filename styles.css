@@ -1146,3 +1146,28 @@ a:contains("ES | EN") {
         filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0));
     }
 }
+/* --- Proteccion de Contenido --- */
+.protection-toast {
+    position: fixed;
+    z-index: 10000;
+    background: rgba(17, 21, 28, 0.9);
+    border: 1px solid var(--gold-solid);
+    color: var(--gold-solid);
+    padding: 10px 20px;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.protection-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -152,4 +152,74 @@ document.addEventListener('DOMContentLoaded', () => {
         if (acceptCookies) acceptCookies.addEventListener('click', () => hideBanner('true'));
         if (rejectCookies) rejectCookies.addEventListener('click', () => hideBanner('false'));
     }
+
+    // --- Content Protection ---
+    const showProtectionToast = (e) => {
+        const toast = document.createElement('div');
+        toast.className = 'protection-toast';
+        toast.innerText = 'Código privado';
+        document.body.appendChild(toast);
+
+        // Position toast above click
+        const x = e.pageX || e.clientX + window.scrollX;
+        const y = e.pageY || e.clientY + window.scrollY;
+
+        toast.style.left = `${x}px`;
+        toast.style.top = `${y - 40}px`; // 40px above click
+        toast.style.transform = 'translateX(-50%)'; // Center horizontally over click
+
+        // Animation
+        setTimeout(() => toast.classList.add('show'), 10);
+        
+        // Remove after animation
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
+    };
+
+    // Disable Right Click
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        showProtectionToast(e);
+    }, false);
+
+    // Disable Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+        // F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Ctrl/Cmd + U (View Source)
+        if ((e.ctrlKey || e.metaKey) && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Ctrl/Cmd + Shift + I (Inspect)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Ctrl/Cmd + Shift + J (Console)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Ctrl/Cmd + Shift + C (Inspect Element)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.keyCode === 67) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Ctrl/Cmd + S (Save)
+        if ((e.ctrlKey || e.metaKey) && e.keyCode === 83) {
+            e.preventDefault();
+            return false;
+        }
+    }, false);
 });
