@@ -541,22 +541,65 @@ footer {
 
 /* Gallery Slider Styles (Updated for JS Interaction) */
 .gallery-strip {
-    cursor: grab;
     user-select: none;
     -webkit-user-drag: none;
     height: 500px; /* Enhanced height for desktop */
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.gallery-strip:active {
-    cursor: grabbing;
+/* Enable grab cursor only on mobile/touch */
+@media (max-width: 1024px) {
+    .gallery-strip {
+        cursor: grab;
+    }
+    .gallery-strip:active {
+        cursor: grabbing;
+    }
 }
 
 .gallery-track {
     display: flex;
     gap: 0; /* Gap is managed by item margins */
     will-change: transform;
+}
+
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(13, 16, 22, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    color: var(--gold-solid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.gallery-nav-btn:hover {
+    background: var(--gold-solid);
+    color: var(--primary-bg);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+}
+
+.gallery-nav-btn.prev { left: 30px; }
+.gallery-nav-btn.next { right: 30px; }
+
+@media (max-width: 1024px) {
+    .gallery-nav-btn {
+        display: none;
+    }
 }
 
 .gallery-item {

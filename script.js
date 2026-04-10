@@ -236,17 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let animationId;
         let isPaused = false;
         let lastInteractionTime = Date.now();
+        const nextBtn = document.getElementById('gallery-next');
+        const prevBtn = document.getElementById('gallery-prev');
 
-        // Clone the track for infinite effect if not already handled by HTML
-        // (The HTML currently has 2 sets, which is enough for small screens, 
-        // but we might need more for ultra-wide. 2 sets of 12 items = 24 items).
-        
         const updateGallery = () => {
             if (!isDragging && !isPaused) {
                 currentX -= autoScrollSpeed;
                 
-                // Reset position for seamless loop
-                // The total width of one set is galleryTrack.scrollWidth / 2
                 const halfWidth = galleryTrack.scrollWidth / 2;
                 if (Math.abs(currentX) >= halfWidth) {
                     currentX = 0;
@@ -258,16 +254,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const startDragging = (e) => {
+            // Disable drag with mouse on desktop (non-touch)
+            if (e.type === 'mousedown' && window.innerWidth > 1024) return;
+
             isDragging = true;
             lastInteractionTime = Date.now();
-            startX = (e.pageX || e.touches[0].pageX) - galleryStrip.offsetLeft;
+            const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
+            startX = pageX - galleryStrip.offsetLeft;
             scrollLeft = currentX;
             galleryTrack.style.transition = 'none';
         };
 
         const stopDragging = () => {
+            if (!isDragging) return;
             isDragging = false;
-            // Optionally add a slight inertia here
             setTimeout(() => {
                 if (Date.now() - lastInteractionTime > 3000) {
                     isPaused = false;
@@ -277,12 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const move = (e) => {
             if (!isDragging) return;
-            e.preventDefault();
-            const x = (e.pageX || e.touches[0].pageX) - galleryStrip.offsetLeft;
+            const pageX = e.type.includes('touch') ? e.touches[0].pageX : e.pageX;
+            const x = pageX - galleryStrip.offsetLeft;
             const walk = (x - startX);
             currentX = scrollLeft + walk;
 
-            // Handle infinite wrap while dragging
             const halfWidth = galleryTrack.scrollWidth / 2;
             if (currentX > 0) currentX = -halfWidth;
             if (Math.abs(currentX) >= halfWidth) currentX = 0;
@@ -291,12 +290,44 @@ document.addEventListener('DOMContentLoaded', () => {
             lastInteractionTime = Date.now();
         };
 
-        // Events
+        // Navigation Arrows Logic
+        const shiftGallery = (direction) => {
+            isPaused = true;
+            lastInteractionTime = Date.now();
+            
+            const itemWidth = 380; // 350px width + 30px total margins
+            galleryTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            currentX += (direction === 'next' ? -itemWidth : itemWidth);
+            
+            // Boundary checks for seamless feel during jump
+            const halfWidth = galleryTrack.scrollWidth / 2;
+            if (currentX > 0) currentX = -halfWidth + itemWidth;
+            if (Math.abs(currentX) >= halfWidth) currentX = 0;
+            
+            galleryTrack.style.transform = `translateX(${currentX}px)`;
+            
+            // Remove transition after it's done so auto-scroll remains linear
+            setTimeout(() => {
+                galleryTrack.style.transition = 'none';
+                if (!isDragging && !galleryStrip.matches(':hover')) {
+                    isPaused = false;
+                }
+            }, 500);
+        };
+
+        if (nextBtn) nextBtn.addEventListener('click', () => shiftGallery('next'));
+        if (prevBtn) prevBtn.addEventListener('click', () => shiftGallery('prev'));
+
+        // Drag Events
         galleryStrip.addEventListener('mousedown', startDragging);
         galleryStrip.addEventListener('touchstart', startDragging, { passive: true });
         
         window.addEventListener('mousemove', move);
-        window.addEventListener('touchmove', move, { passive: false });
+        window.addEventListener('touchmove', (e) => {
+            if (isDragging) e.preventDefault();
+            move(e);
+        }, { passive: false });
         
         window.addEventListener('mouseup', stopDragging);
         window.addEventListener('touchend', stopDragging);
@@ -304,14 +335,12 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryStrip.addEventListener('mouseenter', () => isPaused = true);
         galleryStrip.addEventListener('mouseleave', () => {
             if (!isDragging) {
-                // Resume after 2 seconds of no hover
                 setTimeout(() => {
                     if (Date.now() - lastInteractionTime > 2000) isPaused = false;
                 }, 2000);
             }
         });
 
-        // Start animation
         updateGallery();
     }
 });
