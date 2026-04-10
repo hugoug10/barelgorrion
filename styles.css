@@ -1171,3 +1171,28 @@ a:contains("ES | EN") {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* QR Code Styling */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.qr-code {
+    width: 150px;
+    height: 150px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid var(--gold-solid);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+}
