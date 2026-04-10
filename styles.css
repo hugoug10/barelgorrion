@@ -539,27 +539,37 @@ footer {
     }
 }
 
-/* Gallery Marquee Styles */
-.gallery-track {
-    display: inline-flex;
-    animation: scroll 60s linear infinite; /* Slightly slower for more items */
+/* Gallery Slider Styles (Updated for JS Interaction) */
+.gallery-strip {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-drag: none;
+    height: 500px; /* Enhanced height for desktop */
+    display: flex;
+    align-items: center;
 }
 
-.gallery-track:hover {
-    animation-play-state: paused;
+.gallery-strip:active {
+    cursor: grabbing;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 0; /* Gap is managed by item margins */
+    will-change: transform;
 }
 
 .gallery-item {
-    width: 300px;
-    height: 400px;
-    margin: 0 10px;
+    width: 350px; /* Slightly wider for landscape balance */
+    height: 450px; 
+    margin: 0 15px;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(197, 160, 89, 0.3);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .gallery-item:hover {
@@ -574,6 +584,7 @@ footer {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    pointer-events: none; /* Prevent ghost images on drag */
     filter: brightness(0.85) contrast(1.05);
     transition: all 0.5s ease;
 }
@@ -583,15 +594,7 @@ footer {
     transform: scale(1.05);
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* (300px width + 20px margins) * 12 items = 3840px */
-        transform: translateX(-3840px);
-    }
-}
+/* Base scroll animation removed - now handled by script.js */
 
 /* Social Page Styles */
 .social-section {

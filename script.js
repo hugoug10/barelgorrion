@@ -222,4 +222,96 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
     }, false);
+
+    // --- Interactive Infinite Gallery ---
+    const galleryStrip = document.querySelector('.gallery-strip');
+    const galleryTrack = document.querySelector('.gallery-track');
+    
+    if (galleryStrip && galleryTrack) {
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+        let autoScrollSpeed = 0.5; // Pixels per frame
+        let currentX = 0;
+        let animationId;
+        let isPaused = false;
+        let lastInteractionTime = Date.now();
+
+        // Clone the track for infinite effect if not already handled by HTML
+        // (The HTML currently has 2 sets, which is enough for small screens, 
+        // but we might need more for ultra-wide. 2 sets of 12 items = 24 items).
+        
+        const updateGallery = () => {
+            if (!isDragging && !isPaused) {
+                currentX -= autoScrollSpeed;
+                
+                // Reset position for seamless loop
+                // The total width of one set is galleryTrack.scrollWidth / 2
+                const halfWidth = galleryTrack.scrollWidth / 2;
+                if (Math.abs(currentX) >= halfWidth) {
+                    currentX = 0;
+                }
+                
+                galleryTrack.style.transform = `translateX(${currentX}px)`;
+            }
+            animationId = requestAnimationFrame(updateGallery);
+        };
+
+        const startDragging = (e) => {
+            isDragging = true;
+            lastInteractionTime = Date.now();
+            startX = (e.pageX || e.touches[0].pageX) - galleryStrip.offsetLeft;
+            scrollLeft = currentX;
+            galleryTrack.style.transition = 'none';
+        };
+
+        const stopDragging = () => {
+            isDragging = false;
+            // Optionally add a slight inertia here
+            setTimeout(() => {
+                if (Date.now() - lastInteractionTime > 3000) {
+                    isPaused = false;
+                }
+            }, 3000);
+        };
+
+        const move = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = (e.pageX || e.touches[0].pageX) - galleryStrip.offsetLeft;
+            const walk = (x - startX);
+            currentX = scrollLeft + walk;
+
+            // Handle infinite wrap while dragging
+            const halfWidth = galleryTrack.scrollWidth / 2;
+            if (currentX > 0) currentX = -halfWidth;
+            if (Math.abs(currentX) >= halfWidth) currentX = 0;
+
+            galleryTrack.style.transform = `translateX(${currentX}px)`;
+            lastInteractionTime = Date.now();
+        };
+
+        // Events
+        galleryStrip.addEventListener('mousedown', startDragging);
+        galleryStrip.addEventListener('touchstart', startDragging, { passive: true });
+        
+        window.addEventListener('mousemove', move);
+        window.addEventListener('touchmove', move, { passive: false });
+        
+        window.addEventListener('mouseup', stopDragging);
+        window.addEventListener('touchend', stopDragging);
+
+        galleryStrip.addEventListener('mouseenter', () => isPaused = true);
+        galleryStrip.addEventListener('mouseleave', () => {
+            if (!isDragging) {
+                // Resume after 2 seconds of no hover
+                setTimeout(() => {
+                    if (Date.now() - lastInteractionTime > 2000) isPaused = false;
+                }, 2000);
+            }
+        });
+
+        // Start animation
+        updateGallery();
+    }
 });
