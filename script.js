@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add a slight delay for aesthetic reasons so users see the loading animation briefly even on fast connections
         setTimeout(() => {
             preloader.classList.add('hidden');
-            // Optionally remove from DOM after transition ends
             setTimeout(() => preloader.remove(), 800);
         }, 1300);
     }
