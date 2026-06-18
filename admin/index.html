@@ -11,7 +11,6 @@
     :root {
       --bg: #1a202c;
       --surface: #2d3748;
-      --surface2: #3a4a60;
       --gold: #c5a059;
       --gold-light: #e2c17a;
       --text: #e2e8f0;
@@ -28,8 +27,8 @@
       min-height: 100vh;
     }
 
-    /* ── Login ── */
-    #login-screen {
+    /* ── Shared card styles ── */
+    .screen {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -37,49 +36,50 @@
       min-height: 100vh;
       padding: 2rem;
     }
-    #login-screen h1 {
-      font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-      letter-spacing: 2px;
-    }
-    #login-screen p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 0.9rem;
-    }
-    .login-box {
+    .screen h1 { font-size: 1.8rem; color: var(--gold); margin-bottom: 0.4rem; letter-spacing: 2px; }
+    .screen > p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; text-align: center; }
+
+    .card {
       background: var(--surface);
       border: 1px solid rgba(197,160,89,0.3);
       border-radius: var(--radius);
       padding: 2rem;
       width: 100%;
-      max-width: 360px;
+      max-width: 420px;
     }
-    .login-box label {
+    .card label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-top: 1.2rem;
     }
-    .login-box input[type="password"] {
+    .card label:first-child { margin-top: 0; }
+    .card input[type="password"],
+    .card input[type="text"] {
       width: 100%;
       background: var(--bg);
       border: 1px solid rgba(197,160,89,0.4);
       border-radius: var(--radius);
       color: var(--text);
       padding: 0.75rem 1rem;
-      font-size: 1rem;
+      font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s;
     }
-    .login-box input[type="password"]:focus {
-      border-color: var(--gold);
+    .card input:focus { border-color: var(--gold); }
+    .card .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      line-height: 1.5;
     }
-    .btn-login {
-      margin-top: 1.2rem;
+    .card .hint a { color: var(--gold); }
+
+    .btn-primary {
+      margin-top: 1.4rem;
       width: 100%;
       background: var(--gold);
       color: #1a202c;
@@ -92,14 +92,16 @@
       letter-spacing: 1px;
       transition: background 0.2s;
     }
-    .btn-login:hover { background: var(--gold-light); }
-    #login-error {
-      color: var(--danger);
+    .btn-primary:hover { background: var(--gold-light); }
+
+    .msg {
       font-size: 0.85rem;
       margin-top: 0.8rem;
       text-align: center;
       min-height: 1.2em;
     }
+    .msg.err { color: var(--danger); }
+    .msg.ok  { color: var(--success); }
 
     /* ── App shell ── */
     #app { display: none; }
@@ -115,25 +117,24 @@
       top: 0;
       z-index: 100;
     }
-    header h1 { font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; }
-    header span { font-size: 0.8rem; color: var(--text-muted); }
+    header h1 { font-size: 1.1rem; color: var(--gold); letter-spacing: 2px; }
 
-    .btn-logout {
+    .btn-sm {
       background: none;
       border: 1px solid rgba(197,160,89,0.4);
       color: var(--text-muted);
       border-radius: var(--radius);
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
       cursor: pointer;
     }
-    .btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+    .btn-sm:hover { border-color: var(--danger); color: var(--danger); }
 
     main { padding: 1.5rem; max-width: 900px; margin: 0 auto; padding-bottom: 100px; }
 
     /* ── Groups & categories ── */
     .group-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--gold);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -165,14 +166,9 @@
     .category-body { padding: 0.5rem 1rem 1rem; display: none; }
     .category-body.open { display: block; }
 
-    .cat-meta {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.8rem;
-      flex-wrap: wrap;
-    }
-    .meta-input-wrap { flex: 1; min-width: 200px; }
-    .meta-input-wrap label { font-size: 0.72rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
+    .cat-meta { display: flex; gap: 0.5rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+    .meta-wrap { flex: 1; min-width: 200px; }
+    .meta-wrap label { font-size: 0.72rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
     .meta-input {
       width: 100%;
       background: var(--bg);
@@ -184,9 +180,8 @@
       outline: none;
     }
     .meta-input:focus { border-color: var(--gold); }
-    .meta-input::placeholder { color: var(--text-muted); }
 
-    /* ── Items list ── */
+    /* ── Items ── */
     .items-list { margin-bottom: 0.8rem; }
 
     .item-row {
@@ -197,21 +192,9 @@
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .item-row:last-child { border-bottom: none; }
+    .item-row.header-row { padding: 0.6rem 0 0.3rem; border-bottom: none; }
 
-    .item-row.header-row {
-      padding: 0.6rem 0 0.3rem;
-      border-bottom: none;
-    }
-    .header-badge {
-      background: rgba(197,160,89,0.15);
-      border: 1px solid rgba(197,160,89,0.4);
-      border-radius: 4px;
-      padding: 0.2rem 0.5rem;
-      font-size: 0.78rem;
-      color: var(--gold);
-      font-weight: 700;
-      flex: 1;
-    }
+    .drag-handle { color: var(--text-muted); cursor: grab; padding: 0 4px; touch-action: none; }
 
     .item-name-input, .item-price-input {
       background: var(--bg);
@@ -221,18 +204,20 @@
       padding: 0.4rem 0.6rem;
       font-size: 0.9rem;
       outline: none;
-      transition: border-color 0.15s;
     }
     .item-name-input:focus, .item-price-input:focus { border-color: var(--gold); }
     .item-name-input { flex: 3; min-width: 0; }
     .item-price-input { flex: 1; min-width: 80px; max-width: 110px; }
 
-    .drag-handle {
-      color: var(--text-muted);
-      cursor: grab;
-      font-size: 1.1rem;
-      padding: 0 4px;
-      touch-action: none;
+    .header-badge {
+      flex: 1;
+      background: rgba(197,160,89,0.12);
+      border: 1px solid rgba(197,160,89,0.35);
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 700;
     }
 
     .btn-del {
@@ -243,22 +228,16 @@
       width: 30px;
       height: 30px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: background 0.15s;
     }
     .btn-del:hover { background: rgba(252,129,129,0.1); }
 
-    .add-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .btn-add-item, .btn-add-header {
+    .add-row { display: flex; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
+    .btn-add {
       background: none;
       border: 1px dashed rgba(197,160,89,0.5);
       color: var(--gold);
@@ -266,16 +245,13 @@
       padding: 0.4rem 0.8rem;
       font-size: 0.82rem;
       cursor: pointer;
-      transition: background 0.15s;
     }
-    .btn-add-item:hover, .btn-add-header:hover { background: rgba(197,160,89,0.08); }
+    .btn-add:hover { background: rgba(197,160,89,0.08); }
 
-    /* ── Floating save bar ── */
+    /* ── Save bar ── */
     #save-bar {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: var(--surface);
       border-top: 2px solid rgba(197,160,89,0.4);
       padding: 0.8rem 1.5rem;
@@ -286,7 +262,7 @@
       z-index: 200;
     }
     #save-status { font-size: 0.85rem; color: var(--text-muted); flex: 1; }
-    #save-status.ok { color: var(--success); }
+    #save-status.ok  { color: var(--success); }
     #save-status.err { color: var(--danger); }
 
     .btn-save {
@@ -298,22 +274,11 @@
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      letter-spacing: 1px;
-      transition: background 0.2s, opacity 0.2s;
       white-space: nowrap;
+      transition: background 0.2s, opacity 0.2s;
     }
     .btn-save:hover { background: var(--gold-light); }
     .btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    /* ── Loading spinner ── */
-    #loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40vh;
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
 
     @media (max-width: 600px) {
       main { padding: 1rem; }
@@ -323,15 +288,35 @@
 </head>
 <body>
 
-<!-- ─── Login Screen ─── -->
-<div id="login-screen">
+<!-- ─── Setup (primera vez) ─── -->
+<div id="setup-screen" class="screen" style="display:none;">
+  <h1>EL GORRIÓN</h1>
+  <p>Primera configuración — solo una vez</p>
+  <div class="card">
+    <label for="s-pwd">Contraseña para el admin</label>
+    <input type="password" id="s-pwd" placeholder="Elige una contraseña segura">
+
+    <label for="s-token">Token de GitHub</label>
+    <input type="password" id="s-token" placeholder="github_pat_...">
+    <p class="hint">
+      Consíguelo en: <strong>github.com → (tu foto) → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</strong><br>
+      Selecciona el repo <em>barelgorrion</em> y en permisos pon <em>Contents: Read and write</em>.
+    </p>
+
+    <button class="btn-primary" onclick="doSetup()">Guardar configuración</button>
+    <div id="setup-msg" class="msg"></div>
+  </div>
+</div>
+
+<!-- ─── Login ─── -->
+<div id="login-screen" class="screen" style="display:none;">
   <h1>EL GORRIÓN</h1>
   <p>Panel de administración</p>
-  <div class="login-box">
+  <div class="card">
     <label for="pwd">Contraseña</label>
     <input type="password" id="pwd" placeholder="••••••••" autofocus>
-    <button class="btn-login" onclick="doLogin()">Entrar</button>
-    <div id="login-error"></div>
+    <button class="btn-primary" onclick="doLogin()">Entrar</button>
+    <div id="login-msg" class="msg"></div>
   </div>
 </div>
 
@@ -339,14 +324,14 @@
 <div id="app">
   <header>
     <h1>CARTA · ADMIN</h1>
-    <div style="display:flex;align-items:center;gap:1rem;">
-      <span id="header-info">Bar El Gorrión</span>
-      <button class="btn-logout" onclick="doLogout()">Salir</button>
+    <div style="display:flex;gap:0.6rem;">
+      <button class="btn-sm" onclick="showChangeToken()">Cambiar token</button>
+      <button class="btn-sm" onclick="doLogout()">Salir</button>
     </div>
   </header>
 
   <main>
-    <div id="loading">Cargando carta...</div>
+    <div id="loading" style="text-align:center;padding:3rem;color:var(--text-muted);">Cargando carta...</div>
     <div id="menu-editor" style="display:none;"></div>
   </main>
 
@@ -356,44 +341,120 @@
   </div>
 </div>
 
+<!-- ─── Change token modal ─── -->
+<div id="token-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:300;align-items:center;justify-content:center;">
+  <div class="card" style="max-width:380px;">
+    <label for="new-token">Nuevo token de GitHub</label>
+    <input type="password" id="new-token" placeholder="github_pat_...">
+    <div style="display:flex;gap:0.5rem;margin-top:1rem;">
+      <button class="btn-primary" style="flex:1;" onclick="saveToken()">Guardar</button>
+      <button class="btn-primary" style="flex:1;background:var(--surface);color:var(--text);" onclick="hideChangeToken()">Cancelar</button>
+    </div>
+    <div id="token-msg" class="msg"></div>
+  </div>
+</div>
+
 <script>
-// ─── State ───────────────────────────────────────────────────────────────────
-let menuData = null;
-let sessionPwd = null;
+// ─── Constants ───────────────────────────────────────────────────────────────
+const REPO    = 'hugoug10/barelgorrion';
+const FILE    = 'data/menu.json';
+const GH_API  = 'https://api.github.com';
+
+// ─── Startup: decide which screen to show ────────────────────────────────────
+(function init() {
+  const hasSetup = localStorage.getItem('adm_pwd') && localStorage.getItem('gh_token');
+  if (!hasSetup) {
+    show('setup-screen');
+  } else {
+    // Auto-login if session active
+    if (sessionStorage.getItem('adm_ok') === '1') {
+      showApp();
+    } else {
+      show('login-screen');
+      document.getElementById('pwd').focus();
+    }
+  }
+})();
+
+function show(id) {
+  ['setup-screen','login-screen','app'].forEach(s => {
+    document.getElementById(s).style.display = s === id ? (id === 'app' ? 'block' : 'flex') : 'none';
+  });
+}
+
+// ─── Setup ───────────────────────────────────────────────────────────────────
+function doSetup() {
+  const pwd   = document.getElementById('s-pwd').value.trim();
+  const token = document.getElementById('s-token').value.trim();
+  const msg   = document.getElementById('setup-msg');
+
+  if (!pwd)   { msg.className = 'msg err'; msg.textContent = 'Elige una contraseña.'; return; }
+  if (!token) { msg.className = 'msg err'; msg.textContent = 'Introduce el token de GitHub.'; return; }
+  if (!token.startsWith('github_pat_') && !token.startsWith('ghp_')) {
+    msg.className = 'msg err'; msg.textContent = 'El token no parece válido. Empieza por github_pat_ o ghp_.'; return;
+  }
+
+  localStorage.setItem('adm_pwd', pwd);
+  localStorage.setItem('gh_token', token);
+  sessionStorage.setItem('adm_ok', '1');
+
+  msg.className = 'msg ok';
+  msg.textContent = '¡Configuración guardada!';
+  setTimeout(showApp, 800);
+}
 
 // ─── Login ───────────────────────────────────────────────────────────────────
 function doLogin() {
-  const pwd = document.getElementById('pwd').value.trim();
-  if (!pwd) return;
-  sessionPwd = pwd;
-  sessionStorage.setItem('adm_pwd', pwd);
-  showApp();
+  const pwd = document.getElementById('pwd').value;
+  const msg = document.getElementById('login-msg');
+  if (pwd === localStorage.getItem('adm_pwd')) {
+    sessionStorage.setItem('adm_ok', '1');
+    msg.textContent = '';
+    showApp();
+  } else {
+    msg.className = 'msg err';
+    msg.textContent = 'Contraseña incorrecta.';
+  }
 }
 
-function doLogout() {
-  sessionStorage.removeItem('adm_pwd');
-  sessionPwd = null;
-  location.reload();
-}
-
-document.getElementById('pwd').addEventListener('keydown', e => {
+document.getElementById('pwd') && document.getElementById('pwd').addEventListener('keydown', e => {
   if (e.key === 'Enter') doLogin();
 });
 
-// Check if already logged in this session
-const storedPwd = sessionStorage.getItem('adm_pwd');
-if (storedPwd) {
-  sessionPwd = storedPwd;
-  showApp();
+function doLogout() {
+  sessionStorage.removeItem('adm_ok');
+  show('login-screen');
+  document.getElementById('pwd').value = '';
+  document.getElementById('pwd').focus();
 }
 
+// ─── Change token ─────────────────────────────────────────────────────────────
+function showChangeToken() {
+  document.getElementById('token-modal').style.display = 'flex';
+  document.getElementById('new-token').focus();
+}
+function hideChangeToken() {
+  document.getElementById('token-modal').style.display = 'none';
+  document.getElementById('token-msg').textContent = '';
+}
+function saveToken() {
+  const token = document.getElementById('new-token').value.trim();
+  const msg   = document.getElementById('token-msg');
+  if (!token) { msg.className='msg err'; msg.textContent='Introduce el token.'; return; }
+  localStorage.setItem('gh_token', token);
+  msg.className = 'msg ok';
+  msg.textContent = 'Token guardado.';
+  setTimeout(hideChangeToken, 800);
+}
+
+// ─── App & menu loading ───────────────────────────────────────────────────────
+let menuData = null;
+
 function showApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
+  show('app');
   loadMenu();
 }
 
-// ─── Load menu data ───────────────────────────────────────────────────────────
 async function loadMenu() {
   try {
     const res = await fetch('../data/menu.json?t=' + Date.now());
@@ -413,93 +474,77 @@ function renderEditor() {
   editor.innerHTML = '';
 
   menuData.groups.forEach((group, gi) => {
-    const groupDiv = document.createElement('div');
-    groupDiv.innerHTML = `<div class="group-title">${esc(group.name)}</div>`;
-
-    group.categories.forEach((cat, ci) => {
-      groupDiv.appendChild(buildCategoryCard(gi, ci, cat));
-    });
-
-    editor.appendChild(groupDiv);
+    const div = document.createElement('div');
+    div.innerHTML = `<div class="group-title">${esc(group.name)}</div>`;
+    group.categories.forEach((cat, ci) => div.appendChild(buildCard(gi, ci, cat)));
+    editor.appendChild(div);
   });
 }
 
-function buildCategoryCard(gi, ci, cat) {
+function buildCard(gi, ci, cat) {
   const card = document.createElement('div');
   card.className = 'category-card';
   card.id = `cat-${gi}-${ci}`;
 
-  const headerEl = document.createElement('div');
-  headerEl.className = 'category-header open';
-  headerEl.innerHTML = `<h3>${esc(cat.name)}</h3><span class="chevron">▶</span>`;
-  headerEl.addEventListener('click', () => {
-    headerEl.classList.toggle('open');
-    bodyEl.classList.toggle('open');
-  });
+  const hdr = document.createElement('div');
+  hdr.className = 'category-header open';
+  hdr.innerHTML = `<h3>${esc(cat.name)}</h3><span class="chevron">▶</span>`;
 
-  const bodyEl = document.createElement('div');
-  bodyEl.className = 'category-body open';
+  const body = document.createElement('div');
+  body.className = 'category-body open';
+  hdr.addEventListener('click', () => { hdr.classList.toggle('open'); body.classList.toggle('open'); });
 
-  // Meta fields: note and footerNote
-  const metaDiv = document.createElement('div');
-  metaDiv.className = 'cat-meta';
-  metaDiv.innerHTML = `
-    <div class="meta-input-wrap">
-      <label>Nota superior (opcional)</label>
-      <input class="meta-input" type="text" placeholder="ej: *Precio por persona..." value="${esc(cat.note || '')}"
-        oninput="menuData.groups[${gi}].categories[${ci}].note = this.value || null; markDirty()">
-    </div>
-    <div class="meta-input-wrap">
-      <label>Nota inferior (opcional)</label>
-      <input class="meta-input" type="text" placeholder="ej: *Suplementos: 0,50€" value="${esc(cat.footerNote || '')}"
-        oninput="menuData.groups[${gi}].categories[${ci}].footerNote = this.value || null; markDirty()">
-    </div>
-  `;
+  body.innerHTML = `
+    <div class="cat-meta">
+      <div class="meta-wrap">
+        <label>Nota superior</label>
+        <input class="meta-input" type="text" placeholder="ej: *Precio por persona..." value="${esc(cat.note || '')}"
+          oninput="menuData.groups[${gi}].categories[${ci}].note=this.value||null;markDirty()">
+      </div>
+      <div class="meta-wrap">
+        <label>Nota inferior</label>
+        <input class="meta-input" type="text" placeholder="ej: *Suplementos: 0,50€" value="${esc(cat.footerNote || '')}"
+          oninput="menuData.groups[${gi}].categories[${ci}].footerNote=this.value||null;markDirty()">
+      </div>
+    </div>`;
 
-  // Items list
-  const itemsList = document.createElement('div');
-  itemsList.className = 'items-list';
-  itemsList.id = `items-${gi}-${ci}`;
-  renderItems(itemsList, gi, ci);
+  const list = document.createElement('div');
+  list.className = 'items-list';
+  list.id = `items-${gi}-${ci}`;
+  renderItems(list, gi, ci);
 
-  // Add buttons
   const addRow = document.createElement('div');
   addRow.className = 'add-row';
   addRow.innerHTML = `
-    <button class="btn-add-item" onclick="addItem(${gi},${ci})">+ Añadir plato</button>
-    <button class="btn-add-header" onclick="addHeader(${gi},${ci})">+ Añadir separador</button>
-  `;
+    <button class="btn-add" onclick="addItem(${gi},${ci})">+ Añadir plato</button>
+    <button class="btn-add" onclick="addHeader(${gi},${ci})">+ Añadir separador</button>`;
 
-  bodyEl.append(metaDiv, itemsList, addRow);
-  card.append(headerEl, bodyEl);
+  body.append(list, addRow);
+  card.append(hdr, body);
   return card;
 }
 
 function renderItems(container, gi, ci) {
   container.innerHTML = '';
-  const items = menuData.groups[gi].categories[ci].items;
-
-  items.forEach((item, ii) => {
+  menuData.groups[gi].categories[ci].items.forEach((item, ii) => {
     const row = document.createElement('div');
     row.className = 'item-row' + (item.type === 'header' ? ' header-row' : '');
     row.draggable = true;
 
     if (item.type === 'header') {
       row.innerHTML = `
-        <span class="drag-handle" title="Arrastrar">⠿</span>
-        <input class="item-name-input" type="text" value="${esc(item.name)}" placeholder="Nombre del separador"
-          oninput="menuData.groups[${gi}].categories[${ci}].items[${ii}].name = this.value; markDirty()">
-        <button class="btn-del" title="Eliminar" onclick="deleteItem(${gi},${ci},${ii})">✕</button>
-      `;
+        <span class="drag-handle">⠿</span>
+        <input class="header-badge item-name-input" type="text" value="${esc(item.name)}" placeholder="Nombre del separador"
+          oninput="menuData.groups[${gi}].categories[${ci}].items[${ii}].name=this.value;markDirty()">
+        <button class="btn-del" onclick="deleteItem(${gi},${ci},${ii})">✕</button>`;
     } else {
       row.innerHTML = `
-        <span class="drag-handle" title="Arrastrar">⠿</span>
+        <span class="drag-handle">⠿</span>
         <input class="item-name-input" type="text" value="${esc(item.name)}" placeholder="Nombre del plato"
-          oninput="menuData.groups[${gi}].categories[${ci}].items[${ii}].name = this.value; markDirty()">
-        <input class="item-price-input" type="text" value="${esc(item.price || '')}" placeholder="0,00 €"
-          oninput="menuData.groups[${gi}].categories[${ci}].items[${ii}].price = this.value; markDirty()">
-        <button class="btn-del" title="Eliminar" onclick="deleteItem(${gi},${ci},${ii})">✕</button>
-      `;
+          oninput="menuData.groups[${gi}].categories[${ci}].items[${ii}].name=this.value;markDirty()">
+        <input class="item-price-input" type="text" value="${esc(item.price||'')}" placeholder="0,00 €"
+          oninput="menuData.groups[${gi}].categories[${ci}].items[${ii}].price=this.value;markDirty()">
+        <button class="btn-del" onclick="deleteItem(${gi},${ci},${ii})">✕</button>`;
     }
 
     setupDrag(row, gi, ci);
@@ -512,19 +557,14 @@ function addItem(gi, ci) {
   menuData.groups[gi].categories[ci].items.push({ name: '', price: '' });
   refreshItems(gi, ci);
   markDirty();
-  // Focus the new name input
-  const list = document.getElementById(`items-${gi}-${ci}`);
-  const lastInput = list.querySelector('.item-row:last-child .item-name-input');
-  if (lastInput) lastInput.focus();
+  focusLast(gi, ci);
 }
 
 function addHeader(gi, ci) {
   menuData.groups[gi].categories[ci].items.push({ type: 'header', name: '' });
   refreshItems(gi, ci);
   markDirty();
-  const list = document.getElementById(`items-${gi}-${ci}`);
-  const lastInput = list.querySelector('.item-row:last-child .item-name-input');
-  if (lastInput) lastInput.focus();
+  focusLast(gi, ci);
 }
 
 function deleteItem(gi, ci, ii) {
@@ -535,63 +575,51 @@ function deleteItem(gi, ci, ii) {
 }
 
 function refreshItems(gi, ci) {
-  const container = document.getElementById(`items-${gi}-${ci}`);
-  renderItems(container, gi, ci);
+  renderItems(document.getElementById(`items-${gi}-${ci}`), gi, ci);
+}
+
+function focusLast(gi, ci) {
+  const list = document.getElementById(`items-${gi}-${ci}`);
+  const last = list.querySelector('.item-row:last-child .item-name-input');
+  if (last) last.focus();
 }
 
 // ─── Drag to reorder ──────────────────────────────────────────────────────────
 let dragSrc = null;
 
 function setupDrag(row, gi, ci) {
-  row.addEventListener('dragstart', e => {
+  row.addEventListener('dragstart', () => {
     dragSrc = row;
-    e.dataTransfer.effectAllowed = 'move';
     setTimeout(() => row.style.opacity = '0.4', 0);
   });
   row.addEventListener('dragend', () => {
     row.style.opacity = '';
-    syncOrderFromDOM(gi, ci);
+    syncDOM(gi, ci);
     markDirty();
   });
   row.addEventListener('dragover', e => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    const list = row.parentNode;
-    const bounding = row.getBoundingClientRect();
-    const offset = bounding.y + bounding.height / 2;
-    if (e.clientY < offset) {
-      list.insertBefore(dragSrc, row);
-    } else {
-      list.insertBefore(dragSrc, row.nextSibling);
-    }
+    const mid = row.getBoundingClientRect().y + row.getBoundingClientRect().height / 2;
+    row.parentNode.insertBefore(dragSrc, e.clientY < mid ? row : row.nextSibling);
   });
 }
 
-function syncOrderFromDOM(gi, ci) {
-  const container = document.getElementById(`items-${gi}-${ci}`);
-  const rows = Array.from(container.querySelectorAll('.item-row'));
-  const newItems = rows.map(row => {
-    const isHeader = row.classList.contains('header-row');
-    const nameInput = row.querySelector('.item-name-input');
-    const priceInput = row.querySelector('.item-price-input');
-    if (isHeader) {
-      return { type: 'header', name: nameInput ? nameInput.value : '' };
-    }
-    return { name: nameInput ? nameInput.value : '', price: priceInput ? priceInput.value : '' };
+function syncDOM(gi, ci) {
+  const rows = Array.from(document.getElementById(`items-${gi}-${ci}`).querySelectorAll('.item-row'));
+  menuData.groups[gi].categories[ci].items = rows.map(r => {
+    const isHdr = r.classList.contains('header-row');
+    const name  = r.querySelector('.item-name-input')?.value || '';
+    const price = r.querySelector('.item-price-input')?.value || '';
+    return isHdr ? { type: 'header', name } : { name, price };
   });
-  menuData.groups[gi].categories[ci].items = newItems;
-  // Re-render to sync indices in event handlers
-  renderItems(container, gi, ci);
+  renderItems(document.getElementById(`items-${gi}-${ci}`), gi, ci);
 }
 
-// ─── Dirty tracking & save ────────────────────────────────────────────────────
+// ─── Dirty & save ─────────────────────────────────────────────────────────────
 let isDirty = false;
 
 function markDirty() {
-  if (!isDirty) {
-    isDirty = true;
-    setStatus('Tienes cambios sin guardar.', '');
-  }
+  if (!isDirty) { isDirty = true; setStatus('Tienes cambios sin guardar.', ''); }
 }
 
 function setStatus(msg, cls) {
@@ -600,67 +628,73 @@ function setStatus(msg, cls) {
   el.className = cls;
 }
 
+function collectAll() {
+  menuData.groups.forEach((g, gi) => {
+    g.categories.forEach((cat, ci) => {
+      const rows = Array.from(document.getElementById(`items-${gi}-${ci}`).querySelectorAll('.item-row'));
+      cat.items = rows.map(r => {
+        const isHdr = r.classList.contains('header-row');
+        const name  = r.querySelector('.item-name-input')?.value || '';
+        const price = r.querySelector('.item-price-input')?.value || '';
+        return isHdr ? { type: 'header', name } : { name, price };
+      });
+      const metas = document.querySelectorAll(`#cat-${gi}-${ci} .meta-input`);
+      if (metas[0]) cat.note       = metas[0].value || null;
+      if (metas[1]) cat.footerNote = metas[1].value || null;
+    });
+  });
+}
+
 async function saveMenu() {
-  const btn = document.getElementById('btn-save');
+  const btn   = document.getElementById('btn-save');
+  const token = localStorage.getItem('gh_token');
+
+  if (!token) {
+    setStatus('No hay token configurado. Usa "Cambiar token".', 'err');
+    return;
+  }
+
   btn.disabled = true;
   setStatus('Guardando...', '');
+  collectAll();
 
-  // Collect current input values before sending
-  collectAllInputs();
+  const ghHeaders = {
+    Authorization: `token ${token}`,
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+  };
 
   try {
-    const res = await fetch('/api/menu', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: sessionPwd, menu: menuData }),
+    // Get current SHA
+    const getRes = await fetch(`${GH_API}/repos/${REPO}/contents/${FILE}`, { headers: ghHeaders });
+    if (!getRes.ok) throw new Error('No se pudo leer el archivo de GitHub (¿token válido?)');
+    const { sha } = await getRes.json();
+
+    // Commit new content
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 2))));
+    const putRes  = await fetch(`${GH_API}/repos/${REPO}/contents/${FILE}`, {
+      method: 'PUT',
+      headers: ghHeaders,
+      body: JSON.stringify({ message: 'Actualizar carta desde panel de administración', content, sha }),
     });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      if (res.status === 401) {
-        setStatus('Contraseña incorrecta. Sal y vuelve a entrar.', 'err');
-      } else {
-        setStatus('Error: ' + (data.error || 'desconocido'), 'err');
-      }
-    } else {
-      isDirty = false;
-      setStatus('✓ ' + data.message, 'ok');
+    if (!putRes.ok) {
+      const err = await putRes.json();
+      throw new Error(err.message || 'Error desconocido de GitHub');
     }
+
+    isDirty = false;
+    setStatus('✓ Guardado. Los cambios aparecerán en la web en 1-2 minutos.', 'ok');
   } catch (e) {
-    setStatus('Error de red: ' + e.message, 'err');
+    setStatus('Error: ' + e.message, 'err');
   }
 
   btn.disabled = false;
 }
 
-// Force-read all DOM inputs into menuData before sending (handles drag-reorder edge cases)
-function collectAllInputs() {
-  menuData.groups.forEach((group, gi) => {
-    group.categories.forEach((cat, ci) => {
-      const container = document.getElementById(`items-${gi}-${ci}`);
-      if (!container) return;
-      const rows = Array.from(container.querySelectorAll('.item-row'));
-      cat.items = rows.map(row => {
-        const isHeader = row.classList.contains('header-row');
-        const nameInput = row.querySelector('.item-name-input');
-        const priceInput = row.querySelector('.item-price-input');
-        if (isHeader) {
-          return { type: 'header', name: nameInput ? nameInput.value : '' };
-        }
-        return { name: nameInput ? nameInput.value : '', price: priceInput ? priceInput.value : '' };
-      });
-      // Also collect meta notes
-      const metaInputs = document.querySelectorAll(`#cat-${gi}-${ci} .meta-input`);
-      if (metaInputs[0]) cat.note = metaInputs[0].value || null;
-      if (metaInputs[1]) cat.footerNote = metaInputs[1].value || null;
-    });
-  });
-}
-
-// ─── Utility ──────────────────────────────────────────────────────────────────
-function esc(str) {
-  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+// ─── Util ─────────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 </script>
 </body>
