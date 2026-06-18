@@ -239,20 +239,31 @@ function showApp() {
 
 async function loadMenu() {
   const loading = document.getElementById('loading');
+  if (!loading) { console.error('No se encontró #loading'); return; }
   loading.style.cssText = 'text-align:center;padding:3rem;color:#a0aec0;display:block;';
   loading.textContent = 'Cargando carta...';
+
   try {
-    const res = await fetch('/api/menu');
-    const text = await res.text();
-    if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + text.substring(0, 200));
-    try { menuData = JSON.parse(text); } catch { throw new Error('Respuesta no es JSON: ' + text.substring(0, 200)); }
-    if (!menuData.groups) throw new Error('Datos vacíos del servidor');
+    // Try API function first, then fall back to static file
+    let data = null;
+    for (const url of ['/api/menu', '/data/menu.json']) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const text = await res.text();
+        const parsed = JSON.parse(text);
+        if (parsed.groups) { data = parsed; break; }
+      } catch { continue; }
+    }
+
+    if (!data) throw new Error('No se pudo cargar la carta desde ninguna fuente');
+    menuData = data;
     renderEditor();
     loading.style.display = 'none';
   } catch (e) {
-    loading.style.cssText = 'text-align:center;padding:3rem;color:#fc8181;display:block;font-size:0.9rem;';
+    loading.style.cssText = 'text-align:center;padding:3rem;color:#fc8181;display:block;font-size:1rem;';
     loading.textContent = 'Error: ' + e.message;
-    console.error('loadMenu error:', e);
+    console.error('loadMenu:', e);
   }
 }
 
