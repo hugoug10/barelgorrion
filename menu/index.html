@@ -129,7 +129,7 @@
             document.getElementById('menu-root').innerHTML = html;
         }
 
-        fetch('/api/menu')
+        fetch('/data/menu.json')
             .then(r => r.json())
             .then(renderMenu)
             .catch(() => {
