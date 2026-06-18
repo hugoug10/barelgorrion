@@ -67,462 +67,77 @@
 
     <section class="section menu-section" style="padding-top: 2rem;">
         <div class="container">
-
-            <!-- Especiales del Chef -->
-            <div class="chef-special-note" style="background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 8px; padding: 1.5rem; text-align: center; margin-bottom: 3rem; transform: translateY(0);">
-                <h3 style="color: var(--gold-solid); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                    <i class="fa-solid fa-fire-burner"></i> Fuera de Carta
-                </h3>
-                <p style="color: var(--text-main); font-size: 1.05rem; margin: 0; line-height: 1.6;">
-                    Todas las semanas nuestro chef prepara especialidades nuevas.<br>
-                    <strong style="color: var(--gold-solid);">¡Pregúntanos por las sugerencias de la semana!</strong>
-                </p>
+            <div id="menu-root">
+                <p style="text-align:center; color: var(--gold-solid); padding: 3rem;">Cargando carta...</p>
             </div>
-
-            <!-- COMIDA -->
-            <div class="category-group">
-                <h2>Comida</h2>
-                <div class="premium-menu">
-                    <!-- Raciones -->
-                    <div class="menu-category">
-                        <h3>Raciones</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Patatas Bravas</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">8,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Patatas Ali-Oli</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">8,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Sepia</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">14,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Cazón Adobado</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">14,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Oreja a la Plancha</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">11,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Pincho Moruno</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">6,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Alitas de Pollo (6 unids.)</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">10,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Tortilla Española</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">13,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Tortilla con complemento</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">14,00 €</span>
-                            </div>
-
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Revuelto morcilla</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">13,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Huevos rotos</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">12,00 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bocadillos y Hamburguesas -->
-                    <div class="menu-category">
-                        <h3>Bocadillos y Hamburguesas</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Magreta</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">5,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Lomo</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">5,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Bacon</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">5,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Panceta</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">5,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Sandwich Mixto</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">3,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Sandwich Vegetal</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">4,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Sandwich de la casa</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">6,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Hamburguesa Clásica</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">8,00 €</span>
-                            </div>
-                            <div style="font-size: 0.8rem; color: var(--gold-solid); margin-top: 1rem;">*Suplementos:
-                                0,50€</div>
-                        </div>
-                    </div>
-
-                    <!-- Ensaladas -->
-                    <div class="menu-category">
-                        <h3>Ensaladas</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Mixta</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">9,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Queso de cabra</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">13,00 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tostas -->
-                    <div class="menu-category">
-                        <h3>Tostas</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Solomillo con queso de cabra y cebolla caramelizada</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">8,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Salmón con alioli y lechuga</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">8,50 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Arroces -->
-                    <div class="menu-category">
-                        <h3 style="margin-bottom: 0.5rem;">Arroces</h3>
-                        <div style="text-align: center; color: var(--gold-solid); font-size: 0.85rem; margin-bottom: 1.5rem; font-style: italic;">*Precios por persona (mín. 2 personas)</div>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Paella mixta</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">9,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Arroz negro</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">12,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Paella de marisco</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">13,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Arroz con bogavante</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">16,00 €</span>
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--gold-solid); margin-top: 1rem; text-align: center;">¡También preparamos arroces a tu gusto!</div>
-                        </div>
-                    </div>
-
-                    <!-- Postres -->
-                    <div class="menu-category">
-                        <h3>Postres</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Natillas con Canela</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">3,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Tortitas con Nata</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">3,50 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BEBIDAS -->
-            <div class="category-group">
-                <h2>Bodega y Bebidas</h2>
-                <div class="premium-menu">
-                    <!-- Cervezas -->
-                    <div class="menu-category">
-                        <h3>Cervezas</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Botellín</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,60 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Caña</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Tercio</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Jarra P.</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Jarra G.</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">4,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Alhambra</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">3,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Doble</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Mixta</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Otras Bebidas -->
-                    <div class="menu-category">
-                        <h3>Otras Bebidas</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Refrescos</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Zumos</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,80 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Batidos</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,80 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Tinto de Verano</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Mosto</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Agua P.</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Agua G.</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Licor sin alcohol</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Vinos -->
-                    <div class="menu-category">
-                        <h3>Vinos</h3>
-                        <div class="menu-items">
-                            <li style="border-bottom: none; font-weight: 700;">Blancos</li>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Verdejo</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Alma</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Dulce María</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <li style="border-bottom: none; font-weight: 700; margin-top: 1rem;">Tintos</li>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Ramón Bilbao</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">3,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Azpilicueta</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Coto de Imaz</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cafés e Infusiones -->
-                    <div class="menu-category">
-                        <h3>Cafés e Infusiones</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Café con leche</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,60 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Café bombón</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Café cortado</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,60 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Café americano</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,80 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Descafeinados</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,60 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Cola cao</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <li style="border-bottom: none; font-weight: 700; margin-top: 1rem;">Té e Infusiones</li>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Té</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Té con leche</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Manzanilla</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Tila</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,50 €</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Copas y Licores -->
-                    <div class="menu-category">
-                        <h3>Alcohol</h3>
-                        <div class="menu-items">
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Cubata</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">5,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Martin Miller</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">7,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Chupito</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,30 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Martini Blanco</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Malibu</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">5,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Vaquerito</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">1,50 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Baileys</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">3,00 €</span>
-                            </div>
-                            <div class="menu-entry">
-                                <span class="menu-entry-name">Licor (Tubo)</span>
-                                <div class="menu-entry-dots"></div>
-                                <span class="menu-entry-price">2,50 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
+
+    <script>
+    (function() {
+        function esc(s) {
+            return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+
+        function renderMenu(data) {
+            let html = `
+                <div class="chef-special-note" style="background:rgba(197,160,89,0.1);border:1px solid rgba(197,160,89,0.3);border-radius:8px;padding:1.5rem;text-align:center;margin-bottom:3rem;">
+                    <h3 style="color:var(--gold-solid);font-family:var(--font-heading);font-size:1.3rem;margin-bottom:0.5rem;display:flex;align-items:center;justify-content:center;gap:10px;">
+                        <i class="fa-solid fa-fire-burner"></i> Fuera de Carta
+                    </h3>
+                    <p style="color:var(--text-main);font-size:1.05rem;margin:0;line-height:1.6;">
+                        Todas las semanas nuestro chef prepara especialidades nuevas.<br>
+                        <strong style="color:var(--gold-solid);">¡Pregúntanos por las sugerencias de la semana!</strong>
+                    </p>
+                </div>`;
+
+            data.groups.forEach(group => {
+                html += `<div class="category-group"><h2>${esc(group.name)}</h2><div class="premium-menu">`;
+
+                group.categories.forEach(cat => {
+                    html += `<div class="menu-category">`;
+                    html += `<h3${cat.id === 'arroces' ? ' style="margin-bottom:0.5rem;"' : ''}>${esc(cat.name)}</h3>`;
+
+                    if (cat.note) {
+                        html += `<div style="text-align:center;color:var(--gold-solid);font-size:0.85rem;margin-bottom:1.5rem;font-style:italic;">${esc(cat.note)}</div>`;
+                    }
+
+                    html += `<div class="menu-items">`;
+
+                    cat.items.forEach(item => {
+                        if (item.type === 'header') {
+                            html += `<li style="border-bottom:none;font-weight:700;margin-top:1rem;">${esc(item.name)}</li>`;
+                        } else {
+                            html += `<div class="menu-entry">
+                                <span class="menu-entry-name">${esc(item.name)}</span>
+                                <div class="menu-entry-dots"></div>
+                                <span class="menu-entry-price">${esc(item.price)}</span>
+                            </div>`;
+                        }
+                    });
+
+                    if (cat.footerNote) {
+                        html += `<div style="font-size:0.85rem;color:var(--gold-solid);margin-top:1rem;text-align:center;">${esc(cat.footerNote)}</div>`;
+                    }
+
+                    html += `</div></div>`;
+                });
+
+                html += `</div></div>`;
+            });
+
+            document.getElementById('menu-root').innerHTML = html;
+        }
+
+        fetch('../data/menu.json')
+            .then(r => r.json())
+            .then(renderMenu)
+            .catch(() => {
+                document.getElementById('menu-root').innerHTML =
+                    '<p style="text-align:center;color:var(--gold-solid);padding:3rem;">Error cargando la carta. Por favor, recarga la página.</p>';
+            });
+    })();
+    </script>
 
     <footer>
         <div class="container">

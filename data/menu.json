@@ -1,0 +1,176 @@
+{
+  "groups": [
+    {
+      "id": "comida",
+      "name": "Comida",
+      "categories": [
+        {
+          "id": "raciones",
+          "name": "Raciones",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Patatas Bravas", "price": "8,00 €" },
+            { "name": "Patatas Ali-Oli", "price": "8,00 €" },
+            { "name": "Sepia", "price": "14,00 €" },
+            { "name": "Cazón Adobado", "price": "14,00 €" },
+            { "name": "Oreja a la Plancha", "price": "11,00 €" },
+            { "name": "Pincho Moruno", "price": "6,00 €" },
+            { "name": "Alitas de Pollo (6 unids.)", "price": "10,00 €" },
+            { "name": "Tortilla Española", "price": "13,00 €" },
+            { "name": "Tortilla con complemento", "price": "14,00 €" },
+            { "name": "Revuelto morcilla", "price": "13,00 €" },
+            { "name": "Huevos rotos", "price": "12,00 €" }
+          ]
+        },
+        {
+          "id": "bocadillos",
+          "name": "Bocadillos y Hamburguesas",
+          "note": null,
+          "footerNote": "*Suplementos: 0,50€",
+          "items": [
+            { "name": "Magreta", "price": "5,00 €" },
+            { "name": "Lomo", "price": "5,00 €" },
+            { "name": "Bacon", "price": "5,00 €" },
+            { "name": "Panceta", "price": "5,00 €" },
+            { "name": "Sandwich Mixto", "price": "3,50 €" },
+            { "name": "Sandwich Vegetal", "price": "4,00 €" },
+            { "name": "Sandwich de la casa", "price": "6,50 €" },
+            { "name": "Hamburguesa Clásica", "price": "8,00 €" }
+          ]
+        },
+        {
+          "id": "ensaladas",
+          "name": "Ensaladas",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Mixta", "price": "9,00 €" },
+            { "name": "Queso de cabra", "price": "13,00 €" }
+          ]
+        },
+        {
+          "id": "tostas",
+          "name": "Tostas",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Solomillo con queso de cabra y cebolla caramelizada", "price": "8,50 €" },
+            { "name": "Salmón con alioli y lechuga", "price": "8,50 €" }
+          ]
+        },
+        {
+          "id": "arroces",
+          "name": "Arroces",
+          "note": "*Precios por persona (mín. 2 personas)",
+          "footerNote": "¡También preparamos arroces a tu gusto!",
+          "items": [
+            { "name": "Paella mixta", "price": "9,00 €" },
+            { "name": "Arroz negro", "price": "12,00 €" },
+            { "name": "Paella de marisco", "price": "13,00 €" },
+            { "name": "Arroz con bogavante", "price": "16,00 €" }
+          ]
+        },
+        {
+          "id": "postres",
+          "name": "Postres",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Natillas con Canela", "price": "3,50 €" },
+            { "name": "Tortitas con Nata", "price": "3,50 €" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "name": "Bodega y Bebidas",
+      "categories": [
+        {
+          "id": "cervezas",
+          "name": "Cervezas",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Botellín", "price": "1,60 €" },
+            { "name": "Caña", "price": "2,00 €" },
+            { "name": "Tercio", "price": "2,50 €" },
+            { "name": "Jarra P.", "price": "2,00 €" },
+            { "name": "Jarra G.", "price": "4,00 €" },
+            { "name": "Alhambra", "price": "3,00 €" },
+            { "name": "Doble", "price": "2,50 €" },
+            { "name": "Mixta", "price": "2,50 €" }
+          ]
+        },
+        {
+          "id": "otras-bebidas",
+          "name": "Otras Bebidas",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Refrescos", "price": "2,50 €" },
+            { "name": "Zumos", "price": "1,80 €" },
+            { "name": "Batidos", "price": "1,80 €" },
+            { "name": "Tinto de Verano", "price": "2,50 €" },
+            { "name": "Mosto", "price": "2,00 €" },
+            { "name": "Agua P.", "price": "1,00 €" },
+            { "name": "Agua G.", "price": "2,00 €" },
+            { "name": "Licor sin alcohol", "price": "2,00 €" }
+          ]
+        },
+        {
+          "id": "vinos",
+          "name": "Vinos",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "type": "header", "name": "Blancos" },
+            { "name": "Verdejo", "price": "2,50 €" },
+            { "name": "Alma", "price": "2,50 €" },
+            { "name": "Dulce María", "price": "2,50 €" },
+            { "type": "header", "name": "Tintos" },
+            { "name": "Ramón Bilbao", "price": "3,00 €" },
+            { "name": "Azpilicueta", "price": "2,50 €" },
+            { "name": "Coto de Imaz", "price": "2,50 €" }
+          ]
+        },
+        {
+          "id": "cafes",
+          "name": "Cafés e Infusiones",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Café con leche", "price": "1,60 €" },
+            { "name": "Café bombón", "price": "2,00 €" },
+            { "name": "Café cortado", "price": "1,60 €" },
+            { "name": "Café americano", "price": "1,80 €" },
+            { "name": "Descafeinados", "price": "1,60 €" },
+            { "name": "Cola cao", "price": "2,00 €" },
+            { "type": "header", "name": "Té e Infusiones" },
+            { "name": "Té", "price": "1,50 €" },
+            { "name": "Té con leche", "price": "2,00 €" },
+            { "name": "Manzanilla", "price": "1,50 €" },
+            { "name": "Tila", "price": "1,50 €" }
+          ]
+        },
+        {
+          "id": "alcohol",
+          "name": "Alcohol",
+          "note": null,
+          "footerNote": null,
+          "items": [
+            { "name": "Cubata", "price": "5,00 €" },
+            { "name": "Martin Miller", "price": "7,00 €" },
+            { "name": "Chupito", "price": "1,30 €" },
+            { "name": "Martini Blanco", "price": "2,50 €" },
+            { "name": "Malibu", "price": "5,00 €" },
+            { "name": "Vaquerito", "price": "1,50 €" },
+            { "name": "Baileys", "price": "3,00 €" },
+            { "name": "Licor (Tubo)", "price": "2,50 €" }
+          ]
+        }
+      ]
+    }
+  ]
+}
