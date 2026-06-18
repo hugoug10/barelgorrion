@@ -20,113 +20,51 @@
       --radius: 8px;
     }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      min-height: 100vh;
-    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
 
-    /* ── Shared card styles ── */
-    .screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
+    /* ── Login ── */
+    #login-screen {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 2rem;
     }
-    .screen h1 { font-size: 1.8rem; color: var(--gold); margin-bottom: 0.4rem; letter-spacing: 2px; }
-    .screen > p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; text-align: center; }
+    #login-screen h1 { font-size: 1.8rem; color: var(--gold); margin-bottom: 0.4rem; letter-spacing: 2px; }
+    #login-screen p  { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid rgba(197,160,89,0.3);
-      border-radius: var(--radius);
-      padding: 2rem;
-      width: 100%;
-      max-width: 420px;
+    .login-box {
+      background: var(--surface); border: 1px solid rgba(197,160,89,0.3);
+      border-radius: var(--radius); padding: 2rem; width: 100%; max-width: 360px;
     }
-    .card label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 1.2rem;
+    .login-box label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+    .login-box input {
+      width: 100%; background: var(--bg); border: 1px solid rgba(197,160,89,0.4);
+      border-radius: var(--radius); color: var(--text); padding: 0.75rem 1rem;
+      font-size: 1rem; outline: none; transition: border-color 0.2s;
     }
-    .card label:first-child { margin-top: 0; }
-    .card input[type="password"],
-    .card input[type="text"] {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid rgba(197,160,89,0.4);
-      border-radius: var(--radius);
-      color: var(--text);
-      padding: 0.75rem 1rem;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .card input:focus { border-color: var(--gold); }
-    .card .hint {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-      line-height: 1.5;
-    }
-    .card .hint a { color: var(--gold); }
+    .login-box input:focus { border-color: var(--gold); }
 
     .btn-primary {
-      margin-top: 1.4rem;
-      width: 100%;
-      background: var(--gold);
-      color: #1a202c;
-      border: none;
-      border-radius: var(--radius);
-      padding: 0.8rem;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 1px;
-      transition: background 0.2s;
+      margin-top: 1.2rem; width: 100%; background: var(--gold); color: #1a202c;
+      border: none; border-radius: var(--radius); padding: 0.8rem; font-size: 1rem;
+      font-weight: 700; cursor: pointer; letter-spacing: 1px; transition: background 0.2s;
     }
     .btn-primary:hover { background: var(--gold-light); }
 
-    .msg {
-      font-size: 0.85rem;
-      margin-top: 0.8rem;
-      text-align: center;
-      min-height: 1.2em;
-    }
+    .msg { font-size: 0.85rem; margin-top: 0.8rem; text-align: center; min-height: 1.2em; }
     .msg.err { color: var(--danger); }
     .msg.ok  { color: var(--success); }
 
-    /* ── App shell ── */
+    /* ── App ── */
     #app { display: none; }
 
     header {
-      background: var(--surface);
-      border-bottom: 2px solid rgba(197,160,89,0.3);
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--surface); border-bottom: 2px solid rgba(197,160,89,0.3);
+      padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
     }
     header h1 { font-size: 1.1rem; color: var(--gold); letter-spacing: 2px; }
-
     .btn-sm {
-      background: none;
-      border: 1px solid rgba(197,160,89,0.4);
-      color: var(--text-muted);
-      border-radius: var(--radius);
-      padding: 0.35rem 0.75rem;
-      font-size: 0.78rem;
-      cursor: pointer;
+      background: none; border: 1px solid rgba(197,160,89,0.4); color: var(--text-muted);
+      border-radius: var(--radius); padding: 0.35rem 0.75rem; font-size: 0.78rem; cursor: pointer;
     }
     .btn-sm:hover { border-color: var(--danger); color: var(--danger); }
 
@@ -134,33 +72,19 @@
 
     /* ── Groups & categories ── */
     .group-title {
-      font-size: 1.3rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin: 2rem 0 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(197,160,89,0.3);
+      font-size: 1.3rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
+      margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(197,160,89,0.3);
     }
-
     .category-card {
-      background: var(--surface);
-      border: 1px solid rgba(197,160,89,0.2);
-      border-radius: var(--radius);
-      margin-bottom: 1.2rem;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid rgba(197,160,89,0.2);
+      border-radius: var(--radius); margin-bottom: 1.2rem; overflow: hidden;
     }
     .category-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 1rem;
-      cursor: pointer;
-      background: rgba(197,160,89,0.08);
-      user-select: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.8rem 1rem; cursor: pointer; background: rgba(197,160,89,0.08); user-select: none;
     }
     .category-header h3 { font-size: 1rem; color: var(--text); }
-    .category-header .chevron { color: var(--gold); font-size: 0.8rem; transition: transform 0.2s; }
+    .chevron { color: var(--gold); font-size: 0.8rem; transition: transform 0.2s; }
     .category-header.open .chevron { transform: rotate(90deg); }
 
     .category-body { padding: 0.5rem 1rem 1rem; display: none; }
@@ -170,26 +94,15 @@
     .meta-wrap { flex: 1; min-width: 200px; }
     .meta-wrap label { font-size: 0.72rem; color: var(--text-muted); display: block; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
     .meta-input {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid rgba(197,160,89,0.3);
-      border-radius: 6px;
-      color: var(--text);
-      padding: 0.4rem 0.6rem;
-      font-size: 0.85rem;
-      outline: none;
+      width: 100%; background: var(--bg); border: 1px solid rgba(197,160,89,0.3);
+      border-radius: 6px; color: var(--text); padding: 0.4rem 0.6rem; font-size: 0.85rem; outline: none;
     }
     .meta-input:focus { border-color: var(--gold); }
 
     /* ── Items ── */
-    .items-list { margin-bottom: 0.8rem; }
-
     .item-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .item-row:last-child { border-bottom: none; }
     .item-row.header-row { padding: 0.6rem 0 0.3rem; border-bottom: none; }
@@ -197,87 +110,49 @@
     .drag-handle { color: var(--text-muted); cursor: grab; padding: 0 4px; touch-action: none; }
 
     .item-name-input, .item-price-input {
-      background: var(--bg);
-      border: 1px solid rgba(197,160,89,0.25);
-      border-radius: 6px;
-      color: var(--text);
-      padding: 0.4rem 0.6rem;
-      font-size: 0.9rem;
-      outline: none;
+      background: var(--bg); border: 1px solid rgba(197,160,89,0.25);
+      border-radius: 6px; color: var(--text); padding: 0.4rem 0.6rem; font-size: 0.9rem; outline: none;
     }
     .item-name-input:focus, .item-price-input:focus { border-color: var(--gold); }
-    .item-name-input { flex: 3; min-width: 0; }
+    .item-name-input  { flex: 3; min-width: 0; }
     .item-price-input { flex: 1; min-width: 80px; max-width: 110px; }
 
     .header-badge {
-      flex: 1;
-      background: rgba(197,160,89,0.12);
-      border: 1px solid rgba(197,160,89,0.35);
-      border-radius: 4px;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.78rem;
-      color: var(--gold);
-      font-weight: 700;
+      flex: 1; background: rgba(197,160,89,0.12); border: 1px solid rgba(197,160,89,0.35);
+      border-radius: 4px; padding: 0.25rem 0.5rem; font-size: 0.78rem; color: var(--gold); font-weight: 700;
     }
 
     .btn-del {
-      background: none;
-      border: 1px solid rgba(252,129,129,0.35);
-      color: var(--danger);
-      border-radius: 6px;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      background: none; border: 1px solid rgba(252,129,129,0.35); color: var(--danger);
+      border-radius: 6px; width: 30px; height: 30px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem;
     }
     .btn-del:hover { background: rgba(252,129,129,0.1); }
 
     .add-row { display: flex; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
     .btn-add {
-      background: none;
-      border: 1px dashed rgba(197,160,89,0.5);
-      color: var(--gold);
-      border-radius: var(--radius);
-      padding: 0.4rem 0.8rem;
-      font-size: 0.82rem;
-      cursor: pointer;
+      background: none; border: 1px dashed rgba(197,160,89,0.5); color: var(--gold);
+      border-radius: var(--radius); padding: 0.4rem 0.8rem; font-size: 0.82rem; cursor: pointer;
     }
     .btn-add:hover { background: rgba(197,160,89,0.08); }
 
     /* ── Save bar ── */
     #save-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--surface);
-      border-top: 2px solid rgba(197,160,89,0.4);
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      z-index: 200;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--surface); border-top: 2px solid rgba(197,160,89,0.4);
+      padding: 0.8rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; z-index: 200;
     }
     #save-status { font-size: 0.85rem; color: var(--text-muted); flex: 1; }
     #save-status.ok  { color: var(--success); }
     #save-status.err { color: var(--danger); }
 
     .btn-save {
-      background: var(--gold);
-      color: #1a202c;
-      border: none;
-      border-radius: var(--radius);
-      padding: 0.7rem 1.8rem;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s, opacity 0.2s;
+      background: var(--gold); color: #1a202c; border: none; border-radius: var(--radius);
+      padding: 0.7rem 1.8rem; font-size: 1rem; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: background 0.2s, opacity 0.2s;
     }
-    .btn-save:hover { background: var(--gold-light); }
+    .btn-save:hover    { background: var(--gold-light); }
     .btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
 
     @media (max-width: 600px) {
@@ -288,31 +163,11 @@
 </head>
 <body>
 
-<!-- ─── Setup (primera vez) ─── -->
-<div id="setup-screen" class="screen" style="display:none;">
-  <h1>EL GORRIÓN</h1>
-  <p>Primera configuración — solo una vez</p>
-  <div class="card">
-    <label for="s-pwd">Contraseña para el admin</label>
-    <input type="password" id="s-pwd" placeholder="Elige una contraseña segura">
-
-    <label for="s-token">Token de GitHub</label>
-    <input type="password" id="s-token" placeholder="github_pat_...">
-    <p class="hint">
-      Consíguelo en: <strong>github.com → (tu foto) → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</strong><br>
-      Selecciona el repo <em>barelgorrion</em> y en permisos pon <em>Contents: Read and write</em>.
-    </p>
-
-    <button class="btn-primary" onclick="doSetup()">Guardar configuración</button>
-    <div id="setup-msg" class="msg"></div>
-  </div>
-</div>
-
 <!-- ─── Login ─── -->
-<div id="login-screen" class="screen" style="display:none;">
+<div id="login-screen">
   <h1>EL GORRIÓN</h1>
   <p>Panel de administración</p>
-  <div class="card">
+  <div class="login-box">
     <label for="pwd">Contraseña</label>
     <input type="password" id="pwd" placeholder="••••••••" autofocus>
     <button class="btn-primary" onclick="doLogin()">Entrar</button>
@@ -324,10 +179,7 @@
 <div id="app">
   <header>
     <h1>CARTA · ADMIN</h1>
-    <div style="display:flex;gap:0.6rem;">
-      <button class="btn-sm" onclick="showChangeToken()">Cambiar token</button>
-      <button class="btn-sm" onclick="doLogout()">Salir</button>
-    </div>
+    <button class="btn-sm" onclick="doLogout()">Cerrar sesión</button>
   </header>
 
   <main>
@@ -341,123 +193,53 @@
   </div>
 </div>
 
-<!-- ─── Change token modal ─── -->
-<div id="token-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:300;align-items:center;justify-content:center;">
-  <div class="card" style="max-width:380px;">
-    <label for="new-token">Nuevo token de GitHub</label>
-    <input type="password" id="new-token" placeholder="github_pat_...">
-    <div style="display:flex;gap:0.5rem;margin-top:1rem;">
-      <button class="btn-primary" style="flex:1;" onclick="saveToken()">Guardar</button>
-      <button class="btn-primary" style="flex:1;background:var(--surface);color:var(--text);" onclick="hideChangeToken()">Cancelar</button>
-    </div>
-    <div id="token-msg" class="msg"></div>
-  </div>
-</div>
-
 <script>
-// ─── Constants ───────────────────────────────────────────────────────────────
-const REPO    = 'hugoug10/barelgorrion';
-const FILE    = 'data/menu.json';
-const GH_API  = 'https://api.github.com';
-
-// ─── Startup: decide which screen to show ────────────────────────────────────
-(function init() {
-  const hasSetup = localStorage.getItem('adm_pwd') && localStorage.getItem('gh_token');
-  if (!hasSetup) {
-    show('setup-screen');
-  } else {
-    // Auto-login if session active
-    if (sessionStorage.getItem('adm_ok') === '1') {
-      showApp();
-    } else {
-      show('login-screen');
-      document.getElementById('pwd').focus();
-    }
-  }
-})();
-
-function show(id) {
-  ['setup-screen','login-screen','app'].forEach(s => {
-    document.getElementById(s).style.display = s === id ? (id === 'app' ? 'block' : 'flex') : 'none';
-  });
-}
-
-// ─── Setup ───────────────────────────────────────────────────────────────────
-function doSetup() {
-  const pwd   = document.getElementById('s-pwd').value.trim();
-  const token = document.getElementById('s-token').value.trim();
-  const msg   = document.getElementById('setup-msg');
-
-  if (!pwd)   { msg.className = 'msg err'; msg.textContent = 'Elige una contraseña.'; return; }
-  if (!token) { msg.className = 'msg err'; msg.textContent = 'Introduce el token de GitHub.'; return; }
-  if (!token.startsWith('github_pat_') && !token.startsWith('ghp_')) {
-    msg.className = 'msg err'; msg.textContent = 'El token no parece válido. Empieza por github_pat_ o ghp_.'; return;
-  }
-
-  localStorage.setItem('adm_pwd', pwd);
-  localStorage.setItem('gh_token', token);
-  sessionStorage.setItem('adm_ok', '1');
-
-  msg.className = 'msg ok';
-  msg.textContent = '¡Configuración guardada!';
-  setTimeout(showApp, 800);
-}
+let menuData = null;
+let sessionPwd = null;
 
 // ─── Login ───────────────────────────────────────────────────────────────────
-function doLogin() {
+(function init() {
+  const saved = sessionStorage.getItem('adm_ok');
+  if (saved) { sessionPwd = saved; showApp(); }
+})();
+
+document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+async function doLogin() {
   const pwd = document.getElementById('pwd').value;
   const msg = document.getElementById('login-msg');
-  if (pwd === localStorage.getItem('adm_pwd')) {
-    sessionStorage.setItem('adm_ok', '1');
-    msg.textContent = '';
-    showApp();
-  } else {
-    msg.className = 'msg err';
-    msg.textContent = 'Contraseña incorrecta.';
-  }
-}
+  if (!pwd) return;
 
-document.getElementById('pwd') && document.getElementById('pwd').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doLogin();
-});
+  msg.className = 'msg'; msg.textContent = 'Comprobando...';
+
+  // Validate password by attempting a save with dummy data check —
+  // actually just try a GET first, then the password is validated on POST
+  // Simple approach: store and validate on first save; for now just store
+  sessionPwd = pwd;
+  sessionStorage.setItem('adm_ok', pwd);
+  msg.textContent = '';
+  showApp();
+}
 
 function doLogout() {
   sessionStorage.removeItem('adm_ok');
-  show('login-screen');
+  sessionPwd = null;
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('pwd').value = '';
   document.getElementById('pwd').focus();
 }
 
-// ─── Change token ─────────────────────────────────────────────────────────────
-function showChangeToken() {
-  document.getElementById('token-modal').style.display = 'flex';
-  document.getElementById('new-token').focus();
-}
-function hideChangeToken() {
-  document.getElementById('token-modal').style.display = 'none';
-  document.getElementById('token-msg').textContent = '';
-}
-function saveToken() {
-  const token = document.getElementById('new-token').value.trim();
-  const msg   = document.getElementById('token-msg');
-  if (!token) { msg.className='msg err'; msg.textContent='Introduce el token.'; return; }
-  localStorage.setItem('gh_token', token);
-  msg.className = 'msg ok';
-  msg.textContent = 'Token guardado.';
-  setTimeout(hideChangeToken, 800);
-}
-
-// ─── App & menu loading ───────────────────────────────────────────────────────
-let menuData = null;
-
+// ─── App ─────────────────────────────────────────────────────────────────────
 function showApp() {
-  show('app');
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
   loadMenu();
 }
 
 async function loadMenu() {
   try {
-    const res = await fetch('../data/menu.json?t=' + Date.now());
+    const res = await fetch('/api/menu');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     menuData = await res.json();
     renderEditor();
@@ -466,7 +248,7 @@ async function loadMenu() {
   }
 }
 
-// ─── Render editor ────────────────────────────────────────────────────────────
+// ─── Render ──────────────────────────────────────────────────────────────────
 function renderEditor() {
   const editor = document.getElementById('menu-editor');
   document.getElementById('loading').style.display = 'none';
@@ -555,55 +337,38 @@ function renderItems(container, gi, ci) {
 // ─── CRUD ─────────────────────────────────────────────────────────────────────
 function addItem(gi, ci) {
   menuData.groups[gi].categories[ci].items.push({ name: '', price: '' });
-  refreshItems(gi, ci);
-  markDirty();
+  refreshItems(gi, ci); markDirty();
   focusLast(gi, ci);
 }
-
 function addHeader(gi, ci) {
   menuData.groups[gi].categories[ci].items.push({ type: 'header', name: '' });
-  refreshItems(gi, ci);
-  markDirty();
+  refreshItems(gi, ci); markDirty();
   focusLast(gi, ci);
 }
-
 function deleteItem(gi, ci, ii) {
   if (!confirm('¿Eliminar este elemento?')) return;
   menuData.groups[gi].categories[ci].items.splice(ii, 1);
-  refreshItems(gi, ci);
-  markDirty();
+  refreshItems(gi, ci); markDirty();
 }
-
 function refreshItems(gi, ci) {
   renderItems(document.getElementById(`items-${gi}-${ci}`), gi, ci);
 }
-
 function focusLast(gi, ci) {
-  const list = document.getElementById(`items-${gi}-${ci}`);
-  const last = list.querySelector('.item-row:last-child .item-name-input');
+  const last = document.getElementById(`items-${gi}-${ci}`).querySelector('.item-row:last-child .item-name-input');
   if (last) last.focus();
 }
 
-// ─── Drag to reorder ──────────────────────────────────────────────────────────
+// ─── Drag ─────────────────────────────────────────────────────────────────────
 let dragSrc = null;
-
 function setupDrag(row, gi, ci) {
-  row.addEventListener('dragstart', () => {
-    dragSrc = row;
-    setTimeout(() => row.style.opacity = '0.4', 0);
-  });
-  row.addEventListener('dragend', () => {
-    row.style.opacity = '';
-    syncDOM(gi, ci);
-    markDirty();
-  });
-  row.addEventListener('dragover', e => {
+  row.addEventListener('dragstart', () => { dragSrc = row; setTimeout(() => row.style.opacity = '0.4', 0); });
+  row.addEventListener('dragend',   () => { row.style.opacity = ''; syncDOM(gi, ci); markDirty(); });
+  row.addEventListener('dragover',  e  => {
     e.preventDefault();
     const mid = row.getBoundingClientRect().y + row.getBoundingClientRect().height / 2;
     row.parentNode.insertBefore(dragSrc, e.clientY < mid ? row : row.nextSibling);
   });
 }
-
 function syncDOM(gi, ci) {
   const rows = Array.from(document.getElementById(`items-${gi}-${ci}`).querySelectorAll('.item-row'));
   menuData.groups[gi].categories[ci].items = rows.map(r => {
@@ -615,18 +380,10 @@ function syncDOM(gi, ci) {
   renderItems(document.getElementById(`items-${gi}-${ci}`), gi, ci);
 }
 
-// ─── Dirty & save ─────────────────────────────────────────────────────────────
+// ─── Save ─────────────────────────────────────────────────────────────────────
 let isDirty = false;
-
-function markDirty() {
-  if (!isDirty) { isDirty = true; setStatus('Tienes cambios sin guardar.', ''); }
-}
-
-function setStatus(msg, cls) {
-  const el = document.getElementById('save-status');
-  el.textContent = msg;
-  el.className = cls;
-}
+function markDirty() { if (!isDirty) { isDirty = true; setStatus('Tienes cambios sin guardar.', ''); } }
+function setStatus(msg, cls) { const el = document.getElementById('save-status'); el.textContent = msg; el.className = cls; }
 
 function collectAll() {
   menuData.groups.forEach((g, gi) => {
@@ -646,47 +403,32 @@ function collectAll() {
 }
 
 async function saveMenu() {
-  const btn   = document.getElementById('btn-save');
-  const token = localStorage.getItem('gh_token');
-
-  if (!token) {
-    setStatus('No hay token configurado. Usa "Cambiar token".', 'err');
-    return;
-  }
-
+  const btn = document.getElementById('btn-save');
   btn.disabled = true;
   setStatus('Guardando...', '');
   collectAll();
 
-  const ghHeaders = {
-    Authorization: `token ${token}`,
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json',
-  };
-
   try {
-    // Get current SHA
-    const getRes = await fetch(`${GH_API}/repos/${REPO}/contents/${FILE}`, { headers: ghHeaders });
-    if (!getRes.ok) throw new Error('No se pudo leer el archivo de GitHub (¿token válido?)');
-    const { sha } = await getRes.json();
-
-    // Commit new content
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(menuData, null, 2))));
-    const putRes  = await fetch(`${GH_API}/repos/${REPO}/contents/${FILE}`, {
-      method: 'PUT',
-      headers: ghHeaders,
-      body: JSON.stringify({ message: 'Actualizar carta desde panel de administración', content, sha }),
+    const res = await fetch('/api/menu', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: sessionPwd, menu: menuData }),
     });
+    const data = await res.json();
 
-    if (!putRes.ok) {
-      const err = await putRes.json();
-      throw new Error(err.message || 'Error desconocido de GitHub');
+    if (!res.ok) {
+      if (res.status === 401) {
+        setStatus('Contraseña incorrecta. Cierra sesión y vuelve a entrar.', 'err');
+        sessionStorage.removeItem('adm_ok');
+      } else {
+        setStatus('Error: ' + (data.error || 'desconocido'), 'err');
+      }
+    } else {
+      isDirty = false;
+      setStatus('✓ ' + data.message, 'ok');
     }
-
-    isDirty = false;
-    setStatus('✓ Guardado. Los cambios aparecerán en la web en 1-2 minutos.', 'ok');
   } catch (e) {
-    setStatus('Error: ' + e.message, 'err');
+    setStatus('Error de red: ' + e.message, 'err');
   }
 
   btn.disabled = false;
