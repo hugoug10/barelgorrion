@@ -238,20 +238,27 @@ function showApp() {
 }
 
 async function loadMenu() {
+  const loading = document.getElementById('loading');
+  loading.style.cssText = 'text-align:center;padding:3rem;color:#a0aec0;display:block;';
+  loading.textContent = 'Cargando carta...';
   try {
     const res = await fetch('/api/menu');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    menuData = await res.json();
+    const text = await res.text();
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + text.substring(0, 200));
+    try { menuData = JSON.parse(text); } catch { throw new Error('Respuesta no es JSON: ' + text.substring(0, 200)); }
+    if (!menuData.groups) throw new Error('Datos vacíos del servidor');
     renderEditor();
+    loading.style.display = 'none';
   } catch (e) {
-    document.getElementById('loading').textContent = 'Error cargando la carta: ' + e.message;
+    loading.style.cssText = 'text-align:center;padding:3rem;color:#fc8181;display:block;font-size:0.9rem;';
+    loading.textContent = 'Error: ' + e.message;
+    console.error('loadMenu error:', e);
   }
 }
 
 // ─── Render ──────────────────────────────────────────────────────────────────
 function renderEditor() {
   const editor = document.getElementById('menu-editor');
-  document.getElementById('loading').style.display = 'none';
   editor.style.display = 'block';
   editor.innerHTML = '';
 
