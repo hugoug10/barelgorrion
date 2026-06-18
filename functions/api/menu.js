@@ -1,18 +1,22 @@
 export async function onRequestGet(context) {
   const { env, request } = context;
 
-  // KV is source of truth; fall back to static file on first run
-  const stored = await env.MENU_KV.get('menu');
-  if (stored) {
-    return respond(stored);
+  // Try KV first (only if binding is configured)
+  if (env.MENU_KV) {
+    try {
+      const stored = await env.MENU_KV.get('menu');
+      if (stored) return respond(stored);
+    } catch {}
   }
 
+  // Fall back to static data/menu.json
   try {
-    const asset = await env.ASSETS.fetch(new URL('/data/menu.json', request.url));
-    const text  = await asset.text();
-    return respond(text);
-  } catch {
-    return json({ error: 'Menú no encontrado' }, 404);
+    const url   = new URL('/data/menu.json', request.url);
+    const asset = env.ASSETS ? await env.ASSETS.fetch(url) : await fetch(url);
+    if (!asset.ok) throw new Error('asset ' + asset.status);
+    return respond(await asset.text());
+  } catch (e) {
+    return json({ error: 'No se pudo cargar el menú: ' + e.message }, 500);
   }
 }
 
@@ -28,13 +32,14 @@ export async function onRequestPost(context) {
   if (!password || password !== env.ADMIN_PASSWORD) {
     return json({ error: 'Contraseña incorrecta' }, 401);
   }
-
   if (!menu?.groups) {
     return json({ error: 'Datos del menú inválidos' }, 400);
   }
+  if (!env.MENU_KV) {
+    return json({ error: 'KV no configurado — contacta con el administrador técnico' }, 500);
+  }
 
   await env.MENU_KV.put('menu', JSON.stringify(menu));
-
   return json({ ok: true, message: '¡Carta actualizada correctamente!' });
 }
 
