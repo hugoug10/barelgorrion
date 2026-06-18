@@ -1,2 +1,7 @@
 name = "barelgorrion"
 pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "MENU_KV"
+id = "5504e3b54df74765a8dcc4a60152b9e5"
+preview_id = "d0a40467bb7a4a5a9dbabe3818b76618"
