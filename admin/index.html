@@ -158,6 +158,12 @@
     @media (max-width: 600px) {
       main { padding: 1rem; }
       .item-price-input { max-width: 85px; }
+
+      header { flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+      header h1 { width: 100%; text-align: center; }
+      .tab-btn { font-size: 0.75rem; padding: 0.35rem 0.7rem; }
+
+      .torneo-table th, .torneo-table td { padding: 0.5rem; font-size: 0.82rem; }
     }
 
     /* ── Tabs ── */
@@ -172,7 +178,8 @@
     /* ── Torneo view ── */
     #torneo-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
     #torneo-count { color: var(--text-muted); font-size: 0.85rem; }
-    .torneo-table { width: 100%; border-collapse: collapse; }
+    .torneo-table-wrap { overflow-x: auto; }
+    .torneo-table { width: 100%; min-width: 560px; border-collapse: collapse; }
     .torneo-table th {
       text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
       color: var(--gold); padding: 0.6rem 0.7rem; border-bottom: 1px solid rgba(197,160,89,0.3);
@@ -539,12 +546,14 @@ function renderTorneo(parejas) {
     .join('');
 
   list.innerHTML = `
-    <table class="torneo-table">
-      <thead>
-        <tr><th>Pareja</th><th>Jugador 1</th><th>Jugador 2</th><th>Fecha</th><th></th></tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+    <div class="torneo-table-wrap">
+      <table class="torneo-table">
+        <thead>
+          <tr><th>Pareja</th><th>Jugador 1</th><th>Jugador 2</th><th>Fecha</th><th></th></tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
 }
 
 function formatFecha(iso) {
