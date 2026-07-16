@@ -60,6 +60,31 @@
             box-shadow: 0 0 20px rgba(23, 224, 138, 0.4);
         }
 
+        .torneo-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+
+        .torneo-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(23, 224, 138, 0.08);
+            border: 1px solid rgba(23, 224, 138, 0.3);
+            border-radius: 30px;
+            padding: 0.7rem 1.3rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .torneo-info-item i {
+            color: var(--torneo-accent);
+            font-size: 1.05rem;
+        }
+
         @media (max-width: 768px) {
             .page-header {
                 padding-top: 110px;
@@ -78,6 +103,17 @@
             .torneo-intro {
                 font-size: 0.95rem;
                 padding: 0 0.5rem;
+            }
+
+            .torneo-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.7rem;
+            }
+
+            .torneo-info-item {
+                font-size: 0.85rem;
+                text-align: left;
             }
         }
     </style>
@@ -115,6 +151,10 @@
         <h1><i class="fa-solid fa-trophy"></i>Torneo de Futbolín</h1>
         <p class="torneo-intro">Apunta a tu pareja y demuestra quién manda en la mesa. Plazas limitadas, ¡no te
             quedes fuera!</p>
+        <div class="torneo-info">
+            <div class="torneo-info-item"><i class="fa-solid fa-calendar-day"></i><span>Domingo</span></div>
+            <div class="torneo-info-item"><i class="fa-solid fa-futbol"></i><span>Premio: 2 balones del Mundial, uno para cada ganador</span></div>
+        </div>
     </div>
 
     <section class="section" style="padding-top: 0;">
