@@ -71,17 +71,19 @@
                     <input type="hidden" name="_template" value="table">
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre" required maxlength="60"
+                            pattern="[A-Za-zÀ-ÿñÑ\s'\-]+"
+                            title="Solo letras y espacios, sin símbolos ni etiquetas">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email (Opcional)</label>
-                        <input type="email" id="email" name="email" placeholder="tu@email.com">
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" maxlength="100">
                     </div>
 
                     <div class="form-group">
                         <label for="message">Sugerencia</label>
-                        <textarea id="message" name="message" rows="5"
+                        <textarea id="message" name="message" rows="5" maxlength="1000"
                             placeholder="Cuéntanos qué podemos mejorar o qué te ha gustado..." required></textarea>
                     </div>
 
@@ -144,8 +146,34 @@
         const form = document.querySelector('.suggestions-form');
         const modal = document.getElementById('reviewModal');
 
+        // Strip characters with no legitimate use in these fields (HTML tags,
+        // template markers, line breaks in single-line fields) before the
+        // form is ever sent, on top of FormSubmit's own server-side checks.
+        function sanitize(value) {
+            return value
+                .replace(/<[^>]*>/g, '')
+                .replace(/[{}$`]/g, '')
+                .trim();
+        }
+
         form.addEventListener('submit', function (e) {
             e.preventDefault(); // Stop initial sending
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const nameField = form.querySelector('#name');
+            const messageField = form.querySelector('#message');
+            nameField.value = sanitize(nameField.value).replace(/[\r\n]/g, '');
+            messageField.value = sanitize(messageField.value);
+
+            if (!nameField.value || !messageField.value) {
+                form.reportValidity();
+                return;
+            }
+
             modal.classList.add('active'); // Show popup
         });
 
