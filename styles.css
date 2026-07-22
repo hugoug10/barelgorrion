@@ -19,9 +19,6 @@
     --spacing-md: 2.5rem;
     --spacing-lg: 5rem;
     --spacing-xl: 10rem;
-
-    /* Torneo Futbolín - acento temporal */
-    --torneo-accent: #17e08a;
 }
 
 * {
@@ -169,51 +166,6 @@ h2::after {
 
 .nav-links a:hover {
     color: var(--gold-solid);
-}
-
-.nav-torneo-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--torneo-accent) !important;
-    font-weight: 700;
-    transition: transform 0.3s ease;
-}
-
-.nav-torneo-badge::after {
-    content: none !important;
-}
-
-.nav-torneo-badge:hover {
-    transform: scale(1.05);
-    color: var(--torneo-accent) !important;
-}
-
-.torneo-circle {
-    width: 34px;
-    height: 34px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--torneo-accent);
-    color: #000;
-    font-size: 0.95rem;
-    box-shadow: 0 0 10px rgba(23, 224, 138, 0.6);
-    animation: torneoPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes torneoPulse {
-
-    0%,
-    100% {
-        box-shadow: 0 0 8px rgba(23, 224, 138, 0.55);
-    }
-
-    50% {
-        box-shadow: 0 0 18px rgba(23, 224, 138, 0.95);
-    }
 }
 
 .mobile-only-header {
