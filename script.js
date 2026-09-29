@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Add a slight delay for aesthetic reasons so users see the loading animation briefly even on fast connections
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-            setTimeout(() => preloader.remove(), 800);
-        }, 1300);
+        preloader.classList.add('hidden');
+        setTimeout(() => preloader.remove(), 800);
     }
 });
 

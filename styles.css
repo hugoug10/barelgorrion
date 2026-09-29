@@ -231,10 +231,16 @@ h2::after {
     background-color: #11151c;
     background-image:
         linear-gradient(rgba(17, 21, 28, 0.7), rgba(17, 21, 28, 0.7)),
-        url('assets/bg.png');
+        url('assets/bg.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        background-attachment: scroll;
+    }
 }
 
 .hero-content {
@@ -1015,7 +1021,7 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #25d366;
+    background-color: #0e7a3e;
     color: #fff;
     border-radius: 30px;
     padding: 0 15px;
@@ -1058,7 +1064,7 @@ footer {
     transform: translateY(-5px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
     color: #fff;
-    background-color: #20b858;
+    background-color: #0b6634;
 }
 
 /* Lightbox Modal */

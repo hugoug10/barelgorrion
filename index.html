@@ -5,21 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar El Gorrión | Torrubia del Campo</title>
-    <link rel="icon" type="image/png" href="assets/favicon_rock.png">
+    <meta name="description" content="Bar El Gorrión en Torrubia del Campo (Cuenca): cocina tradicional castellana, raciones, vinos y trato familiar. Consulta la carta y el horario, y reserva tu mesa por WhatsApp.">
+    <link rel="icon" type="image/png" href="assets/favicon-64.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="image" href="assets/logo_rock.webp" fetchpriority="high">
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3.4">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css?v=3.5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
 </head>
 
 <body>
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-logo">
-            <img src="assets/favicon_rock.png" alt="Cargando El Gorrión">
+            <img src="assets/logo_rock.webp" alt="Cargando El Gorrión" width="80" height="80" fetchpriority="high">
         </div>
     </div>
 
@@ -43,6 +50,7 @@
         </div>
     </nav>
 
+    <main>
     <!-- Hero Section -->
     <header id="inicio" class="hero">
         <div class="overlay"></div> <!-- Overlay is now part of CSS background but kept for darkening if needed -->
@@ -86,7 +94,7 @@
                 </p>
 
                 <div class="qr-container" style="margin-bottom: 2rem;">
-                    <img src="assets/codigoqrresenas.png" alt="QR Reseñas Bar El Gorrión" class="qr-code">
+                    <img src="assets/codigoqrresenas.png" alt="QR Reseñas Bar El Gorrión" class="qr-code" width="150" height="150" loading="lazy">
                     <p style="color: var(--gold-solid); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 1rem;">¡Escanea y Danos tu Opinión!</p>
                 </div>
 
@@ -126,32 +134,32 @@
 
         <div class="gallery-track">
             <!-- Original Set (12 items) -->
-            <div class="gallery-item"><img src="assets/gallery_sepia.png" alt="Sepia a la plancha"></div>
-            <div class="gallery-item"><img src="assets/gallery_sandwich.png" alt="Sandwich Club"></div>
-            <div class="gallery-item"><img src="assets/gallery_scallops.png" alt="Zamburiñas"></div>
-            <div class="gallery-item"><img src="assets/gallery_salmon.png" alt="Tosta de Salmón"></div>
-            <div class="gallery-item"><img src="assets/gallery_pancakes.png" alt="Tortitas con Nata"></div>
-            <div class="gallery-item"><img src="assets/gallery_gulas.jpg" alt="Ración de Gulas"></div>
-            <div class="gallery-item"><img src="assets/gallery_postre.jpg" alt="Postre Casero"></div>
-            <div class="gallery-item"><img src="assets/05ac2c72-4cf9-492c-b85c-5b57949fbdeb.jpeg" alt="Especialidad de la Casa"></div>
-            <div class="gallery-item"><img src="assets/c1a47e74-5770-41b0-8770-87ee4ffbc8c9.jpeg" alt="Plato Tradicional"></div>
-            <div class="gallery-item"><img src="assets/ccdfaf9f-4982-40ce-bb5e-3c3b6c1e0e8a.jpeg" alt="Delicia del Chef"></div>
-            <div class="gallery-item"><img src="assets/ddc8bcf1-1e45-492c-83cf-dbd079002eec.jpeg" alt="Sabor Auténtico"></div>
-            <div class="gallery-item"><img src="assets/f40dac61-d612-4594-9dee-eaa554480a9e.jpeg" alt="Gastronomía Local"></div>
+            <div class="gallery-item"><img src="assets/gallery_sepia.webp" alt="Sepia a la plancha" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_sandwich.webp" alt="Sandwich Club" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_scallops.webp" alt="Zamburiñas" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_salmon.webp" alt="Tosta de Salmón" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_pancakes.webp" alt="Tortitas con Nata" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_gulas.webp" alt="Ración de Gulas" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_postre.webp" alt="Postre Casero" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/05ac2c72-4cf9-492c-b85c-5b57949fbdeb.webp" alt="Especialidad de la Casa" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/c1a47e74-5770-41b0-8770-87ee4ffbc8c9.webp" alt="Plato Tradicional" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/ccdfaf9f-4982-40ce-bb5e-3c3b6c1e0e8a.webp" alt="Delicia del Chef" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/ddc8bcf1-1e45-492c-83cf-dbd079002eec.webp" alt="Sabor Auténtico" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/f40dac61-d612-4594-9dee-eaa554480a9e.webp" alt="Gastronomía Local" width="350" height="450" loading="lazy" decoding="async"></div>
 
             <!-- Duplicate Set for Infinite Scroll (12 items) -->
-            <div class="gallery-item"><img src="assets/gallery_sepia.png" alt="Sepia a la plancha"></div>
-            <div class="gallery-item"><img src="assets/gallery_sandwich.png" alt="Sandwich Club"></div>
-            <div class="gallery-item"><img src="assets/gallery_scallops.png" alt="Zamburiñas"></div>
-            <div class="gallery-item"><img src="assets/gallery_salmon.png" alt="Tosta de Salmón"></div>
-            <div class="gallery-item"><img src="assets/gallery_pancakes.png" alt="Tortitas con Nata"></div>
-            <div class="gallery-item"><img src="assets/gallery_gulas.jpg" alt="Ración de Gulas"></div>
-            <div class="gallery-item"><img src="assets/gallery_postre.jpg" alt="Postre Casero"></div>
-            <div class="gallery-item"><img src="assets/05ac2c72-4cf9-492c-b85c-5b57949fbdeb.jpeg" alt="Especialidad de la Casa"></div>
-            <div class="gallery-item"><img src="assets/c1a47e74-5770-41b0-8770-87ee4ffbc8c9.jpeg" alt="Plato Tradicional"></div>
-            <div class="gallery-item"><img src="assets/ccdfaf9f-4982-40ce-bb5e-3c3b6c1e0e8a.jpeg" alt="Delicia del Chef"></div>
-            <div class="gallery-item"><img src="assets/ddc8bcf1-1e45-492c-83cf-dbd079002eec.jpeg" alt="Sabor Auténtico"></div>
-            <div class="gallery-item"><img src="assets/f40dac61-d612-4594-9dee-eaa554480a9e.jpeg" alt="Gastronomía Local"></div>
+            <div class="gallery-item"><img src="assets/gallery_sepia.webp" alt="Sepia a la plancha" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_sandwich.webp" alt="Sandwich Club" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_scallops.webp" alt="Zamburiñas" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_salmon.webp" alt="Tosta de Salmón" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_pancakes.webp" alt="Tortitas con Nata" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_gulas.webp" alt="Ración de Gulas" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/gallery_postre.webp" alt="Postre Casero" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/05ac2c72-4cf9-492c-b85c-5b57949fbdeb.webp" alt="Especialidad de la Casa" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/c1a47e74-5770-41b0-8770-87ee4ffbc8c9.webp" alt="Plato Tradicional" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/ccdfaf9f-4982-40ce-bb5e-3c3b6c1e0e8a.webp" alt="Delicia del Chef" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/ddc8bcf1-1e45-492c-83cf-dbd079002eec.webp" alt="Sabor Auténtico" width="350" height="450" loading="lazy" decoding="async"></div>
+            <div class="gallery-item"><img src="assets/f40dac61-d612-4594-9dee-eaa554480a9e.webp" alt="Gastronomía Local" width="350" height="450" loading="lazy" decoding="async"></div>
         </div>
     </section>
 
@@ -188,12 +196,12 @@
             </div>
         </div>
     </section>
-
+    </main>
 
     <footer>
         <div class="container">
             <div class="footer-brand" style="margin-bottom: 2rem;">
-                <div class="brand-divider-footer"><img src="assets/favicon_rock.png" alt="El Gorrión Hand"></div>
+                <div class="brand-divider-footer"><img src="assets/logo_rock.webp" alt="El Gorrión Hand" width="50" height="50" loading="lazy"></div>
                 <h3>El Gorrión</h3>
             </div>
             <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
@@ -213,12 +221,12 @@
             </div>
 
             <div class="social-links" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
-                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank"
-                    class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank"
-                    class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
+                    class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
+                    class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
                 <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank"
-                    class="social-icon" title="Danos tu reseña en Google"><i class="fa-brands fa-google"></i></a>
+                    class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
             </div>
 
             <p>&copy; 2026. Reservados todos los derechos.</p>
@@ -261,7 +269,7 @@
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia de usuario. <a
-                    href="legal/cookies.html">Más información</a>.</p>
+                    href="legal/cookies.html">Más información sobre cookies</a>.</p>
             <div class="cookie-buttons">
                 <button id="accept-cookies" class="btn btn-sm" style="padding: 0.5rem 1rem;">Aceptar</button>
                 <button id="reject-cookies" class="btn btn-sm"
@@ -270,7 +278,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=3.3"></script>
+    <script src="script.js?v=3.4"></script>
 </body>
 
 </html>
