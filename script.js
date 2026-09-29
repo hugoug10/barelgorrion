@@ -1,12 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        preloader.classList.add('hidden');
-        setTimeout(() => preloader.remove(), 800);
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
     console.log('Bar El Gorrión - Premium Experience Loaded');
 
     // Smooth Scrolling for Navigation
