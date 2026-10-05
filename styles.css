@@ -262,6 +262,8 @@ h2::after {
     background: radial-gradient(circle at top, rgba(245, 192, 74, 0.16) 0%, rgba(17, 21, 28, 0.85) 70%);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 24px rgba(245, 192, 74, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
 .tortilla-banner:hover {
@@ -272,6 +274,8 @@ h2::after {
 .tortilla-banner h2 {
     margin: 1rem 0 0.8rem;
     color: var(--text-main);
+    font-size: 2.4rem;
+    line-height: 1.15;
 }
 
 .tortilla-banner h2::after {
@@ -307,6 +311,21 @@ h2::after {
 @media (max-width: 768px) {
     .tortilla-banner {
         padding: 2rem 1.2rem;
+    }
+
+    .tortilla-banner h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* Con la pestaña TORTILLAS el menú necesita algo menos de separación para caber en portátiles */
+@media (max-width: 1400px) {
+    .nav-container {
+        gap: 2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
     }
 }
 
