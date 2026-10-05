@@ -8,141 +8,116 @@
     <meta name="description" content="Domingo 11 de octubre, en las cenas: degustación de tortillas de patata en Bar El Gorrión. Prueba, vota tu favorita y la ganadora se queda en la carta.">
     <link rel="icon" type="image/png" href="../assets/favicon-64.png">
     <link rel="preload" href="../assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../styles.css?v=3.8">
+    <link rel="stylesheet" href="../styles.css?v=4.0">
     <link rel="stylesheet" href="../icons.css?v=1" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="../icons.css?v=1"></noscript>
     <style>
-        body {
-            background-image: none;
-            background-color: var(--primary-bg);
-        }
-
-        .page-header {
-            padding-top: 150px;
-            padding-bottom: 3rem;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(245, 192, 74, 0.14) 0%, transparent 70%);
-        }
-
-        .tortilla-tag {
-            display: inline-block;
-            padding: 0.5rem 1.4rem;
-            border: 1px solid var(--tortilla-accent);
-            color: var(--tortilla-accent);
-            border-radius: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+        /* Cabecera propia del evento: misma estructura que el resto, con el amarillo de la degustación */
+        .page-header .nuevo-pill {
+            margin-bottom: 1.3rem;
         }
 
         .tortilla-intro {
-            max-width: 620px;
-            margin: 0 auto;
+            max-width: 52ch;
             color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.7;
+            font-size: clamp(1rem, 0.4vw + 0.95rem, 1.2rem);
+        }
+
+        .tortilla-intro strong {
+            color: var(--tortilla-accent);
+            font-weight: 600;
         }
 
         .tortilla-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.8rem;
-        }
-
-        .tortilla-info-item {
-            background: rgba(245, 192, 74, 0.08);
-            border: 1px solid rgba(245, 192, 74, 0.35);
-            border-radius: 30px;
-            padding: 0.7rem 1.3rem;
-            color: var(--text-main);
-            font-size: 0.9rem;
-        }
-
-        .tortilla-info-item strong {
+            margin-top: 1.4rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.15rem;
             color: var(--tortilla-accent);
+        }
+
+        .tortilla-info span + span::before {
+            content: '·';
+            margin: 0 0.6rem;
+            color: var(--text-faint);
+        }
+
+        /* Pasos: es una secuencia real, así que el número sí cuenta algo */
+        .como-funciona h2 {
+            margin-bottom: 2rem;
         }
 
         .tortilla-pasos {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 960px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0 clamp(1.5rem, 4vw, 3.5rem);
             list-style: none;
             counter-reset: paso;
         }
 
         .tortilla-pasos li {
             counter-increment: paso;
-            text-align: center;
-            padding: 2rem 1.5rem;
-            border: 1px solid rgba(245, 192, 74, 0.25);
-            border-radius: 12px;
-            background: var(--secondary-bg);
+            border-top: 1px solid rgba(245, 192, 74, 0.4);
+            padding-top: 1.2rem;
         }
 
         .tortilla-pasos li::before {
             content: counter(paso);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            background: var(--tortilla-accent);
-            color: #1a1205;
+            display: block;
             font-family: var(--font-heading);
-            font-size: 1.4rem;
             font-weight: 700;
+            font-size: 2.6rem;
+            line-height: 1;
+            color: var(--tortilla-accent);
+            margin-bottom: 0.9rem;
         }
 
         .tortilla-pasos h3 {
+            font-size: 1.25rem;
             color: var(--text-main);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
 
         .tortilla-pasos p {
             color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 0.97rem;
+            line-height: 1.65;
+            max-width: 34ch;
         }
 
         .tortilla-reserva {
-            text-align: center;
-            margin-top: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 2rem;
+            margin-top: clamp(3rem, 6vw, 4.5rem);
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--rule-soft);
         }
 
         .tortilla-reserva p {
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
         }
 
         /* ── Votación ── */
         .votar-section {
-            padding: 1rem 16px 3rem;
-            scroll-margin-top: 90px;
+            padding: clamp(2rem, 4vw, 3rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+            scroll-margin-top: 80px;
         }
 
         .votar-panel {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 2.5rem 2rem;
+            max-width: 860px;
+            padding: clamp(1.8rem, 4vw, 2.8rem);
             text-align: center;
-            border: 1px solid rgba(245, 192, 74, 0.55);
-            border-radius: 14px;
-            background: radial-gradient(circle at top, rgba(245, 192, 74, 0.13) 0%, var(--secondary-bg) 75%);
-            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35), 0 0 26px rgba(245, 192, 74, 0.12);
+            border: 1px solid rgba(245, 192, 74, 0.45);
+            border-radius: 4px;
+            background: var(--secondary-bg);
         }
 
         .votar-kicker {
             color: var(--tortilla-accent);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 0.14em;
             font-size: 0.8rem;
             font-weight: 700;
             margin-bottom: 0.6rem;
@@ -188,18 +163,17 @@
             gap: 0.8rem;
             padding: 1.8rem 1rem 1.5rem;
             border: 2px solid rgba(245, 192, 74, 0.25);
-            border-radius: 12px;
-            background: rgba(17, 21, 28, 0.75);
+            border-radius: 4px;
+            background: var(--primary-bg);
             color: var(--text-main);
             font-family: var(--font-body);
             cursor: pointer;
-            transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
             -webkit-tap-highlight-color: transparent;
         }
 
         .votar-opcion:hover {
             border-color: rgba(245, 192, 74, 0.6);
-            transform: translateY(-2px);
         }
 
         .votar-opcion:focus-visible {
@@ -209,8 +183,7 @@
 
         .votar-opcion[aria-checked="true"] {
             border-color: var(--tortilla-accent);
-            background: rgba(245, 192, 74, 0.14);
-            box-shadow: 0 0 22px rgba(245, 192, 74, 0.3);
+            background: rgba(245, 192, 74, 0.12);
         }
 
         .votar-num {
@@ -260,7 +233,7 @@
             margin: 0 auto;
             padding: 1.1rem 2rem;
             border: none;
-            border-radius: 40px;
+            border-radius: 2px;
             background: var(--tortilla-accent);
             color: #1a1205;
             font-family: var(--font-body);
@@ -269,12 +242,11 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            transition: background-color 0.2s ease, opacity 0.2s ease;
         }
 
         .votar-btn:not(:disabled):hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(245, 192, 74, 0.4);
+            background: #ffd370;
         }
 
         .votar-btn:disabled {
@@ -348,7 +320,7 @@
             margin-top: 1.5rem;
             background: none;
             border: 1px solid rgba(245, 192, 74, 0.5);
-            border-radius: 30px;
+            border-radius: 2px;
             color: var(--tortilla-accent);
             padding: 0.7rem 1.6rem;
             font-family: var(--font-body);
@@ -408,26 +380,6 @@
         }
 
         @media (max-width: 768px) {
-            .page-header {
-                padding-top: 110px;
-                padding-bottom: 2rem;
-            }
-
-            .page-header h1 {
-                font-size: 2.2rem;
-            }
-
-            .tortilla-intro {
-                font-size: 0.95rem;
-                padding: 0 0.5rem;
-            }
-
-            .tortilla-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.7rem;
-            }
-
             .section h2 {
                 font-size: 2rem;
                 line-height: 1.2;
@@ -435,7 +387,7 @@
 
             .tortilla-pasos {
                 grid-template-columns: 1fr;
-                padding: 0 0.5rem;
+                gap: 2rem;
             }
         }
     </style>
@@ -469,17 +421,14 @@
     </nav>
 
     <main>
-        <div class="page-header">
-            <span class="tortilla-tag">Novedad · Evento especial</span>
+        <header class="page-header">
+            <span class="nuevo-pill">Novedad · Evento especial</span>
             <h1>Degustación de Tortillas</h1>
             <p class="tortilla-intro">Varias tortillas de patata, un solo hueco en la carta. Ven a cenar, pruébalas
-                todas y vota tu favorita: <strong style="color: var(--tortilla-accent);">la ganadora se queda en
+                todas y vota tu favorita: <strong>la ganadora se queda en
                     nuestra carta</strong>.</p>
-            <div class="tortilla-info">
-                <div class="tortilla-info-item"><strong>Domingo 11 de octubre</strong></div>
-                <div class="tortilla-info-item">Solo en <strong>cenas</strong></div>
-            </div>
-        </div>
+            <p class="tortilla-info"><span>Domingo 11 de octubre</span><span>Solo en cenas</span></p>
+        </header>
 
         <!-- Votación: el QR de las mesas apunta a #votar -->
         <section id="votar" class="votar-section">
@@ -516,9 +465,9 @@
             </div>
         </section>
 
-        <section class="section" style="padding-top: 1rem;">
+        <section class="section como-funciona" style="padding-top: 0;">
             <div class="container">
-                <h2 style="text-align: center;">Cómo Funciona</h2>
+                <h2>Cómo Funciona</h2>
                 <ol class="tortilla-pasos">
                     <li>
                         <h3>Ven a cenar</h3>
@@ -542,19 +491,20 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-brand" style="margin-bottom: 2rem;">
-                <div class="brand-divider-footer"><img src="../assets/logo_rock.webp" alt="El Gorrión Hand" width="50" height="50" loading="lazy"></div>
-                <h3>El Gorrión</h3>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="../assets/logo_rock.webp" alt="" width="42" height="42" loading="lazy">
+                <div>
+                    <p class="footer-name">El Gorrión</p>
+                    <p>Torrubia del Campo · Cuenca</p>
+                </div>
             </div>
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
-                del Campo · Cuenca</p>
 
-            <div class="payment-methods" style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--gold-solid);">
-                    Formas de Pago: Efectivo y Tarjeta (Contactless)</p>
-                <div style="font-size: 1.8rem; display: flex; justify-content: center; gap: 1rem; opacity: 0.8;">
+            <div>
+                <p class="footer-label">Formas de pago</p>
+                <p>Efectivo y tarjeta (contactless)</p>
+                <div class="footer-pay">
                     <i class="fa-solid fa-coins" title="Efectivo"></i>
                     <i class="fa-solid fa-money-bill-wave" title="Efectivo"></i>
                     <i class="fa-brands fa-cc-visa" title="Visa"></i>
@@ -564,17 +514,27 @@
                 </div>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
-                <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank"
-                    class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            <div>
+                <p class="footer-label">Síguenos</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+                </div>
             </div>
+        </div>
+
+        <div class="footer-bottom">
             <p>&copy; 2026. Reservados todos los derechos.</p>
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
-            </p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="../legal/aviso-legal.html">Aviso Legal</a>
+                <a href="../legal/privacidad.html">Política de Privacidad</a>
+                <a href="../legal/cookies.html">Política de Cookies</a>
+            </nav>
+            <p class="footer-credit">Diseñado por Hugo Urbanos</p>
         </div>
     </footer>
 
@@ -702,7 +662,7 @@
         })();
     </script>
 
-    <script src="../script.js?v=3.5"></script>
+    <script src="../script.js?v=4.0"></script>
 </body>
 
 </html>

@@ -7,29 +7,9 @@
     <title>Dónde Estamos | Bar El Gorrión</title>
     <link rel="icon" type="image/png" href="../assets/favicon-64.png">
     <link rel="preload" href="../assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../styles.css?v=3.8">
+    <link rel="stylesheet" href="../styles.css?v=4.0">
     <link rel="stylesheet" href="../icons.css?v=1" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="../icons.css?v=1"></noscript>
-    <style>
-        /* Specific adjustments for the location page */
-        body {
-            background-image: none;
-            background-color: var(--primary-bg);
-        }
-
-        .page-header {
-            padding-top: 120px;
-            padding-bottom: 4rem;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(162, 126, 56, 0.1) 0%, transparent 70%);
-        }
-
-        .location-section {
-            padding-top: 2rem;
-            padding-bottom: 6rem;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -51,7 +31,7 @@
                 </li>
                 <li><a href="../index.html#inicio">INICIO</a></li>
                 <li><a href="../menu/index.html">NUESTRA CARTA</a></li>
-                <li><a href="#" class="active">DÓNDE ESTAMOS</a></li>
+                <li><a href="#" aria-current="page">DÓNDE ESTAMOS</a></li>
                 <li><a href="../social/index.html">REDES</a></li>
                 <li><a href="../horario/index.html">HORARIO</a></li>
                 <li><a href="../sugerencias/index.html">SUGERENCIAS</a></li>
@@ -60,38 +40,42 @@
         </div>
     </nav>
 
-    <div class="page-header">
+    <header class="page-header">
         <h1>Dónde Estamos</h1>
-        <p style="color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px;">Ven a visitarnos</p>
-    </div>
+        <p class="page-lede">Ven a visitarnos</p>
+    </header>
+    <div class="page-rule"></div>
 
     <section class="section location-section">
-        <div class="container">
-            <p class="location-address">Torrubia del Campo, Cuenca</p>
-            <div class="map-container"
-                style="border: 1px solid var(--gold-solid); padding: 5px; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <iframe
+        <div class="container location-layout">
+            <div class="location-info">
+                <p class="location-address">Torrubia del Campo, Cuenca</p>
+                <p>Plaza de la Iglesia, 1</p>
+                <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Plaza%20de%20la%20Iglesia%201%2C%20Torrubia%20del%20Campo%2C%20Cuenca"
+                    target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="map-container">
+                <iframe title="Mapa: Bar El Gorrión en Torrubia del Campo"
                     src="https://maps.google.com/maps?q=Plaza%20de%20la%20Iglesia%201%2C%20Torrubia%20del%20Campo%2C%20Cuenca&t=&z=17&ie=UTF8&iwloc=&output=embed"
-                    width="100%" height="450" style="border:0; filter: grayscale(20%) contrast(1.1);" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-brand" style="margin-bottom: 2rem;">
-                <div class="brand-divider-footer"><img src="../assets/logo_rock.webp" alt="El Gorrión Hand" width="50" height="50" loading="lazy"></div>
-                <h3>El Gorrión</h3>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="../assets/logo_rock.webp" alt="" width="42" height="42" loading="lazy">
+                <div>
+                    <p class="footer-name">El Gorrión</p>
+                    <p>Torrubia del Campo · Cuenca</p>
+                </div>
             </div>
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
-                del Campo · Cuenca</p>
 
-            <div class="payment-methods" style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--gold-solid);">
-                    Formas de Pago: Efectivo y Tarjeta (Contactless)</p>
-                <div style="font-size: 1.8rem; display: flex; justify-content: center; gap: 1rem; opacity: 0.8;">
+            <div>
+                <p class="footer-label">Formas de pago</p>
+                <p>Efectivo y tarjeta (contactless)</p>
+                <div class="footer-pay">
                     <i class="fa-solid fa-coins" title="Efectivo"></i>
                     <i class="fa-solid fa-money-bill-wave" title="Efectivo"></i>
                     <i class="fa-brands fa-cc-visa" title="Visa"></i>
@@ -101,35 +85,27 @@
                 </div>
             </div>
 
-            <div class="social-links" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
-                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
-                <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank"
-                    class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            <div>
+                <p class="footer-label">Síguenos</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+                </div>
             </div>
+        </div>
 
+        <div class="footer-bottom">
             <p>&copy; 2026. Reservados todos los derechos.</p>
-            <div class="legal-links"
-                style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                <a href="../legal/aviso-legal.html"
-                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
-                    onmouseover="this.style.color='var(--gold-solid)'"
-                    onmouseout="this.style.color='var(--text-muted)'">Aviso Legal</a>
-                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
-                <a href="../legal/privacidad.html"
-                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
-                    onmouseover="this.style.color='var(--gold-solid)'"
-                    onmouseout="this.style.color='var(--text-muted)'">Política de Privacidad</a>
-                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
-                <a href="../legal/cookies.html"
-                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
-                    onmouseover="this.style.color='var(--gold-solid)'"
-                    onmouseout="this.style.color='var(--text-muted)'">Política de Cookies</a>
-            </div>
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem; letter-spacing: 1px;">Diseñado por Hugo Urbanos
-            </p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="../legal/aviso-legal.html">Aviso Legal</a>
+                <a href="../legal/privacidad.html">Política de Privacidad</a>
+                <a href="../legal/cookies.html">Política de Cookies</a>
+            </nav>
+            <p class="footer-credit">Diseñado por Hugo Urbanos</p>
         </div>
     </footer>
 
@@ -153,7 +129,7 @@
         </div>
     </div>
 
-    <script src="../script.js?v=3.5"></script>
+    <script src="../script.js?v=4.0"></script>
 </body>
 
 </html>

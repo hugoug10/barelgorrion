@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Bar El Gorrión - Premium Experience Loaded');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Smooth Scrolling for Navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -11,62 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Navbar Scroll Effect (Glassmorphism on scroll)
+    // La barra se vuelve opaca al bajar (en portada empieza transparente sobre la foto)
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(26, 32, 44, 0.98)';
-            navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
-        } else {
-            navbar.style.background = 'rgba(26, 32, 44, 0.95)';
-            navbar.style.boxShadow = 'none';
-        }
-    });
+    const updateNavbar = () => navbar && navbar.classList.toggle('scrolled', window.scrollY > 40);
+    updateNavbar();
+    window.addEventListener('scroll', updateNavbar, { passive: true });
 
-
-    // Simple Parallax Effect for Hero - DISABLED (Interferes with fixed background)
-    // const hero = document.querySelector('.hero');
-    // window.addEventListener('scroll', () => {
-    //     const scrolled = window.pageYOffset;
-    //     if (hero) {
-    //         hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
-    //     }
-    // });
-
-    // Reveal on Scroll Animation (Simple Intersection Observer)
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Alseo add .active to .reveal elements
-                if (entry.target.classList.contains('reveal')) {
+    // Aparición suave de bloques al hacer scroll. El contenido es visible por defecto:
+    // solo se oculta cuando este script está activo y el navegador soporta IntersectionObserver.
+    const revealEls = document.querySelectorAll('.reveal');
+    let observer = null;
+    if (!reduceMotion && 'IntersectionObserver' in window && revealEls.length) {
+        document.documentElement.classList.add('js-reveal');
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
                 }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.section h2, .menu-item, .intro p').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        observer.observe(el);
-    });
-
-    // Add 'visible' class styles dynamically
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        revealEls.forEach(el => observer.observe(el));
+    }
 
     // Mobile Menu Toggle
     const hamburger = document.querySelector(".hamburger");
@@ -87,12 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.remove("toggle");
         });
     });
-
-    // --- Premium Features JS ---
-
-    // Additional elements to reveal
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
 
     // Lightbox Functionality
     const lightbox = document.getElementById('lightbox-modal');
@@ -219,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let isDragging = false;
         let startX;
         let scrollLeft;
-        let autoScrollSpeed = 0.5; // Pixels per frame
+        let autoScrollSpeed = reduceMotion ? 0 : 0.4; // Pixels per frame
         let currentX = 0;
         let animationId;
         let isPaused = false;
@@ -283,7 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isPaused = true;
             lastInteractionTime = Date.now();
             
-            const itemWidth = 380; // 350px width + 30px total margins
+            // Desplaza el ancho de una foto (los anchos varían, se usa el de la primera + márgenes)
+            const first = galleryTrack.querySelector('.gallery-item');
+            const firstStyle = getComputedStyle(first);
+            const itemWidth = first.offsetWidth + parseFloat(firstStyle.marginLeft) + parseFloat(firstStyle.marginRight);
             galleryTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             
             currentX += (direction === 'next' ? -itemWidth : itemWidth);

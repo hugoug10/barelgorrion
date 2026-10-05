@@ -8,12 +8,12 @@
     <meta name="description" content="Bar El Gorrión en Torrubia del Campo (Cuenca): cocina tradicional castellana, raciones, vinos y trato familiar. Consulta la carta y el horario, y reserva tu mesa por WhatsApp.">
     <link rel="icon" type="image/png" href="assets/favicon-64.png">
     <link rel="preload" href="assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=3.8">
+    <link rel="stylesheet" href="styles.css?v=4.0">
     <link rel="stylesheet" href="icons.css?v=1" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="icons.css?v=1"></noscript>
 </head>
 
-<body>
+<body class="home">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -36,9 +36,7 @@
     </nav>
 
     <main>
-    <!-- Hero Section -->
     <header id="inicio" class="hero">
-        <div class="overlay"></div> <!-- Overlay is now part of CSS background but kept for darkening if needed -->
         <div class="hero-content">
             <h1>Bar El Gorrión</h1>
             <p>Gastronomía Tradicional · Ambiente Selecto · <span class="highlight">Desde 2025</span></p>
@@ -47,82 +45,31 @@
     </header>
 
     <!-- Degustación de tortillas (evento temporal) -->
-    <section class="section reveal" style="padding-bottom: 0;">
-        <div class="container">
-            <a href="degustacion-tortilla/index.html" class="tortilla-banner">
-                <span class="nuevo-pill">NOVEDAD</span>
+    <section class="tortilla-band">
+        <a href="degustacion-tortilla/index.html" class="tortilla-banner">
+            <span class="nuevo-pill">Novedad</span>
+            <div>
                 <h2>Degustación de Tortillas</h2>
-                <p class="tortilla-fecha">Domingo 11 de octubre · Solo cenas</p>
-                <p>Prueba nuestras tortillas de patata y vota tu favorita. La ganadora se queda en la carta.</p>
-                <span class="tortilla-cta">Saber más</span>
-            </a>
-        </div>
+                <p><span class="tortilla-fecha">Domingo 11 de octubre · Solo cenas.</span> Prueba nuestras tortillas de patata y vota tu favorita. La ganadora se queda en la carta.</p>
+            </div>
+            <span class="tortilla-cta">Saber más <span aria-hidden="true">→</span></span>
+        </a>
     </section>
 
-    <!-- Intro Section -->
-    <section class="section intro reveal">
-        <div class="container">
+    <!-- Intro -->
+    <section class="section intro">
+        <div class="container reveal">
             <h2>Excelencia en Cada Bocado</h2>
-            <p>En el corazón de Torrubia del Campo, fusionamos la cocina tradicional castellana con un servicio
+            <p>En el corazón de <em>Torrubia del Campo</em>, fusionamos la cocina tradicional castellana con un servicio
                 impecable. Un espacio donde el tiempo se detiene y los sabores cobran vida.</p>
         </div>
     </section>
 
-    <!-- Google Reviews Dashboard -->
-    <section class="section google-reviews reveal" style="padding-top: 0; padding-bottom: 2rem;">
-        <div class="container" style="text-align: center;">
-            <div class="review-dashboard"
-                style="background: rgba(17, 21, 28, 0.7); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px; padding: 3rem; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); transition: transform 0.3s ease, border-color 0.3s ease;">
-                <h3
-                    style="color: var(--text-main); font-family: var(--font-body); font-weight: 400; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">
-                    Opiniones Reales</h3>
-
-                <div class="rating-number"
-                    style="font-size: 4rem; font-family: var(--font-heading); color: var(--gold-solid); line-height: 1; margin-bottom: 0.5rem; font-weight: 700;">
-                    5.0</div>
-
-                <div class="stars"
-                    style="color: #FFD700; font-size: 2rem; letter-spacing: 5px; margin-bottom: 1.5rem; text-shadow: 0 2px 5px rgba(255, 215, 0, 0.2);">
-                    ★★★★★
-                </div>
-
-                <p
-                    style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                    Excelencia confirmada en <i class="fa-brands fa-google" style="font-size: 1.2rem;"></i> Google
-                </p>
-
-                <div class="qr-container" style="margin-bottom: 2rem;">
-                    <img src="assets/codigoqrresenas.png" alt="QR Reseñas Bar El Gorrión" class="qr-code" width="150" height="150" loading="lazy">
-                    <p style="color: var(--gold-solid); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 1rem;">¡Escanea y Danos tu Opinión!</p>
-                </div>
-
-                <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank" class="btn"
-                    style="padding: 1rem 2.5rem;">Ver Reseñas</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nuestra Historia Section -->
-    <section id="historia" class="section reveal" style="background-color: var(--secondary-bg); text-align: center;">
-        <div class="container">
-            <h2>Nuestra Historia</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
-                Con la ilusión de mantener vivas las raíces de Torrubia del Campo, nace <strong>Bar El Gorrión</strong>.
-                Un proyecto que busca ofrecer a nuestros vecinos y visitantes un rincón de encuentro donde la calidad,
-                los buenos momentos y la gastronomía de siempre se dan la mano. Cada detalle está pensado para hacerte
-                sentir especial.
-            </p>
-        </div>
-    </section>
-
-    <!-- Gallery Strip (Infinite Marquee) -->
-    <section class="section gallery-strip"
-        style="padding: 0; background: #0d1016; overflow: hidden; white-space: nowrap; position: relative;">
-        <!-- Gradient overlays for smooth fade edges -->
+    <!-- Galería de platos -->
+    <section class="gallery-strip" aria-label="Algunos de nuestros platos">
         <div class="gallery-overlay-left"></div>
         <div class="gallery-overlay-right"></div>
 
-        <!-- Navigation Arrows (Desktop Only) -->
         <button id="gallery-prev" class="gallery-nav-btn prev" aria-label="Anterior plato">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -161,54 +108,79 @@
         </div>
     </section>
 
-    <!-- Experience Section (Replaces Menu) -->
-    <section class="section experience-section reveal" style="background-color: var(--primary-bg);">
-        <div class="container">
+    <!-- Nuestra Historia -->
+    <section id="historia" class="section historia">
+        <div class="container historia-layout reveal">
+            <h2>Nuestra Historia</h2>
+            <p>
+                Con la ilusión de mantener vivas las raíces de Torrubia del Campo, nace <strong>Bar El Gorrión</strong>.
+                Un proyecto que busca ofrecer a nuestros vecinos y visitantes un rincón de encuentro donde la calidad,
+                los buenos momentos y la gastronomía de siempre se dan la mano. Cada detalle está pensado para hacerte
+                sentir especial.
+            </p>
+        </div>
+    </section>
+
+    <!-- La experiencia -->
+    <section class="section experience-section">
+        <div class="container reveal">
             <h2>La Experiencia Gorrión</h2>
-            <div class="menu-grid">
-                <div class="menu-item" style="text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🍷</div>
-                    <h3>Bodega de Autor</h3>
-                    <p style="color: var(--text-muted);">Una cuidada selección de vinos D.O. mancha y riojas que maridan
-                        a la perfección con nuestra gastronomía.</p>
+            <dl class="experience-list">
+                <div>
+                    <dt>Bodega de Autor</dt>
+                    <dd>Una cuidada selección de vinos D.O. mancha y riojas que maridan a la perfección con nuestra
+                        gastronomía.</dd>
                 </div>
-                <div class="menu-item" style="text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🌿</div>
-                    <h3>Producto Km 0</h3>
-                    <p style="color: var(--text-muted);">Priorizamos la materia prima local y de temporada. Del mercado
-                        de Torrubia a tu mesa.</p>
+                <div>
+                    <dt>Producto Km 0</dt>
+                    <dd>Priorizamos la materia prima local y de temporada. Del mercado de Torrubia a tu mesa.</dd>
                 </div>
-                <div class="menu-item" style="text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
-                    <h3>Ambiente Íntimo</h3>
-                    <p style="color: var(--text-muted);">El lugar perfecto para eventos privados. Música suave, luz
-                        cálida y la mejor compañía.</p>
+                <div>
+                    <dt>Ambiente Íntimo</dt>
+                    <dd>El lugar perfecto para eventos privados. Música suave, luz cálida y la mejor compañía.</dd>
                 </div>
-                <!-- 4th Item for Symmetry -->
-                <div class="menu-item" style="text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
-                    <h3>Trato Familiar</h3>
-                    <p style="color: var(--text-muted);">Nos importa tu bienestar. Un servicio cercano y profesional que
-                        te hace sentir como en casa.</p>
+                <div>
+                    <dt>Trato Familiar</dt>
+                    <dd>Nos importa tu bienestar. Un servicio cercano y profesional que te hace sentir como en casa.</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- Opiniones en Google -->
+    <section class="google-reviews">
+        <div class="container">
+            <div class="reviews-layout reveal">
+                <div class="rating-number" aria-label="Valoración 5 sobre 5">5.0</div>
+                <div class="reviews-text">
+                    <h3>Opiniones Reales</h3>
+                    <div class="stars" aria-hidden="true">★★★★★</div>
+                    <p>Excelencia confirmada en <i class="fa-brands fa-google" aria-hidden="true"></i> Google</p>
+                    <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank" rel="noopener noreferrer" class="link-arrow">Ver reseñas <span aria-hidden="true">→</span></a>
+                </div>
+                <div class="qr-container">
+                    <img src="assets/codigoqrresenas.png" alt="Código QR para dejar una reseña en Google" class="qr-code" width="112" height="112" loading="lazy">
+                    <p>¡Escanea y danos tu opinión!</p>
                 </div>
             </div>
         </div>
     </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-brand" style="margin-bottom: 2rem;">
-                <div class="brand-divider-footer"><img src="assets/logo_rock.webp" alt="El Gorrión Hand" width="50" height="50" loading="lazy"></div>
-                <h3>El Gorrión</h3>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="assets/logo_rock.webp" alt="" width="42" height="42" loading="lazy">
+                <div>
+                    <p class="footer-name">El Gorrión</p>
+                    <p>Torrubia del Campo · Cuenca</p>
+                </div>
             </div>
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
-                del Campo · Cuenca</p>
 
-            <div class="payment-methods" style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--gold-solid);">
-                    Formas de Pago: Efectivo y Tarjeta (Contactless)</p>
-                <div style="font-size: 1.8rem; display: flex; justify-content: center; gap: 1rem; opacity: 0.8;">
+            <div>
+                <p class="footer-label">Formas de pago</p>
+                <p>Efectivo y tarjeta (contactless)</p>
+                <div class="footer-pay">
                     <i class="fa-solid fa-coins" title="Efectivo"></i>
                     <i class="fa-solid fa-money-bill-wave" title="Efectivo"></i>
                     <i class="fa-brands fa-cc-visa" title="Visa"></i>
@@ -218,35 +190,27 @@
                 </div>
             </div>
 
-            <div class="social-links" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
-                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
-                <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank"
-                    class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            <div>
+                <p class="footer-label">Síguenos</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+                </div>
             </div>
+        </div>
 
+        <div class="footer-bottom">
             <p>&copy; 2026. Reservados todos los derechos.</p>
-            <div class="legal-links"
-                style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                <a href="legal/aviso-legal.html"
-                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
-                    onmouseover="this.style.color='var(--gold-solid)'"
-                    onmouseout="this.style.color='var(--text-muted)'">Aviso Legal</a>
-                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
-                <a href="legal/privacidad.html"
-                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
-                    onmouseover="this.style.color='var(--gold-solid)'"
-                    onmouseout="this.style.color='var(--text-muted)'">Política de Privacidad</a>
-                <span style="color: var(--gold-solid); opacity: 0.5;">|</span>
-                <a href="legal/cookies.html"
-                    style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.3s;"
-                    onmouseover="this.style.color='var(--gold-solid)'"
-                    onmouseout="this.style.color='var(--text-muted)'">Política de Cookies</a>
-            </div>
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem; letter-spacing: 1px;">Diseñado por Hugo Urbanos
-            </p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="legal/aviso-legal.html">Aviso Legal</a>
+                <a href="legal/privacidad.html">Política de Privacidad</a>
+                <a href="legal/cookies.html">Política de Cookies</a>
+            </nav>
+            <p class="footer-credit">Diseñado por Hugo Urbanos</p>
         </div>
     </footer>
 
@@ -258,9 +222,9 @@
     </a>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox-modal" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-modal" class="lightbox" role="dialog" aria-modal="true" aria-label="Foto del plato">
+        <span class="lightbox-close" aria-label="Cerrar">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="">
     </div>
 
     <!-- Cookie Banner -->
@@ -269,14 +233,13 @@
             <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia de usuario. <a
                     href="legal/cookies.html">Más información sobre cookies</a>.</p>
             <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-sm" style="padding: 0.5rem 1rem;">Aceptar</button>
-                <button id="reject-cookies" class="btn btn-sm"
-                    style="padding: 0.5rem 1rem; background: transparent; border-color: var(--text-muted); color: var(--text-muted);">Rechazar</button>
+                <button id="accept-cookies" class="btn btn-sm">Aceptar</button>
+                <button id="reject-cookies" class="btn btn-sm btn-ghost">Rechazar</button>
             </div>
         </div>
     </div>
 
-    <script src="script.js?v=3.5"></script>
+    <script src="script.js?v=4.0"></script>
 </body>
 
 </html>

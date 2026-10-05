@@ -7,27 +7,9 @@
     <title>Menu | Bar El Gorrión</title>
     <link rel="icon" type="image/png" href="../assets/favicon-64.png">
     <link rel="preload" href="../assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../styles.css?v=3.8">
+    <link rel="stylesheet" href="../styles.css?v=4.0">
     <link rel="stylesheet" href="../icons.css?v=1" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="../icons.css?v=1"></noscript>
-    <style>
-        /* Specific adjustments for the menu page */
-        body {
-            background-image: none;
-            background-color: var(--primary-bg);
-        }
-
-        .page-header {
-            padding-top: 120px;
-            padding-bottom: 4rem;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(162, 126, 56, 0.1) 0%, transparent 70%);
-        }
-
-        .category-group {
-            margin-bottom: 6rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -48,7 +30,7 @@
                     <span class="mobile-logo">EL GORRIÓN</span>
                 </li>
                 <li><a href="../index.html#inicio">INICIO</a></li>
-                <li><a href="#">NUESTRA CARTA</a></li>
+                <li><a href="#" aria-current="page">NUESTRA CARTA</a></li>
                 <li><a href="../donde/index.html">DÓNDE ESTAMOS</a></li>
                 <li><a href="../social/index.html">REDES</a></li>
                 <li><a href="../horario/index.html">HORARIO</a></li>
@@ -58,15 +40,16 @@
         </div>
     </nav>
 
-    <div class="page-header">
+    <header class="page-header">
         <h1>Nuestra Carta</h1>
-        <p style="color: var(--gold-solid); text-transform: uppercase; letter-spacing: 3px;">Sabores Auténticos</p>
-    </div>
+        <p class="page-lede">Sabores auténticos</p>
+    </header>
+    <div class="page-rule"></div>
 
-    <section class="section menu-section" style="padding-top: 2rem;">
+    <section class="section menu-section">
         <div class="container">
             <div id="menu-root">
-                <p style="text-align:center; color: var(--gold-solid); padding: 3rem;">Cargando carta...</p>
+                <p class="menu-status">Cargando carta...</p>
             </div>
         </div>
     </section>
@@ -79,49 +62,36 @@
 
         function renderMenu(data) {
             let html = `
-                <div class="chef-special-note" style="background:rgba(197,160,89,0.1);border:1px solid rgba(197,160,89,0.3);border-radius:8px;padding:1.5rem;text-align:center;margin-bottom:3rem;">
-                    <h3 style="color:var(--gold-solid);font-family:var(--font-heading);font-size:1.3rem;margin-bottom:0.5rem;display:flex;align-items:center;justify-content:center;gap:10px;">
-                        <i class="fa-solid fa-fire-burner"></i> Fuera de Carta
-                    </h3>
-                    <p style="color:var(--text-main);font-size:1.05rem;margin:0;line-height:1.6;">
-                        Todas las semanas nuestro chef prepara especialidades nuevas.<br>
-                        <strong style="color:var(--gold-solid);">¡Pregúntanos por las sugerencias de la semana!</strong>
-                    </p>
-                </div>`;
+                <aside class="chef-special-note">
+                    <h3><i class="fa-solid fa-fire-burner" aria-hidden="true"></i> Fuera de Carta</h3>
+                    <p>Todas las semanas nuestro chef prepara especialidades nuevas.
+                        <strong>¡Pregúntanos por las sugerencias de la semana!</strong></p>
+                </aside>`;
 
             data.groups.forEach(group => {
-                html += `<div class="category-group"><h2>${esc(group.name)}</h2><div class="premium-menu">`;
+                html += `<section class="category-group"><h2>${esc(group.name)}</h2><div class="premium-menu">`;
 
                 group.categories.forEach(cat => {
-                    html += `<div class="menu-category">`;
-                    html += `<h3${cat.id === 'arroces' ? ' style="margin-bottom:0.5rem;"' : ''}>${esc(cat.name)}</h3>`;
-
-                    if (cat.note) {
-                        html += `<div style="text-align:center;color:var(--gold-solid);font-size:0.85rem;margin-bottom:1.5rem;font-style:italic;">${esc(cat.note)}</div>`;
-                    }
-
-                    html += `<div class="menu-items">`;
+                    html += `<div class="menu-category"><h3>${esc(cat.name)}</h3>`;
+                    if (cat.note) html += `<p class="menu-note">${esc(cat.note)}</p>`;
 
                     cat.items.forEach(item => {
                         if (item.type === 'header') {
-                            html += `<li style="border-bottom:none;font-weight:700;margin-top:1rem;">${esc(item.name)}</li>`;
+                            html += `<p class="menu-subhead">${esc(item.name)}</p>`;
                         } else {
                             html += `<div class="menu-entry">
                                 <span class="menu-entry-name">${esc(item.name)}</span>
-                                <div class="menu-entry-dots"></div>
+                                <span class="menu-entry-dots" aria-hidden="true"></span>
                                 <span class="menu-entry-price">${esc(item.price)}</span>
                             </div>`;
                         }
                     });
 
-                    if (cat.footerNote) {
-                        html += `<div style="font-size:0.85rem;color:var(--gold-solid);margin-top:1rem;text-align:center;">${esc(cat.footerNote)}</div>`;
-                    }
-
-                    html += `</div></div>`;
+                    if (cat.footerNote) html += `<p class="menu-footnote">${esc(cat.footerNote)}</p>`;
+                    html += `</div>`;
                 });
 
-                html += `</div></div>`;
+                html += `</div></section>`;
             });
 
             document.getElementById('menu-root').innerHTML = html;
@@ -132,24 +102,25 @@
             .then(renderMenu)
             .catch(() => {
                 document.getElementById('menu-root').innerHTML =
-                    '<p style="text-align:center;color:var(--gold-solid);padding:3rem;">Error cargando la carta. Por favor, recarga la página.</p>';
+                    '<p class="menu-status">Error cargando la carta. Por favor, recarga la página.</p>';
             });
     })();
     </script>
 
-    <footer>
-        <div class="container">
-            <div class="footer-brand" style="margin-bottom: 2rem;">
-                <div class="brand-divider-footer"><img src="../assets/logo_rock.webp" alt="El Gorrión Hand" width="50" height="50" loading="lazy"></div>
-                <h3>El Gorrión</h3>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="../assets/logo_rock.webp" alt="" width="42" height="42" loading="lazy">
+                <div>
+                    <p class="footer-name">El Gorrión</p>
+                    <p>Torrubia del Campo · Cuenca</p>
+                </div>
             </div>
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
-                del Campo · Cuenca</p>
 
-            <div class="payment-methods" style="margin-bottom: 1.5rem;">
-                <p style="font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--gold-solid);">
-                    Formas de Pago: Efectivo y Tarjeta (Contactless)</p>
-                <div style="font-size: 1.8rem; display: flex; justify-content: center; gap: 1rem; opacity: 0.8;">
+            <div>
+                <p class="footer-label">Formas de pago</p>
+                <p>Efectivo y tarjeta (contactless)</p>
+                <div class="footer-pay">
                     <i class="fa-solid fa-coins" title="Efectivo"></i>
                     <i class="fa-solid fa-money-bill-wave" title="Efectivo"></i>
                     <i class="fa-brands fa-cc-visa" title="Visa"></i>
@@ -159,21 +130,31 @@
                 </div>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
-                    class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
-                <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank"
-                    class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            <div>
+                <p class="footer-label">Síguenos</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                    <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+                </div>
             </div>
+        </div>
+
+        <div class="footer-bottom">
             <p>&copy; 2026. Reservados todos los derechos.</p>
-            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
-            </p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="../legal/aviso-legal.html">Aviso Legal</a>
+                <a href="../legal/privacidad.html">Política de Privacidad</a>
+                <a href="../legal/cookies.html">Política de Cookies</a>
+            </nav>
+            <p class="footer-credit">Diseñado por Hugo Urbanos</p>
         </div>
     </footer>
 
-    <script src="../script.js?v=3.5"></script>
+    <script src="../script.js?v=4.0"></script>
 </body>
 
 </html>
