@@ -1601,6 +1601,15 @@ p {
     opacity: 1;
 }
 
+/* ── Degustación de tortillas OCULTA temporalmente ─────────────
+   Quita este bloque para volver a mostrar la pestaña del menú,
+   el punto del menú móvil y la franja de la portada. */
+.nav-links li:has(.nav-tortilla-badge),
+.tortilla-band,
+.hamburger::after {
+    display: none;
+}
+
 /* ── Páginas legales ────────────────────────────────────────── */
 .nav-links.nav-links-legal {
     display: flex;
