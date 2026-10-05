@@ -271,23 +271,51 @@ let menuData = null;
 let sessionPwd = null;
 
 // ─── Login ───────────────────────────────────────────────────────────────────
-(function init() {
+(async function init() {
   const saved = sessionStorage.getItem('adm_ok');
-  if (saved) { sessionPwd = saved; showApp(); }
+  if (!saved) return;
+  // Una sesión guardada solo vale si la contraseña sigue siendo la correcta
+  const { ok } = await checkPassword(saved);
+  if (ok) { sessionPwd = saved; showApp(); }
+  else sessionStorage.removeItem('adm_ok');
 })();
 
 document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 
+async function checkPassword(password) {
+  try {
+    const res = await fetch('/api/admin-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, error: data.error || 'No se pudo comprobar la contraseña' };
+  } catch {
+    return { ok: false, error: 'Sin conexión con el servidor' };
+  }
+}
+
 async function doLogin() {
-  const pwd = document.getElementById('pwd').value;
+  const input = document.getElementById('pwd');
+  const btn = document.querySelector('.login-box .btn-primary');
   const msg = document.getElementById('login-msg');
+  const pwd = input.value;
   if (!pwd) return;
 
   msg.className = 'msg'; msg.textContent = 'Comprobando...';
+  btn.disabled = true;
 
-  // Validate password by attempting a save with dummy data check —
-  // actually just try a GET first, then the password is validated on POST
-  // Simple approach: store and validate on first save; for now just store
+  const { ok, error } = await checkPassword(pwd);
+  btn.disabled = false;
+
+  if (!ok) {
+    msg.className = 'msg err';
+    msg.textContent = error;
+    input.select();
+    return;
+  }
+
   sessionPwd = pwd;
   sessionStorage.setItem('adm_ok', pwd);
   msg.textContent = '';
