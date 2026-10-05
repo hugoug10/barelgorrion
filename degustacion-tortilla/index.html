@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degustación de Tortillas | Bar El Gorrión</title>
+    <meta name="description" content="Domingo 11 de octubre, en las cenas: degustación de tortillas de patata en Bar El Gorrión. Prueba, vota tu favorita y la ganadora se queda en la carta.">
+    <link rel="icon" type="image/png" href="../assets/favicon-64.png">
+    <link rel="preload" href="../assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=3.7">
+    <link rel="stylesheet" href="../icons.css?v=1" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../icons.css?v=1"></noscript>
+    <style>
+        body {
+            background-image: none;
+            background-color: var(--primary-bg);
+        }
+
+        .page-header {
+            padding-top: 150px;
+            padding-bottom: 3rem;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(245, 192, 74, 0.14) 0%, transparent 70%);
+        }
+
+        .tortilla-tag {
+            display: inline-block;
+            padding: 0.5rem 1.4rem;
+            border: 1px solid var(--tortilla-accent);
+            color: var(--tortilla-accent);
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .tortilla-intro {
+            max-width: 620px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .tortilla-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+
+        .tortilla-info-item {
+            background: rgba(245, 192, 74, 0.08);
+            border: 1px solid rgba(245, 192, 74, 0.35);
+            border-radius: 30px;
+            padding: 0.7rem 1.3rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .tortilla-info-item strong {
+            color: var(--tortilla-accent);
+        }
+
+        .tortilla-pasos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+            list-style: none;
+            counter-reset: paso;
+        }
+
+        .tortilla-pasos li {
+            counter-increment: paso;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(245, 192, 74, 0.25);
+            border-radius: 12px;
+            background: var(--secondary-bg);
+        }
+
+        .tortilla-pasos li::before {
+            content: counter(paso);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background: var(--tortilla-accent);
+            color: #1a1205;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .tortilla-pasos h3 {
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+
+        .tortilla-pasos p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .tortilla-reserva {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .tortilla-reserva p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding-top: 110px;
+                padding-bottom: 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .tortilla-intro {
+                font-size: 0.95rem;
+                padding: 0 0.5rem;
+            }
+
+            .tortilla-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.7rem;
+            }
+
+            .tortilla-pasos {
+                grid-template-columns: 1fr;
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">El Gorrión</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links">
+                <li class="mobile-only-header">
+                    <span class="mobile-logo">EL GORRIÓN</span>
+                </li>
+                <li><a href="../index.html#inicio">INICIO</a></li>
+                <li><a href="../menu/index.html">NUESTRA CARTA</a></li>
+                <li><a href="../donde/index.html">DÓNDE ESTAMOS</a></li>
+                <li><a href="../social/index.html">REDES</a></li>
+                <li><a href="../horario/index.html">HORARIO</a></li>
+                <li><a href="../sugerencias/index.html">SUGERENCIAS</a></li>
+                <li><a href="#" class="nav-tortilla-badge" aria-current="page"><span class="nuevo-pill">NUEVO</span>TORTILLAS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="page-header">
+            <span class="tortilla-tag">Novedad · Evento especial</span>
+            <h1>Degustación de Tortillas</h1>
+            <p class="tortilla-intro">Varias tortillas de patata, un solo hueco en la carta. Ven a cenar, pruébalas
+                todas y vota tu favorita: <strong style="color: var(--tortilla-accent);">la ganadora se queda en
+                    nuestra carta</strong>.</p>
+            <div class="tortilla-info">
+                <div class="tortilla-info-item"><strong>Domingo 11 de octubre</strong></div>
+                <div class="tortilla-info-item">Solo en <strong>cenas</strong></div>
+            </div>
+        </div>
+
+        <section class="section" style="padding-top: 1rem;">
+            <div class="container">
+                <h2 style="text-align: center;">Cómo Funciona</h2>
+                <ol class="tortilla-pasos">
+                    <li>
+                        <h3>Ven a cenar</h3>
+                        <p>El domingo 11 de octubre por la noche servimos la degustación de tortillas de patata.</p>
+                    </li>
+                    <li>
+                        <h3>Pruébalas</h3>
+                        <p>Con cebolla, sin cebolla, jugosa, cuajada... Cata cada una y decide cuál te convence.</p>
+                    </li>
+                    <li>
+                        <h3>Vota</h3>
+                        <p>Elige tu tortilla favorita. La más votada entrará a formar parte de nuestra carta.</p>
+                    </li>
+                </ol>
+
+                <div class="tortilla-reserva">
+                    <p>Las plazas en cenas vuelan. Consulta el horario o escríbenos para reservar.</p>
+                    <a href="../horario/index.html" class="btn">Ver Horario</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand" style="margin-bottom: 2rem;">
+                <div class="brand-divider-footer"><img src="../assets/logo_rock.webp" alt="El Gorrión Hand" width="50" height="50" loading="lazy"></div>
+                <h3>El Gorrión</h3>
+            </div>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 1rem;">Torrubia
+                del Campo · Cuenca</p>
+
+            <div class="payment-methods" style="margin-bottom: 1.5rem;">
+                <p style="font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 0.8rem; color: var(--gold-solid);">
+                    Formas de Pago: Efectivo y Tarjeta (Contactless)</p>
+                <div style="font-size: 1.8rem; display: flex; justify-content: center; gap: 1rem; opacity: 0.8;">
+                    <i class="fa-solid fa-coins" title="Efectivo"></i>
+                    <i class="fa-solid fa-money-bill-wave" title="Efectivo"></i>
+                    <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fa-brands fa-apple-pay" title="Apple Pay"></i>
+                    <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.instagram.com/bar_el_gorrion_?igsh=cTJxeXIxaHU2Znlv" target="_blank" rel="noopener noreferrer"
+                    class="social-icon" aria-label="Instagram de Bar El Gorrión"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@bar.el.gorrion?_r=1&_t=ZN-93aXwC0UJk3" target="_blank" rel="noopener noreferrer"
+                    class="social-icon" aria-label="TikTok de Bar El Gorrión"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                <a href="https://g.page/r/CXtf8W8eNVvHEBM/review" target="_blank"
+                    class="social-icon" title="Danos tu reseña en Google" aria-label="Danos tu reseña en Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            </div>
+            <p>&copy; 2026. Reservados todos los derechos.</p>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px; letter-spacing: 1px;">Diseñado por Hugo Urbanos
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js?v=3.5"></script>
+</body>
+
+</html>
