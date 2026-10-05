@@ -1,12 +1,17 @@
 import { TORTILLAS, VOTE_PREFIX } from './tortillas.js';
 
+const RESET_KEY = 'tvoto_reset_at';
+
 // POST: recuento de votos. DELETE: borra todos los votos (para empezar de cero).
 export async function onRequestPost(context) {
   const { env } = context;
   const fallo = await checkAuth(context);
   if (fallo) return fallo;
 
-  const votos = await listarVotos(env);
+  // El listado de KV puede tardar en reflejar un borrado, así que además se
+  // descartan los votos anteriores al último "Borrar todos los votos".
+  const resetAt = parseInt(await env.MENU_KV.get(RESET_KEY) || '0', 10);
+  const votos = (await listarVotos(env)).filter(v => !resetAt || (v.at && v.at > resetAt));
   const recuento = Object.fromEntries(TORTILLAS.map(t => [t.id, 0]));
   let ultimo = null;
 
@@ -27,6 +32,7 @@ export async function onRequestDelete(context) {
   const fallo = await checkAuth(context);
   if (fallo) return fallo;
 
+  await env.MENU_KV.put(RESET_KEY, String(Date.now()));
   const votos = await listarVotos(env);
   for (let i = 0; i < votos.length; i += 50) {
     await Promise.all(votos.slice(i, i + 50).map(v => env.MENU_KV.delete(v.key)));
