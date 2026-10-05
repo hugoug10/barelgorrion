@@ -161,7 +161,55 @@
 
       header { flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
       header h1 { width: 100%; text-align: center; }
+      .tab-btn { font-size: 0.75rem; padding: 0.35rem 0.7rem; }
+
+      .voto-cabecera { flex-wrap: wrap; }
     }
+
+    /* ── Tabs ── */
+    .tabs { display: flex; gap: 0.5rem; }
+    .tab-btn {
+      background: none; border: 1px solid rgba(197,160,89,0.35); color: var(--text-muted);
+      border-radius: var(--radius); padding: 0.4rem 0.9rem; font-size: 0.8rem; cursor: pointer;
+      letter-spacing: 1px;
+    }
+    .tab-btn.active { background: var(--gold); color: #1a202c; border-color: var(--gold); font-weight: 700; }
+
+    /* ── Votos tortillas ── */
+    #votos-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    #votos-toolbar h2 { font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; }
+    .votos-acciones { display: flex; gap: 0.5rem; }
+    .btn-refresh:hover { border-color: var(--gold); color: var(--gold); }
+
+    .votos-resumen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 1.5rem; }
+    .resumen-card {
+      background: var(--surface); border: 1px solid rgba(197,160,89,0.2); border-radius: var(--radius);
+      padding: 1rem; text-align: center;
+    }
+    .resumen-card .num { font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1.1; }
+    .resumen-card .lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
+    .resumen-card .num.small { font-size: 1.1rem; padding: 0.45rem 0; }
+
+    .voto-fila {
+      background: var(--surface); border: 1px solid rgba(197,160,89,0.2); border-radius: var(--radius);
+      padding: 1rem 1.1rem; margin-bottom: 0.8rem;
+    }
+    .voto-fila.lider { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold) inset; }
+    .voto-cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .voto-nombre { font-size: 1rem; font-weight: 600; }
+    .voto-badge {
+      display: inline-block; margin-left: 0.5rem; padding: 0.1rem 0.5rem; border-radius: 20px;
+      background: var(--gold); color: #1a202c; font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; vertical-align: 2px;
+    }
+    .voto-cifra { font-size: 0.95rem; color: var(--text-muted); white-space: nowrap; }
+    .voto-cifra strong { color: var(--text); font-size: 1.25rem; margin-right: 0.3rem; }
+    .voto-barra { height: 12px; background: var(--bg); border-radius: 6px; overflow: hidden; }
+    .voto-relleno { height: 100%; background: rgba(197,160,89,0.55); border-radius: 6px; transition: width 0.5s ease; }
+    .voto-fila.lider .voto-relleno { background: var(--gold); }
+
+    .votos-nota { font-size: 0.8rem; color: var(--text-muted); margin-top: 1.2rem; line-height: 1.5; }
+    .votos-peligro { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .votos-vacio { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
 
   </style>
 </head>
@@ -183,6 +231,10 @@
 <div id="app">
   <header>
     <h1>EL GORRIÓN · ADMIN</h1>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-menu" onclick="switchView('menu')">Carta</button>
+      <button class="tab-btn" id="tab-votos" onclick="switchView('votos')">Votos tortillas</button>
+    </div>
     <button class="btn-sm" onclick="doLogout()">Cerrar sesión</button>
   </header>
 
@@ -190,6 +242,21 @@
     <div id="view-menu">
       <div id="loading" style="text-align:center;padding:3rem;color:var(--text-muted);">Cargando carta...</div>
       <div id="menu-editor" style="display:none;"></div>
+    </div>
+
+    <div id="view-votos" style="display:none;">
+      <div id="votos-toolbar">
+        <h2>Degustación de tortillas</h2>
+        <div class="votos-acciones">
+          <button class="btn-sm btn-refresh" onclick="loadVotos()">↻ Actualizar</button>
+        </div>
+      </div>
+      <div id="votos-list"><p class="votos-vacio">Cargando votos...</p></div>
+      <p class="votos-nota">Se actualiza solo cada 30 segundos mientras tengas esta pestaña abierta.
+        Un voto recién emitido puede tardar hasta un minuto en aparecer.</p>
+      <div class="votos-peligro">
+        <button class="btn-sm" onclick="resetVotos()">Borrar todos los votos</button>
+      </div>
     </div>
   </main>
 
@@ -456,6 +523,96 @@ async function saveMenu() {
   }
 
   btn.disabled = false;
+}
+
+// ─── Votos tortillas ──────────────────────────────────────────────────────────
+let votosTimer = null;
+
+function switchView(view) {
+  const isMenu = view === 'menu';
+  document.getElementById('tab-menu').classList.toggle('active', isMenu);
+  document.getElementById('tab-votos').classList.toggle('active', !isMenu);
+  document.getElementById('view-menu').style.display = isMenu ? 'block' : 'none';
+  document.getElementById('view-votos').style.display = isMenu ? 'none' : 'block';
+  document.getElementById('save-bar').style.display = isMenu ? 'flex' : 'none';
+
+  clearInterval(votosTimer);
+  if (!isMenu) {
+    loadVotos();
+    votosTimer = setInterval(() => { if (!document.hidden) loadVotos(true); }, 30000);
+  }
+}
+
+async function loadVotos(silent) {
+  const list = document.getElementById('votos-list');
+  if (!silent) list.innerHTML = '<p class="votos-vacio">Cargando votos...</p>';
+  try {
+    const res = await fetch('/api/tortillas-admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: sessionPwd }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Error desconocido');
+    renderVotos(data);
+  } catch (e) {
+    list.innerHTML = `<p class="votos-vacio" style="color:var(--danger)">Error: ${esc(e.message)}</p>`;
+  }
+}
+
+function renderVotos({ total, ultimoVoto, tortillas }) {
+  const list = document.getElementById('votos-list');
+  const max = Math.max(0, ...tortillas.map(t => t.votos));
+  const lideres = tortillas.filter(t => t.votos === max && max > 0);
+  const ordenadas = tortillas.slice().sort((a, b) => b.votos - a.votos);
+
+  const corto = lideres.length === 1 ? lideres[0].nombre.replace(/^Tortilla de /, '') : '';
+  const liderTxt = !total ? '—' : lideres.length > 1 ? 'Empate' : corto.charAt(0).toUpperCase() + corto.slice(1);
+
+  const filas = ordenadas.map(t => {
+    const pct = total ? Math.round(t.votos * 100 / total) : 0;
+    const esLider = lideres.length === 1 && lideres[0].id === t.id;
+    return `
+      <div class="voto-fila${esLider ? ' lider' : ''}">
+        <div class="voto-cabecera">
+          <span class="voto-nombre">${esc(t.nombre)}${esLider ? '<span class="voto-badge">VA GANANDO</span>' : ''}</span>
+          <span class="voto-cifra"><strong>${t.votos}</strong>${t.votos === 1 ? 'voto' : 'votos'} · ${pct}%</span>
+        </div>
+        <div class="voto-barra"><div class="voto-relleno" style="width:${pct}%"></div></div>
+      </div>`;
+  }).join('');
+
+  list.innerHTML = `
+    <div class="votos-resumen">
+      <div class="resumen-card"><div class="num">${total}</div><div class="lbl">Votos totales</div></div>
+      <div class="resumen-card"><div class="num small">${esc(liderTxt)}</div><div class="lbl">En cabeza</div></div>
+      <div class="resumen-card"><div class="num small">${ultimoVoto ? esc(formatHora(ultimoVoto)) : '—'}</div><div class="lbl">Último voto</div></div>
+    </div>
+    ${filas}`;
+}
+
+function formatHora(iso) {
+  try {
+    return new Date(iso).toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  } catch { return iso; }
+}
+
+async function resetVotos() {
+  if (!confirm('¿Borrar TODOS los votos de las tortillas? No se puede deshacer.')) return;
+  if (!confirm('¿Seguro? Úsalo solo para limpiar las pruebas antes del evento.')) return;
+  try {
+    const res = await fetch('/api/tortillas-admin', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: sessionPwd }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Error desconocido');
+    alert(`Votos borrados: ${data.borrados}`);
+    loadVotos();
+  } catch (e) {
+    alert('Error al borrar: ' + e.message);
+  }
 }
 
 // ─── Util ─────────────────────────────────────────────────────────────────────
