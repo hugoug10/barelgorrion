@@ -1418,6 +1418,16 @@ p {
     margin-left: auto;
 }
 
+.footer-credit a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.footer-credit a:hover {
+    color: var(--gold-solid);
+}
+
 @media (max-width: 860px) {
     .footer-inner {
         grid-template-columns: 1fr 1fr;
