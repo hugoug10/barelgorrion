@@ -1,0 +1,121 @@
+/* Páginas legales (privacidad, condiciones del club, borrar cuenta) */
+.legal-content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(7.5rem, 12vw, 9.5rem) var(--gutter) 5rem;
+}
+
+.legal-content h1 {
+    font-size: clamp(2.2rem, 3vw + 1rem, 3.2rem);
+    margin-bottom: 0.6rem;
+}
+
+.legal-updated {
+    font-size: 0.9rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem !important;
+    border-bottom: 1px solid var(--rule);
+}
+
+.legal-content h2 {
+    font-size: 1.35rem;
+    margin: 2.4rem 0 0.8rem;
+    color: var(--text-main);
+}
+
+.legal-content h3 {
+    font-size: 1.05rem;
+    margin: 1.6rem 0 0.6rem;
+    color: var(--gold-solid);
+    letter-spacing: 0.04em;
+}
+
+.legal-content p,
+.legal-content li,
+.legal-content td,
+.legal-content th {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.legal-content p,
+.legal-content li {
+    margin-bottom: 1rem;
+}
+
+.legal-content ul,
+.legal-content ol {
+    padding-left: 1.3rem;
+}
+
+.legal-content strong {
+    color: var(--text-main);
+}
+
+.legal-content a {
+    color: var(--gold-solid);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+
+.legal-facts {
+    list-style: none;
+    padding: 0 !important;
+}
+
+.legal-facts li {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 0.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.legal-facts span {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .legal-facts li {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-bottom: 0.8rem;
+    }
+}
+
+.legal-table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+}
+
+.legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.legal-table th,
+.legal-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid var(--rule-soft);
+}
+
+.legal-table th {
+    color: var(--text-main);
+    border-bottom-color: var(--rule);
+}
+
+.legal-box {
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.5rem 0;
+}
+
+.legal-box p:last-child,
+.legal-box ol:last-child li:last-child {
+    margin-bottom: 0;
+}
