@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Club El Gorrión | Bar El Gorrión</title>
+    <meta name="description" content="La app de puntos del Bar El Gorrión: suma puntos en cada consumición y cámbialos por cafés, cañas y raciones. Ayuda y contacto.">
+    <link rel="icon" type="image/png" href="../assets/favicon-64.png">
+    <link rel="preload" href="../assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=4.1">
+    <link rel="stylesheet" href="../icons.css?v=1" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../icons.css?v=1"></noscript>
+    <style>
+        .app-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 var(--gutter) 5rem;
+        }
+
+        .app-wrap h2 {
+            font-size: 1.35rem;
+            margin: 3rem 0 1rem;
+            color: var(--text-main);
+        }
+
+        .app-wrap p,
+        .app-wrap li {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .app-wrap a:not(.btn) {
+            color: var(--gold-solid);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .app-steps {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+            counter-reset: paso;
+        }
+
+        .app-steps li {
+            counter-increment: paso;
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 1rem 1.2rem 1rem 3.6rem;
+            position: relative;
+        }
+
+        .app-steps li::before {
+            content: counter(paso);
+            position: absolute;
+            left: 1.1rem;
+            top: 1rem;
+            width: 1.7rem;
+            height: 1.7rem;
+            border-radius: 50%;
+            background: var(--gold-solid);
+            color: #11151c;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+            line-height: 1;
+        }
+
+        .app-steps strong {
+            color: var(--text-main);
+        }
+
+        .app-soon {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            border: 1px dashed var(--rule);
+            border-radius: 12px;
+        }
+
+        .app-faq details {
+            border-bottom: 1px solid var(--rule-soft);
+            padding: 0.9rem 0;
+        }
+
+        .app-faq summary {
+            cursor: pointer;
+            color: var(--text-main);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .app-faq details p {
+            margin: 0.7rem 0 0.2rem;
+        }
+
+        .app-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">El Gorrión</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <ul class="nav-links">
+                <li class="mobile-only-header">
+                    <span class="mobile-logo">EL GORRIÓN</span>
+                </li>
+                <li><a href="../index.html#inicio">INICIO</a></li>
+                <li><a href="../menu/index.html">NUESTRA CARTA</a></li>
+                <li><a href="../donde/index.html">DÓNDE ESTAMOS</a></li>
+                <li><a href="../social/index.html">REDES</a></li>
+                <li><a href="../horario/index.html">HORARIO</a></li>
+                <li><a href="../sugerencias/index.html">SUGERENCIAS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Club El Gorrión</h1>
+        <p class="page-lede">La app de puntos del bar: suma en cada consumición y cámbialos por cafés, cañas y
+            raciones.</p>
+    </header>
+    <div class="page-rule"></div>
+
+    <main class="app-wrap">
+        <h2>Cómo funciona</h2>
+        <ol class="app-steps">
+            <li><strong>Crea tu tarjeta</strong> en la app con tu nombre y tu email. Te regalamos 50 puntos.</li>
+            <li><strong>Enseña tu código QR en caja</strong> al pagar: sumas 10 puntos por cada euro entero.</li>
+            <li><strong>Canjea tus puntos</strong> por premios desde la caja, enseñando de nuevo tu código.</li>
+        </ol>
+        <p class="app-soon">Muy pronto en <strong>Google Play</strong> y en el <strong>App Store</strong>.</p>
+
+        <h2>Preguntas frecuentes</h2>
+        <div class="app-faq">
+            <details>
+                <summary>He olvidado mi contraseña</summary>
+                <p>En la pantalla de inicio pulsa «Inicia sesión» y luego «He olvidado mi contraseña». Te enviaremos
+                    un código por email para que crees una contraseña nueva. Si no te llega en un par de minutos,
+                    mira en «Spam» o «Promociones».</p>
+            </details>
+            <details>
+                <summary>No me han sumado los puntos de un ticket</summary>
+                <p>Los puntos se suman en caja en el momento de pagar, enseñando tu código. No se pueden sumar tickets
+                    pasados. Si crees que hubo un error, coméntalo en barra o escríbenos.</p>
+            </details>
+            <details>
+                <summary>Me han sumado un importe equivocado</summary>
+                <p>Avisa en barra: el personal puede anular la operación durante las 24 horas siguientes y volver a
+                    sumarla bien.</p>
+            </details>
+            <details>
+                <summary>Pone que mi código ha caducado</summary>
+                <p>Por seguridad, el código QR cambia cada pocos minutos y solo vale una vez. La app lo renueva sola;
+                    si hace falta, desliza hacia abajo en «Mi tarjeta».</p>
+            </details>
+            <details>
+                <summary>He cambiado de móvil</summary>
+                <p>Instala la app en el móvil nuevo e inicia sesión con el mismo email y contraseña: tus puntos
+                    están guardados en tu cuenta, no en el teléfono.</p>
+            </details>
+            <details>
+                <summary>No me llegan las notificaciones</summary>
+                <p>Revisa en los ajustes del móvil que las notificaciones de la app estén permitidas. Solo enviamos
+                    avisos de novedades del bar, como el especial del fin de semana.</p>
+            </details>
+            <details>
+                <summary>¿Cómo borro mi cuenta?</summary>
+                <p>Desde la app, en «Cuenta → Borrar mi cuenta», o por email. Todos los pasos están en
+                    <a href="../legal/borrar-cuenta.html">Borrar tu cuenta</a>.</p>
+            </details>
+        </div>
+
+        <h2>Contacto</h2>
+        <p>¿Algo no funciona o tienes alguna duda? Escríbenos y te contestamos lo antes posible.</p>
+        <div class="app-contact">
+            <a class="btn" href="mailto:info@barelgorrion.com?subject=App%20Club%20El%20Gorri%C3%B3n">info@barelgorrion.com</a>
+            <a class="btn" href="tel:+34606963797">606 96 37 97</a>
+        </div>
+
+        <h2>Información legal</h2>
+        <p>
+            <a href="../legal/club.html">Condiciones del club</a> ·
+            <a href="../legal/privacidad.html">Política de privacidad</a> ·
+            <a href="../legal/borrar-cuenta.html">Borrar tu cuenta</a>
+        </p>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="../assets/logo_rock.webp" alt="" width="42" height="42" loading="lazy">
+                <div>
+                    <p class="footer-name">El Gorrión</p>
+                    <p>Torrubia del Campo · Cuenca</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026. Reservados todos los derechos.</p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="../legal/aviso-legal.html">Aviso Legal</a>
+                <a href="../legal/privacidad.html">Política de Privacidad</a>
+                <a href="../legal/cookies.html">Política de Cookies</a>
+            </nav>
+            <p class="footer-credit">Diseñado por <a href="https://cyberskyweb.com" target="_blank" rel="noopener">CyberSkyWeb</a></p>
+        </div>
+    </footer>
+
+    <script src="../script.js?v=4.0"></script>
+</body>
+
+</html>
