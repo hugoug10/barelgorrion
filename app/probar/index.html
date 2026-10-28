@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrena la app | Club El Gorrión</title>
+    <meta name="description" content="Prueba la app del Club El Gorrión antes que nadie: 50 puntos de regalo.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="../../assets/favicon-64.png">
+    <link rel="preload" href="../../assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../../styles.css?v=4.1">
+    <style>
+        .app-wrap {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 var(--gutter) 5rem;
+        }
+
+        .app-wrap h2 {
+            font-size: 1.35rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-main);
+        }
+
+        .app-wrap p,
+        .app-wrap li {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .app-wrap a:not(.btn) {
+            color: var(--gold-solid);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .app-steps {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+            counter-reset: paso;
+        }
+
+        .app-steps li {
+            counter-increment: paso;
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 1rem 1.2rem 1.2rem 3.6rem;
+            position: relative;
+        }
+
+        .app-steps li::before {
+            content: counter(paso);
+            position: absolute;
+            left: 1.1rem;
+            top: 1rem;
+            width: 1.7rem;
+            height: 1.7rem;
+            border-radius: 50%;
+            background: var(--gold-solid);
+            color: #11151c;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+            line-height: 1;
+        }
+
+        .app-steps strong {
+            color: var(--text-main);
+        }
+
+        .app-steps .btn {
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        .app-note {
+            margin-top: 1.5rem;
+            padding: 1rem 1.2rem;
+            border: 1px dashed var(--rule);
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" class="logo">El Gorrión</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Estrena la app</h1>
+        <p class="page-lede">Prueba el Club El Gorrión antes que nadie y llévate 50 puntos de regalo.</p>
+    </header>
+    <div class="page-rule"></div>
+
+    <main class="app-wrap">
+        <h2>En tu móvil Android, 3 pasos</h2>
+        <ol class="app-steps">
+            <li><strong>Únete al grupo de probadores.</strong> Pulsa el botón y luego «Unirse al grupo».
+                <br><a class="btn" href="https://groups.google.com/g/club-el-gorrion-testers" target="_blank" rel="noopener">Unirme al grupo</a>
+            </li>
+            <li><strong>Hazte tester.</strong> Vuelve aquí, pulsa el botón y luego «Hacerse tester».
+                <br><a class="btn" href="https://play.google.com/apps/testing/com.barelgorrion.app" target="_blank" rel="noopener">Hacerme tester</a>
+            </li>
+            <li><strong>Instala la app</strong> desde Google Play, crea tu tarjeta y enseña tu código en caja al pagar.
+                <br><a class="btn" href="https://play.google.com/store/apps/details?id=com.barelgorrion.app" target="_blank" rel="noopener">Instalar la app</a>
+            </li>
+        </ol>
+
+        <p class="app-note">Usa la <strong>misma cuenta de Google</strong> en los tres pasos (la de tu Play Store).
+            Te pedimos un favor: <strong>no la desinstales en 14 días</strong>, así nos ayudas a publicarla para
+            todo el pueblo. Tus puntos siguen valiendo cuando salga.</p>
+
+        <h2>¿Tienes iPhone?</h2>
+        <p>La versión para iPhone llega muy pronto. Te avisaremos en el bar.</p>
+
+        <h2>¿Algún problema?</h2>
+        <p>Pregunta en barra o escríbenos a <a href="mailto:info@barelgorrion.com">info@barelgorrion.com</a>.
+            Más información sobre la app en <a href="../index.html">barelgorrion.com/app</a>.</p>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026. Reservados todos los derechos.</p>
+            <nav class="footer-legal" aria-label="Información legal">
+                <a href="../../legal/club.html">Condiciones del club</a>
+                <a href="../../legal/privacidad.html">Política de Privacidad</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+
+</html>
