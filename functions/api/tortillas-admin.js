@@ -11,17 +11,31 @@ export async function onRequestPost(context) {
   const resetAt = parseInt(await env.MENU_KV.get(RESET_KEY) || '0', 10);
   const votos = (await listarVotos(env)).filter(v => !resetAt || (v.at && v.at > resetAt));
   const recuento = Object.fromEntries(TORTILLAS.map(t => [t.id, 0]));
+  const sospechosos = Object.fromEntries(TORTILLAS.map(t => [t.id, 0]));
   let ultimo = null;
 
+  // Votos con la misma huella que otro anterior: posible mismo móvil en incógnito
+  // (o dos móviles iguales en la misma wifi). Cuentan igual; solo se señalan.
+  const primeroPorHuella = new Map();
+  for (const v of votos.slice().sort((a, b) => (a.c || a.at || 0) - (b.c || b.at || 0))) {
+    if (!v.h) continue;
+    if (primeroPorHuella.has(v.h)) v.sospechoso = true;
+    else primeroPorHuella.set(v.h, v);
+  }
+
   for (const v of votos) {
-    if (v.t in recuento) recuento[v.t]++;
+    if (v.t in recuento) {
+      recuento[v.t]++;
+      if (v.sospechoso) sospechosos[v.t]++;
+    }
     if (v.at && (!ultimo || v.at > ultimo)) ultimo = v.at;
   }
 
   return json({
     total: votos.length,
+    totalSospechosos: votos.filter(v => v.sospechoso).length,
     ultimoVoto: ultimo ? new Date(ultimo).toISOString() : null,
-    tortillas: TORTILLAS.map(t => ({ ...t, votos: recuento[t.id] })),
+    tortillas: TORTILLAS.map(t => ({ ...t, votos: recuento[t.id], sospechosos: sospechosos[t.id] })),
   });
 }
 
@@ -62,7 +76,7 @@ async function listarVotos(env) {
   do {
     const page = await env.MENU_KV.list({ prefix: VOTE_PREFIX, cursor });
     for (const k of page.keys) {
-      votos.push({ key: k.name, t: k.metadata?.t, at: k.metadata?.at });
+      votos.push({ key: k.name, t: k.metadata?.t, at: k.metadata?.at, c: k.metadata?.c, h: k.metadata?.h });
     }
     cursor = page.list_complete ? undefined : page.cursor;
   } while (cursor);

@@ -3,14 +3,14 @@
 // (tvoto:<id>) para que dos votos simultáneos nunca se pisen, y volver a votar desde
 // el mismo dispositivo sustituye el voto anterior.
 //
-// Para que borrar los datos del navegador o abrir una pestaña de incógnito no sirva
-// para votar otra vez, el dispositivo se reconoce por tres vías:
-//   1. el id guardado en el navegador (localStorage),
-//   2. una cookie HttpOnly con ese mismo id, que manda sobre lo que diga la página,
-//   3. una huella (IP + navegador + pantalla, idioma...). Si llega un id nuevo con una
-//      huella que ya ha votado, se trata como el mismo votante: se cambia su voto en
-//      vez de sumar otro. Se permiten MAX_POR_HUELLA votantes por huella porque dos
-//      móviles iguales en la misma wifi del bar dan la misma huella.
+// El dispositivo se reconoce por el id guardado en el navegador (localStorage) y por
+// una cookie HttpOnly con ese mismo id, que manda sobre lo que diga la página: borrar
+// solo uno de los dos no da un voto nuevo.
+//
+// Además cada voto guarda una huella (IP + navegador + pantalla, idioma...). La huella
+// NO bloquea ni cambia ningún voto, porque varios móviles iguales en la wifi del bar
+// dan la misma huella y no queremos perder votos de verdad: solo sirve para que el
+// admin vea cuántos votos comparten huella con otro (posibles repetidos en incógnito).
 
 export const TORTILLAS = [
   { id: 'cabra',     nombre: 'Tortilla de queso de cabra y cebolla caramelizada al Oporto' },
@@ -31,10 +31,8 @@ export const ABRE_VOTACION = Date.UTC(2026, 9, 30, 19, 0);
 export const VOTE_PREFIX = 'tvoto:';
 
 // Máximo de dispositivos nuevos que pueden votar desde una misma conexión al día.
-// Generoso porque en el bar mucha gente puede compartir la misma wifi.
-const MAX_VOTANTES_POR_IP = 100;
-
-const MAX_POR_HUELLA = 2;
+// Muy generoso porque en el bar todo el mundo puede compartir la misma wifi.
+const MAX_VOTANTES_POR_IP = 300;
 
 export const RESET_KEY = 'tvoto_reset_at';
 
@@ -80,7 +78,7 @@ export async function onRequestPost(context) {
   try { body = await request.json(); }
   catch { return json({ error: 'JSON inválido' }, 400); }
 
-  let voterId = leerCookie(request) || String(body.voterId || '');
+  const voterId = leerCookie(request) || String(body.voterId || '');
   const tortilla = TORTILLAS.find(t => t.id === body.tortilla);
 
   if (!ID_RE.test(voterId)) {
@@ -94,31 +92,17 @@ export async function onRequestPost(context) {
   }
 
   const ip = request.headers.get('CF-Connecting-IP') || 'desconocida';
-  let previo = await votoVigente(env, voterId);
+  const previo = await votoVigente(env, voterId);
+  const key = VOTE_PREFIX + voterId;
 
-  // Id nuevo: ¿esta huella ya ha votado con otro id? Entonces es el mismo móvil
-  // (incógnito, datos borrados...) y se cambia el voto de ese id en vez de sumar uno.
-  const huellaKey = 'tvhuella:' + await sha256([
+  // Al cambiar de voto se conservan la huella y la hora del primer voto
+  const meta = previo ? ((await env.MENU_KV.getWithMetadata(key)).metadata || {}) : {};
+  const huella = meta.h || await sha256([
     ip,
     request.headers.get('User-Agent') || '',
     request.headers.get('Accept-Language') || '',
     String(body.huella || '').slice(0, 300),
   ].join('|'));
-  const idsHuella = JSON.parse(await env.MENU_KV.get(huellaKey) || '[]');
-  if (!previo && !idsHuella.includes(voterId)) {
-    const conVoto = [];
-    for (const id of idsHuella) {
-      if (await votoVigente(env, id)) conVoto.push(id);
-    }
-    if (conVoto.length >= MAX_POR_HUELLA) {
-      voterId = conVoto[conVoto.length - 1];
-      previo = await votoVigente(env, voterId);
-    } else {
-      await env.MENU_KV.put(huellaKey, JSON.stringify([...conVoto, voterId]), { expirationTtl: 60 * 60 * 72 });
-    }
-  }
-
-  const key = VOTE_PREFIX + voterId;
 
   if (!previo) {
     const ipKey = `tvip:${await sha256(ip)}:${new Date().toISOString().slice(0, 10)}`;
@@ -130,7 +114,7 @@ export async function onRequestPost(context) {
   }
 
   await env.MENU_KV.put(key, tortilla.id, {
-    metadata: { t: tortilla.id, at: Date.now() },
+    metadata: { t: tortilla.id, at: Date.now(), c: meta.c || Date.now(), h: huella },
   });
 
   return json(

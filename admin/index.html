@@ -207,6 +207,11 @@
     .voto-relleno { height: 100%; background: rgba(197,160,89,0.55); border-radius: 6px; transition: width 0.5s ease; }
     .voto-fila.lider .voto-relleno { background: var(--gold); }
 
+    .voto-sospecha { color: #f6ad55; font-size: 0.8rem; }
+    .votos-aviso {
+      font-size: 0.82rem; line-height: 1.5; color: #f6ad55; margin-bottom: 1rem;
+      padding: 0.7rem 0.9rem; border: 1px solid rgba(246,173,85,0.35); border-radius: var(--radius);
+    }
     .votos-nota { font-size: 0.8rem; color: var(--text-muted); margin-top: 1.2rem; line-height: 1.5; }
     .votos-peligro { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06); }
     .votos-vacio { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
@@ -588,7 +593,7 @@ async function loadVotos(silent) {
   }
 }
 
-function renderVotos({ total, ultimoVoto, tortillas }) {
+function renderVotos({ total, totalSospechosos = 0, ultimoVoto, tortillas }) {
   const list = document.getElementById('votos-list');
   const max = Math.max(0, ...tortillas.map(t => t.votos));
   const lideres = tortillas.filter(t => t.votos === max && max > 0);
@@ -604,7 +609,7 @@ function renderVotos({ total, ultimoVoto, tortillas }) {
       <div class="voto-fila${esLider ? ' lider' : ''}">
         <div class="voto-cabecera">
           <span class="voto-nombre">${esc(t.nombre)}${esLider ? '<span class="voto-badge">VA GANANDO</span>' : ''}</span>
-          <span class="voto-cifra"><strong>${t.votos}</strong>${t.votos === 1 ? 'voto' : 'votos'} · ${pct}%</span>
+          <span class="voto-cifra"><strong>${t.votos}</strong>${t.votos === 1 ? 'voto' : 'votos'} · ${pct}%${t.sospechosos ? ` <span class="voto-sospecha">(${t.sospechosos} sospechoso${t.sospechosos === 1 ? '' : 's'})</span>` : ''}</span>
         </div>
         <div class="voto-barra"><div class="voto-relleno" style="width:${pct}%"></div></div>
       </div>`;
@@ -616,6 +621,10 @@ function renderVotos({ total, ultimoVoto, tortillas }) {
       <div class="resumen-card"><div class="num small">${esc(liderTxt)}</div><div class="lbl">En cabeza</div></div>
       <div class="resumen-card"><div class="num small">${ultimoVoto ? esc(formatHora(ultimoVoto)) : '—'}</div><div class="lbl">Último voto</div></div>
     </div>
+    ${totalSospechosos ? `<p class="votos-aviso">${totalSospechosos} ${totalSospechosos === 1 ? 'voto viene' : 'votos vienen'} de un móvil
+      idéntico a otro que ya había votado (mismo modelo, navegador y conexión). Pueden ser personas distintas con el
+      mismo móvil en la wifi del bar, o alguien votando otra vez en incógnito. Cuentan igual en el total; están
+      señalados por si hay un empate ajustado o algo raro.</p>` : ''}
     ${filas}`;
 }
 
