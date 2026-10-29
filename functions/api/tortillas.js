@@ -4,9 +4,15 @@
 // pisen, y volver a votar desde el mismo dispositivo sustituye el voto anterior.
 
 export const TORTILLAS = [
-  { id: 'pimientos', nombre: 'Tortilla de pimientos' },
+  { id: 'cabra',     nombre: 'Tortilla de queso de cabra y cebolla caramelizada al Oporto' },
+  { id: 'morcilla',  nombre: 'Tortilla de morcilla y manzana caramelizada' },
+  { id: 'ajo',       nombre: 'Tortilla de ajo y perejil' },
+  { id: 'azul',      nombre: 'Tortilla de queso azul' },
+  { id: 'oreja',     nombre: 'Tortilla de oreja en salsa' },
+  { id: 'original',  nombre: 'Tortilla original de patata y cebolla' },
+  { id: 'barbacoa',  nombre: 'Tortilla de barbacoa' },
   { id: 'chorizo',   nombre: 'Tortilla de chorizo' },
-  { id: 'oreja',     nombre: 'Tortilla de oreja' },
+  { id: 'sobrasada', nombre: 'Tortilla de sobrasada con queso brie y miel' },
 ];
 
 export const VOTE_PREFIX = 'tvoto:';
