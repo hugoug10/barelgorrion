@@ -574,6 +574,21 @@
                 guardar('tortilla_voter_id', voterId);
             }
 
+            // El servidor reconoce el móvil aunque se borren los datos (cookie o huella) y nos dice su id
+            function adoptarId(id) {
+                if (id && id !== voterId) { voterId = id; guardar('tortilla_voter_id', id); }
+            }
+
+            // Rasgos del móvil que no cambian al abrir incógnito o borrar datos
+            function huella() {
+                const s = window.screen || {};
+                let tz = '';
+                try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { }
+                return [Math.min(s.width, s.height), Math.max(s.width, s.height), window.devicePixelRatio,
+                    navigator.language, tz, navigator.hardwareConcurrency, navigator.deviceMemory,
+                    navigator.maxTouchPoints, s.colorDepth].join('|');
+            }
+
             function nombreDe(id) {
                 const t = tortillas.find(t => t.id === id);
                 return t ? t.nombre : '';
@@ -641,10 +656,11 @@
                     const res = await fetch('/api/tortillas', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ voterId, tortilla: seleccion }),
+                        body: JSON.stringify({ voterId, tortilla: seleccion, huella: huella() }),
                     });
                     const data = await res.json().catch(() => ({}));
                     if (!res.ok) throw new Error(data.error || 'No se pudo registrar el voto');
+                    adoptarId(data.voterId);
                     guardar('tortilla_voto', seleccion);
                     mostrarHecho(seleccion);
                     document.getElementById('votar').scrollIntoView({ behavior: 'smooth' });
@@ -666,6 +682,7 @@
                 .then(r => r.ok ? r.json() : Promise.reject())
                 .then(data => {
                     tortillas = data.tortillas || [];
+                    adoptarId(data.voterId);
                     if (data.faltan > 0) {
                         abreEn = Date.now() + data.faltan;
                         // Comprueba cada pocos segundos (un temporizador largo se para si el móvil se bloquea)
