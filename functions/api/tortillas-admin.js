@@ -1,6 +1,4 @@
-import { TORTILLAS, VOTE_PREFIX } from './tortillas.js';
-
-const RESET_KEY = 'tvoto_reset_at';
+import { TORTILLAS, VOTE_PREFIX, RESET_KEY } from './tortillas.js';
 
 // POST: recuento de votos. DELETE: borra todos los votos (para empezar de cero).
 export async function onRequestPost(context) {

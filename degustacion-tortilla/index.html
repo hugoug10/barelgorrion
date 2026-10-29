@@ -643,12 +643,14 @@
                 elegir(leer('tortilla_voto'));
             });
 
-            fetch('/api/tortillas')
+            fetch('/api/tortillas?voter=' + encodeURIComponent(voterId), { cache: 'no-store' })
                 .then(r => r.ok ? r.json() : Promise.reject())
                 .then(data => {
                     tortillas = data.tortillas || [];
-                    const previo = leer('tortilla_voto');
-                    if (previo && tortillas.some(t => t.id === previo)) {
+                    // Manda lo que diga el servidor: un voto guardado de otra cata o anterior a un reinicio no cuenta
+                    const previo = data.voto || null;
+                    guardar('tortilla_voto', previo || '');
+                    if (previo) {
                         seleccion = previo;
                         pintarOpciones();
                         mostrarHecho(previo);

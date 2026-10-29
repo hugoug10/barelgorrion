@@ -21,8 +21,21 @@ export const VOTE_PREFIX = 'tvoto:';
 // Generoso porque en el bar mucha gente puede compartir la misma wifi.
 const MAX_VOTANTES_POR_IP = 100;
 
-export async function onRequestGet() {
-  return json({ tortillas: TORTILLAS });
+export const RESET_KEY = 'tvoto_reset_at';
+
+// Con ?voter=<id> devuelve también el voto actual de ese dispositivo (o null), para
+// que el navegador no se fíe de lo que tenga guardado de otra cata o de antes de un reinicio.
+export async function onRequestGet({ request, env }) {
+  const voterId = new URL(request.url).searchParams.get('voter') || '';
+  let voto = null;
+  if (env.MENU_KV && /^[a-zA-Z0-9-]{16,64}$/.test(voterId)) {
+    const { value, metadata } = await env.MENU_KV.getWithMetadata(VOTE_PREFIX + voterId);
+    const resetAt = parseInt(await env.MENU_KV.get(RESET_KEY) || '0', 10);
+    if (value && TORTILLAS.some(t => t.id === value) && (!resetAt || (metadata?.at && metadata.at > resetAt))) {
+      voto = value;
+    }
+  }
+  return json({ tortillas: TORTILLAS, voto });
 }
 
 export async function onRequestPost(context) {
