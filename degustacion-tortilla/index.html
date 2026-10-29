@@ -254,6 +254,16 @@
             cursor: not-allowed;
         }
 
+        .votar-cerrada {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .votar-cerrada strong {
+            color: var(--tortilla-accent);
+        }
+
         .votar-error {
             color: #ff8a80;
             margin-top: 1rem;
@@ -444,6 +454,8 @@
                             aria-label="Tortillas de la degustación">
                             <p class="votar-cargando">Cargando tortillas...</p>
                         </div>
+                        <p class="votar-cerrada" id="votar-cerrada" hidden>La votación se abre el <strong>viernes 30
+                            a las 20:00</strong>. Mientras, ve echando el ojo a tu favorita.</p>
                         <button type="button" class="votar-btn" id="votar-btn" disabled>Elige una tortilla</button>
                         <p class="votar-error" id="votar-error" role="alert"></p>
                     </div>
@@ -546,6 +558,7 @@
             const formEl = document.getElementById('votar-form');
             const hechoEl = document.getElementById('votar-hecho');
             const elegidaEl = document.getElementById('votar-elegida');
+            const cerradaEl = document.getElementById('votar-cerrada');
 
             let tortillas = [];
             let seleccion = null;
@@ -602,9 +615,15 @@
                 actualizarBoton();
             }
 
+            // Hasta la hora de apertura se pueden ver y marcar, pero no votar
+            let abreEn = 0;
+            function abierta() { return Date.now() >= abreEn; }
+
             function actualizarBoton() {
-                btn.disabled = !seleccion;
-                btn.textContent = seleccion ? 'Votar' : 'Elige una tortilla';
+                const cerrada = !abierta();
+                cerradaEl.hidden = !cerrada;
+                btn.disabled = cerrada || !seleccion;
+                btn.textContent = cerrada ? 'Se abre a las 20:00' : seleccion ? 'Votar' : 'Elige una tortilla';
             }
 
             function mostrarHecho(id) {
@@ -647,6 +666,13 @@
                 .then(r => r.ok ? r.json() : Promise.reject())
                 .then(data => {
                     tortillas = data.tortillas || [];
+                    if (data.faltan > 0) {
+                        abreEn = Date.now() + data.faltan;
+                        // Comprueba cada pocos segundos (un temporizador largo se para si el móvil se bloquea)
+                        const reloj = setInterval(() => {
+                            if (abierta()) { clearInterval(reloj); actualizarBoton(); }
+                        }, 5000);
+                    }
                     // Manda lo que diga el servidor: un voto guardado de otra cata o anterior a un reinicio no cuenta
                     const previo = data.voto || null;
                     guardar('tortilla_voto', previo || '');

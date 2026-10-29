@@ -15,6 +15,10 @@ export const TORTILLAS = [
   { id: 'sobrasada', nombre: 'Tortilla de sobrasada con queso brie y miel' },
 ];
 
+// La votación se abre sola a esta hora: viernes 30 de octubre de 2026, 20:00 en
+// España (horario de invierno, UTC+1 → 19:00 UTC). Antes de eso no se aceptan votos.
+export const ABRE_VOTACION = Date.UTC(2026, 9, 30, 19, 0);
+
 export const VOTE_PREFIX = 'tvoto:';
 
 // Máximo de dispositivos nuevos que pueden votar desde una misma conexión al día.
@@ -35,11 +39,17 @@ export async function onRequestGet({ request, env }) {
       voto = value;
     }
   }
-  return json({ tortillas: TORTILLAS, voto });
+  // faltan: milisegundos hasta que se abra (0 si ya está abierta); así el navegador
+  // cuenta con el reloj del servidor y no con el del móvil
+  return json({ tortillas: TORTILLAS, voto, faltan: Math.max(0, ABRE_VOTACION - Date.now()) });
 }
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+
+  if (Date.now() < ABRE_VOTACION) {
+    return json({ error: 'La votación se abre el viernes 30 a las 20:00' }, 403);
+  }
 
   let body;
   try { body = await request.json(); }
