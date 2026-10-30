@@ -20,7 +20,6 @@ export const TORTILLAS = [
   { id: 'oreja',     nombre: 'Tortilla de oreja en salsa' },
   { id: 'original',  nombre: 'Tortilla original de patata y cebolla' },
   { id: 'barbacoa',  nombre: 'Tortilla de barbacoa' },
-  { id: 'chorizo',   nombre: 'Tortilla de chorizo' },
   { id: 'sobrasada', nombre: 'Tortilla de sobrasada con queso brie y miel' },
 ];
 
