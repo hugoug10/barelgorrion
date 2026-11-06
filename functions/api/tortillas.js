@@ -27,6 +27,10 @@ export const TORTILLAS = [
 // España (horario de invierno, UTC+1 → 19:00 UTC). Antes de eso no se aceptan votos.
 export const ABRE_VOTACION = Date.UTC(2026, 9, 30, 19, 0);
 
+// Votación terminada: no se aceptan votos nuevos ni cambios. El recuento sigue en el admin.
+// Para una nueva cata, ponerlo a false.
+export const VOTACION_CERRADA = true;
+
 export const VOTE_PREFIX = 'tvoto:';
 
 // Máximo de dispositivos nuevos que pueden votar desde una misma conexión al día.
@@ -54,6 +58,7 @@ export async function onRequestGet({ request, env }) {
     voto,
     voterId: ID_RE.test(voterId) ? voterId : null,
     faltan: Math.max(0, ABRE_VOTACION - Date.now()),
+    cerrada: VOTACION_CERRADA,
   });
 }
 
@@ -69,6 +74,9 @@ async function votoVigente(env, voterId) {
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  if (VOTACION_CERRADA) {
+    return json({ error: 'La votación ha terminado. ¡Gracias por participar!' }, 403);
+  }
   if (Date.now() < ABRE_VOTACION) {
     return json({ error: 'La votación se abre el viernes 30 a las 20:00' }, 403);
   }

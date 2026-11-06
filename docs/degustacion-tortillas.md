@@ -20,7 +20,10 @@ de la mesa y vota su favorita. La ganadora entra en la carta.
    hora el servidor rechaza los votos y la página dice cuándo se abre; se abre sola. El texto
    "viernes 30 a las 20:00" aparece en el mensaje de error del servidor y en la página
    (`votar-cerrada` y el botón): cambiarlo también.
-4. **Votos a cero**: admin → "Borrar todos los votos". Hacerlo antes del evento si alguien ha
+4. **Abrir la votación**: `VOTACION_CERRADA` en `functions/api/tortillas.js` a `false`. Con `true`
+   el servidor rechaza los votos y la página muestra "Votación cerrada" (se puso en `true` al
+   terminar la cata del 30 de octubre de 2026).
+5. **Votos a cero**: admin → "Borrar todos los votos". Hacerlo antes del evento si alguien ha
    probado a votar.
 
 ## Mostrar u ocultar el evento
