@@ -632,13 +632,26 @@
 
             // Hasta la hora de apertura se pueden ver y marcar, pero no votar
             let abreEn = 0;
-            function abierta() { return Date.now() >= abreEn; }
+            let terminada = false;
+            function abierta() { return !terminada && Date.now() >= abreEn; }
 
             function actualizarBoton() {
                 const cerrada = !abierta();
                 cerradaEl.hidden = !cerrada;
                 btn.disabled = cerrada || !seleccion;
-                btn.textContent = cerrada ? 'Se abre a las 20:00' : seleccion ? 'Votar' : 'Elige una tortilla';
+                btn.textContent = terminada ? 'Votación cerrada'
+                    : cerrada ? 'Se abre a las 20:00' : seleccion ? 'Votar' : 'Elige una tortilla';
+            }
+
+            // Votación terminada: se ven las tortillas (y el voto propio), pero ya no se vota
+            function cerrarVotacion() {
+                terminada = true;
+                document.querySelector('.votar-kicker').textContent = 'Votación cerrada';
+                document.querySelector('.votar-sub').textContent =
+                    'Gracias a todos los que vinisteis a probarlas y votasteis. Anunciamos la ganadora en nuestras redes.';
+                cerradaEl.textContent = 'La votación ha terminado. ¡Gracias por participar!';
+                document.getElementById('votar-cambiar').hidden = true;
+                document.querySelector('.votar-nota').textContent = 'La votación ha terminado. ¡Gracias por participar!';
             }
 
             function mostrarHecho(id) {
@@ -683,7 +696,8 @@
                 .then(data => {
                     tortillas = data.tortillas || [];
                     adoptarId(data.voterId);
-                    if (data.faltan > 0) {
+                    if (data.cerrada) cerrarVotacion();
+                    else if (data.faltan > 0) {
                         abreEn = Date.now() + data.faltan;
                         // Comprueba cada pocos segundos (un temporizador largo se para si el móvil se bloquea)
                         const reloj = setInterval(() => {
